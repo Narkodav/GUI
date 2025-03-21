@@ -92,5 +92,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Shaders\Text.shader" />
+    <None Include="Shaders\Highlight.shader" />
+    <None Include="Shaders\FlatToScreen.shader" />
+    <None Include="Shaders\FlatToScreenProjection.shader" />
   </ItemGroup>
 </Project>

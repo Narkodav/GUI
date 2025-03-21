@@ -167,6 +167,9 @@
     <ClInclude Include="WindowEvents.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Shaders\FlatToScreen.shader" />
+    <None Include="Shaders\FlatToScreenProjection.shader" />
+    <None Include="Shaders\Highlight.shader" />
     <None Include="Shaders\Text.shader" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
