@@ -104,7 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)Vendor;$(ProjectDir)Vendor/CommonApi/include;$(ProjectDir)Vendor/glew/include;$(ProjectDir)Vendor/glfw/include;$(ProjectDir)Vendor/FreeType/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)Vendor;$(ProjectDir)Vendor/CommonApi/include;$(ProjectDir)Vendor/glew/include;$(ProjectDir)Vendor/glfw/include;$(ProjectDir)Vendor/FreeType/include;$(ProjectDir)Vendor/ICU/include;$(ProjectDir)Vendor/harfbuzz/src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -112,8 +112,8 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(ProjectDir)Vendor\CommonApi\lib\Debug;$(ProjectDir)Vendor\glew\lib\Release\x64;$(ProjectDir)Vendor\glfw\lib-vc2022;$(ProjectDir)Vendor/FreeType/lib/Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>CommonApi.lib;glew32s.lib;glfw3_mt.lib;opengl32.lib;freetype.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)Vendor\CommonApi\lib\Debug;$(ProjectDir)Vendor\glew\lib\Release\x64;$(ProjectDir)Vendor\glfw\lib-vc2022;$(ProjectDir)Vendor/FreeType/lib/Debug;%(AdditionalLibraryDirectories);$(ProjectDir)Vendor/ICU/lib64;$(ProjectDir)Vendor/harfbuzz/build/src</AdditionalLibraryDirectories>
+      <AdditionalDependencies>CommonApi.lib;glew32s.lib;glfw3_mt.lib;opengl32.lib;freetype.lib;icuuc.lib;icuin.lib;harfbuzz.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -124,7 +124,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)Vendor;$(ProjectDir)Vendor/CommonApi/include;$(ProjectDir)Vendor/glew/include;$(ProjectDir)Vendor/glfw/include;$(ProjectDir)Vendor/FreeType/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)Vendor;$(ProjectDir)Vendor/CommonApi/include;$(ProjectDir)Vendor/glew/include;$(ProjectDir)Vendor/glfw/include;$(ProjectDir)Vendor/FreeType/include;$(ProjectDir)Vendor/ICU/include;$(ProjectDir)Vendor/harfbuzz/src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
@@ -134,13 +134,14 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(ProjectDir)Vendor\CommonApi\lib\Release;$(ProjectDir)Vendor\glew\lib\Release\x64;$(ProjectDir)Vendor\glfw\lib-vc2022;$(ProjectDir)Vendor/FreeType/lib/Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>CommonApi.lib;glew32s.lib;glfw3_mt.lib;opengl32.lib;freetype.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)Vendor\CommonApi\lib\Release;$(ProjectDir)Vendor\glew\lib\Release\x64;$(ProjectDir)Vendor\glfw\lib-vc2022;$(ProjectDir)Vendor/FreeType/lib/Release;%(AdditionalLibraryDirectories);$(ProjectDir)Vendor/ICU/lib64;$(ProjectDir)Vendor/harfbuzz/build/src</AdditionalLibraryDirectories>
+      <AdditionalDependencies>CommonApi.lib;glew32s.lib;glfw3_mt.lib;opengl32.lib;freetype.lib;icuuc.lib;icuin.lib;harfbuzz.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Element.cpp" />
     <ClCompile Include="Font.cpp" />
+    <ClCompile Include="FrameRateCalculator.cpp" />
     <ClCompile Include="IOEvents.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Rendering\FrameBuffer.cpp" />
@@ -156,6 +157,7 @@
     <ClInclude Include="Common.h" />
     <ClInclude Include="Element.h" />
     <ClInclude Include="Font.h" />
+    <ClInclude Include="FrameRateCalculator.h" />
     <ClInclude Include="IOEvents.h" />
     <ClInclude Include="Rendering\FrameBuffer.h" />
     <ClInclude Include="Rendering\Shader.h" />

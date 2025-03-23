@@ -65,6 +65,47 @@ void Texture::setFromBitmap(unsigned char* bitmap, int width, int height, Format
 	m_filePath = "none";
 	m_width = width;
 	m_height = height;
+	m_localBuffer = bitmap;
+	m_bpp = m_formatBpps[static_cast<size_t>(format)];
+
+	if (m_localBuffer)
+	{
+		glGenTextures(1, &m_id);
+		glBindTexture(GL_TEXTURE_2D, m_id);
+
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+
+		if(m_bpp == 1)
+		{
+			glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+			glTexImage2D(GL_TEXTURE_2D, 0, m_glInternalFormatConversions[static_cast<size_t>(format)],
+				m_width, m_height, 0, m_glFormatConversions[static_cast<size_t>(format)],
+				GL_UNSIGNED_BYTE, m_localBuffer);
+			glPixelStorei(GL_UNPACK_ALIGNMENT, 4);
+		}
+		else
+		{
+			glTexImage2D(GL_TEXTURE_2D, 0, m_glInternalFormatConversions[static_cast<size_t>(format)],
+				m_width, m_height, 0, m_glFormatConversions[static_cast<size_t>(format)],
+				GL_UNSIGNED_BYTE, m_localBuffer);
+		}
+
+		glGenerateMipmap(GL_TEXTURE_2D);
+		glBindTexture(GL_TEXTURE_2D, 0);
+	}
+	else throw std::runtime_error("bitmap is null");
+}
+
+void Texture::setFromBitmapFlipped(unsigned char* bitmap, int width, int height, Format format)
+{	
+	if (m_id)
+		clear();
+	m_filePath = "none";
+	m_width = width;
+	m_height = height;
 	m_localBuffer = nullptr;
 	m_bpp = m_formatBpps[static_cast<size_t>(format)];
 
@@ -81,7 +122,7 @@ void Texture::setFromBitmap(unsigned char* bitmap, int width, int height, Format
 				bitmap + (height - 1 - y) * rowSize,           // source row (flipped)
 				rowSize
 			);
-		}		
+		}
 
 		glGenTextures(1, &m_id);
 		glBindTexture(GL_TEXTURE_2D, m_id);
@@ -91,7 +132,7 @@ void Texture::setFromBitmap(unsigned char* bitmap, int width, int height, Format
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 
-		if(m_bpp == 1)
+		if (m_bpp == 1)
 		{
 			glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 			glTexImage2D(GL_TEXTURE_2D, 0, m_glInternalFormatConversions[static_cast<size_t>(format)],

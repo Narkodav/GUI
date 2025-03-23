@@ -1,4 +1,5 @@
 #pragma once
+#pragma execution_character_set("utf-8")
 
 //vendor
 #define GLEW_STATIC
@@ -39,7 +40,7 @@ namespace GUI
         // First convert [-1, 1] to [0, 1] range, then scale to window size
         return Extent2D{
         static_cast<int>((ndc.x + 1.0f) * 0.5f * windowExtent.width),
-        static_cast<int>((1.0f - ndc.y) * 0.5f * windowExtent.height)
+        static_cast<int>((ndc.y + 1.0f) * 0.5f * windowExtent.height)
         };
     }
 
@@ -48,7 +49,7 @@ namespace GUI
         // First convert to [0, 1] range, then to [-1, 1]
         return glm::vec2{
             (extent.width * 2.0f / windowExtent.width) - 1.0f,
-            1.0f - (extent.height * 2.0f / windowExtent.height)
+            (extent.height * 2.0f / windowExtent.height) - 1.0f
         };
     }
 

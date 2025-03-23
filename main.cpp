@@ -1,7 +1,9 @@
-#include <vector>
+﻿#include <vector>
+#include <chrono>
 
 #include "Window.h"
 #include "Font.h"
+#include "FrameRateCalculator.h"
 
 int main()
 {
@@ -24,11 +26,10 @@ int main()
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	
-	GUI::Font font;
-	font.setCharSize(20); //10 pixels height
-	font.renderCharMap();
+	GUI::Font font("Fonts/seguiemj.ttf");
+	font.setCharSize(60);
 
-	window.registerCallback<GUI::WindowEvents::WINDOW_RESIZED>(
+	auto sub = window.registerCallback<GUI::WindowEvents::WINDOW_RESIZED>(
 		[&font](int newWidth, int newHeight) {
 			glViewport(0, 0, newWidth, newHeight);
 		}
@@ -37,22 +38,39 @@ int main()
 	glViewport(0, 0, window.getWindowExtent().width, window.getWindowExtent().height);
 
 	window.swapInterval(0);
+
+	FrameRateCalculator frc;
+	frc.setFrameTimeBuffer(100);
+
+	float deltaTime = 0.0f;
+	std::chrono::time_point<std::chrono::steady_clock> start = std::chrono::steady_clock::now();
+	std::chrono::time_point<std::chrono::steady_clock> end = std::chrono::steady_clock::now();
+
 	while(!window.shouldClose())
 	{
-		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+		end = std::chrono::steady_clock::now();
+		deltaTime = std::chrono::duration_cast<std::chrono::duration<float>>(end - start).count();
+		start = std::chrono::steady_clock::now();
+		frc.addFrameTime(deltaTime);
+
+		glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		GUI::Window::pollEvents();
-
-		font.drawText(
-			"FPS: 60\n"
-			"Resolution: 800x600\n"
-			"Hello World!",
-			glm::vec2(0.0f, 0.0f),  // Top-left corner in NDC
+		
+		auto& resolution = window.getWindowExtent();
+		
+		font.drawTextAlignedBottomCenter(
+			"😁😊😂🤣❤😍😒👌\n"
+			"üñîçødé FPS: " + std::to_string(frc.updateFrameRate()) + "\n"
+			"Resolution: " + std::to_string(resolution.width) + "x"
+			+ std::to_string(resolution.height) + "\n"
+			"Hello World!\n",
+			glm::vec2(0.0f, -0.8f),  // Top-left corner in NDC
 			1.f,
-			glm::vec4(1.f),
+			glm::vec3(0.6f, 0.0f, 0.0f),
 			window.getWindowExtent()
 		);
 
-		window.swapBuffers();	
+		window.swapBuffers();
 	}
 }

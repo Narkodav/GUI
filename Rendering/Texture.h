@@ -33,7 +33,7 @@ public:
         NUM
     };
 
-    std::array<GLenum, static_cast<size_t>(Format::NUM)> m_formatBpps = {
+    static inline const std::array<GLenum, static_cast<size_t>(Format::NUM)> m_formatBpps = {
         1,  // R
         2,  // RG
         3,  // RGB
@@ -53,7 +53,7 @@ public:
         1   // STENCIL_INDEX
     };
 
-    std::array<GLenum, static_cast<size_t>(Format::NUM)> m_glFormatConversions = {
+    static inline const std::array<GLenum, static_cast<size_t>(Format::NUM)> m_glFormatConversions = {
         GL_RED,
         GL_RG,
         GL_RGB,
@@ -73,7 +73,7 @@ public:
         GL_STENCIL_INDEX
     };
 
-    std::array<GLenum, static_cast<size_t>(Format::NUM)> m_glInternalFormatConversions = {
+    static inline const std::array<GLenum, static_cast<size_t>(Format::NUM)> m_glInternalFormatConversions = {
     GL_R8,           // R
     GL_RG8,          // RG
     GL_RGB8,         // RGB
@@ -202,7 +202,7 @@ public:
 	bool operator==(Texture& other) const noexcept; //compares ids
 
 	void setFromBitmap(unsigned char* bitmap, int width, int height, Format format);
-
+    void setFromBitmapFlipped(unsigned char* bitmap, int width, int height, Format format);
 	void load(const std::string& path);
 	void clear();
 
