@@ -1,0 +1,363 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install",
+			"make_pkgconfig_pc_file",
+			"make_hb_features_h"
+		],
+		"files" : 
+		[
+			"E:/API/harfbuzz-main/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 1072,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 1074,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 1077,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 1080,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 1160,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 1128,
+				"parent" : 5
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 1171,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 1128,
+				"parent" : 7
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 1177,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 1128,
+				"parent" : 9
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 1183,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 1128,
+				"parent" : 11
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 1187,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 1128,
+				"parent" : 13
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 1241,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 1150,
+				"parent" : 15
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 1242,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 1250,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "include/harfbuzz",
+			"paths" : 
+			[
+				"E:/API/harfbuzz-main/src/hb-aat-layout.h",
+				"E:/API/harfbuzz-main/src/hb-aat.h",
+				"E:/API/harfbuzz-main/src/hb-blob.h",
+				"E:/API/harfbuzz-main/src/hb-buffer.h",
+				"E:/API/harfbuzz-main/src/hb-common.h",
+				"E:/API/harfbuzz-main/src/hb-cplusplus.hh",
+				"E:/API/harfbuzz-main/src/hb-deprecated.h",
+				"E:/API/harfbuzz-main/src/hb-draw.h",
+				"E:/API/harfbuzz-main/src/hb-face.h",
+				"E:/API/harfbuzz-main/src/hb-font.h",
+				"E:/API/harfbuzz-main/src/hb-map.h",
+				"E:/API/harfbuzz-main/src/hb-ot-color.h",
+				"E:/API/harfbuzz-main/src/hb-ot-deprecated.h",
+				"E:/API/harfbuzz-main/src/hb-ot-font.h",
+				"E:/API/harfbuzz-main/src/hb-ot-layout.h",
+				"E:/API/harfbuzz-main/src/hb-ot-math.h",
+				"E:/API/harfbuzz-main/src/hb-ot-meta.h",
+				"E:/API/harfbuzz-main/src/hb-ot-metrics.h",
+				"E:/API/harfbuzz-main/src/hb-ot-name.h",
+				"E:/API/harfbuzz-main/src/hb-ot-shape.h",
+				"E:/API/harfbuzz-main/src/hb-ot-var.h",
+				"E:/API/harfbuzz-main/src/hb-ot.h",
+				"E:/API/harfbuzz-main/src/hb-paint.h",
+				"E:/API/harfbuzz-main/src/hb-set.h",
+				"E:/API/harfbuzz-main/src/hb-script-list.h",
+				"E:/API/harfbuzz-main/src/hb-shape-plan.h",
+				"E:/API/harfbuzz-main/src/hb-shape.h",
+				"E:/API/harfbuzz-main/src/hb-style.h",
+				"E:/API/harfbuzz-main/src/hb-unicode.h",
+				"E:/API/harfbuzz-main/src/hb-version.h",
+				"E:/API/harfbuzz-main/src/hb.h",
+				"E:/API/harfbuzz-main/src/hb-subset.h",
+				"E:/API/harfbuzz-main/src/hb-subset-serialize.h"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "Unspecified",
+			"destination" : "include/harfbuzz",
+			"paths" : 
+			[
+				"E:/API/harfbuzz-main/src/hb-raster.h"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 3,
+			"component" : "Unspecified",
+			"destination" : "include/harfbuzz",
+			"paths" : 
+			[
+				"E:/API/harfbuzz-main/src/hb-vector.h"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 4,
+			"component" : "Unspecified",
+			"destination" : "include/harfbuzz",
+			"paths" : 
+			[
+				"E:/API/harfbuzz-main/src/hb-gpu.h"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 6,
+			"component" : "pkgconfig",
+			"destination" : "lib/pkgconfig",
+			"paths" : 
+			[
+				"build/clang-debug/harfbuzz/harfbuzz.pc"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 8,
+			"component" : "pkgconfig",
+			"destination" : "lib/pkgconfig",
+			"paths" : 
+			[
+				"build/clang-debug/harfbuzz/harfbuzz-subset.pc"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 10,
+			"component" : "pkgconfig",
+			"destination" : "lib/pkgconfig",
+			"paths" : 
+			[
+				"build/clang-debug/harfbuzz/harfbuzz-raster.pc"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 12,
+			"component" : "pkgconfig",
+			"destination" : "lib/pkgconfig",
+			"paths" : 
+			[
+				"build/clang-debug/harfbuzz/harfbuzz-vector.pc"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 14,
+			"component" : "pkgconfig",
+			"destination" : "lib/pkgconfig",
+			"paths" : 
+			[
+				"build/clang-debug/harfbuzz/harfbuzz-gpu.pc"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 16,
+			"component" : "Unspecified",
+			"destination" : "include/harfbuzz",
+			"paths" : 
+			[
+				"build/clang-debug/harfbuzz/src/hb-features.h"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 17,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"harfbuzz/libharfbuzz.a"
+			],
+			"targetId" : "harfbuzz::@3038d492387f26df9bfa",
+			"targetIndex" : 5,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 17,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"harfbuzz/libharfbuzz-subset.a"
+			],
+			"targetId" : "harfbuzz-subset::@3038d492387f26df9bfa",
+			"targetIndex" : 8,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 17,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"harfbuzz/libharfbuzz-raster.a"
+			],
+			"targetId" : "harfbuzz-raster::@3038d492387f26df9bfa",
+			"targetIndex" : 7,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 17,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"harfbuzz/libharfbuzz-vector.a"
+			],
+			"targetId" : "harfbuzz-vector::@3038d492387f26df9bfa",
+			"targetIndex" : 9,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 17,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"harfbuzz/libharfbuzz-gpu.a"
+			],
+			"targetId" : "harfbuzz-gpu::@3038d492387f26df9bfa",
+			"targetIndex" : 6,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 18,
+			"component" : "Unspecified",
+			"destination" : "lib/cmake/harfbuzz",
+			"exportName" : "harfbuzzConfig",
+			"exportTargets" : 
+			[
+				{
+					"id" : "harfbuzz::@3038d492387f26df9bfa",
+					"index" : 5
+				},
+				{
+					"id" : "harfbuzz-subset::@3038d492387f26df9bfa",
+					"index" : 8
+				},
+				{
+					"id" : "harfbuzz-raster::@3038d492387f26df9bfa",
+					"index" : 7
+				},
+				{
+					"id" : "harfbuzz-vector::@3038d492387f26df9bfa",
+					"index" : 9
+				},
+				{
+					"id" : "harfbuzz-gpu::@3038d492387f26df9bfa",
+					"index" : 6
+				}
+			],
+			"paths" : 
+			[
+				"harfbuzz/CMakeFiles/Export/6988f0906c47366608790bc51d4c19aa/harfbuzzConfig.cmake"
+			],
+			"type" : "export"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "harfbuzz",
+		"source" : "E:/API/harfbuzz-main"
+	}
+}

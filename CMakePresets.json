@@ -1,0 +1,94 @@
+{
+    "version": 3,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 21,
+        "patch": 0
+    },
+
+    "configurePresets": [
+
+        {
+            "name": "clang-debug",
+            "displayName": "Clang Debug",
+            "generator": "MinGW Makefiles",
+            "binaryDir": "${sourceDir}/build/clang-debug",
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "C:/Users/user/.utils/llvm-mingw/bin/clang.exe",
+                "CMAKE_CXX_COMPILER": "C:/Users/user/.utils/llvm-mingw/bin/clang++.exe",
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/clang-debug",
+                "Containers_DIR": "E:/Code/C_code/libraries/Containers/install/clang-debug/lib/cmake/Containers",
+                "CommonApi_DIR": "E:/Code/C_code/libraries/CommonApi/install/clang-debug/lib/cmake/CommonApi",
+                "PlatformKit_DIR": "E:/Code/C_code/libraries/PlatformKit/install/clang-debug/lib/cmake/PlatformKit",
+                "GraphicsWrapper_DIR": "E:/Code/C_code/libraries/GraphicsWrapper",
+                "Freetype_DIR": "E:/API/freetype-master",
+                "harfbuzz_DIR": "E:/API/harfbuzz-main",
+                "ICU_ROOT": "E:/API/icu"
+            }
+        },
+        {
+            "name": "clang-release",
+            "displayName": "Clang Release",
+            "generator": "MinGW Makefiles",
+            "binaryDir": "${sourceDir}/build/clang-release",
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "C:/Users/user/.utils/llvm-mingw/bin/clang.exe",
+                "CMAKE_CXX_COMPILER": "C:/Users/user/.utils/llvm-mingw/bin/clang++.exe",
+                "CMAKE_BUILD_TYPE": "Release",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/clang-release",
+                "CommonApi_DIR": "E:/Code/C_code/libraries/CommonApi/install/clang-release/lib/cmake/CommonApi",
+                "PlatformKit_DIR": "E:/Code/C_code/libraries/PlatformKit/install/clang-release/lib/cmake/PlatformKit"
+            }
+        },
+        
+        {
+            "name": "mingw-debug",
+            "displayName": "MinGW Debug",
+            "generator": "MinGW Makefiles",
+            "binaryDir": "${sourceDir}/build/mingw-debug",
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "A:/compilers/mingw64/bin/gcc.exe",
+                "CMAKE_CXX_COMPILER": "A:/compilers/mingw64/bin/g++.exe",
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/mingw-debug"
+            }
+        },
+        {
+            "name": "mingw-release",
+            "displayName": "MinGW Release",
+            "generator": "MinGW Makefiles",
+            "binaryDir": "${sourceDir}/build/mingw-release",
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "A:/compilers/mingw64/bin/gcc.exe",
+                "CMAKE_CXX_COMPILER": "A:/compilers/mingw64/bin/g++.exe",
+                "CMAKE_BUILD_TYPE": "Release",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/mingw-release"
+            }
+        },
+        {
+            "name": "msvc-debug",
+            "displayName": "MSVC Debug (Ninja)",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/msvc-debug",
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "cl.exe",
+                "CMAKE_CXX_COMPILER": "cl.exe",
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/msvc-debug"
+            }
+        },
+        {
+            "name": "msvc-release",
+            "displayName": "MSVC Release (Ninja)",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/msvc-release",
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "cl.exe",
+                "CMAKE_CXX_COMPILER": "cl.exe",
+                "CMAKE_BUILD_TYPE": "Release",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/msvc-release"
+            }
+        }
+    ]
+}

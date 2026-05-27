@@ -1,0 +1,471 @@
+{
+	"archive" : {},
+	"artifacts" : 
+	[
+		{
+			"path" : "GraphicsWrapper/libGraphicsWrapper.a"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"install",
+			"target_compile_options",
+			"target_compile_definitions",
+			"target_include_directories",
+			"target_link_libraries",
+			"target_compile_features"
+		],
+		"files" : 
+		[
+			"E:/Code/C_code/libraries/GraphicsWrapper/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 13,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 98,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 24,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 29,
+				"parent" : 0
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 18,
+				"parent" : 0
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 52,
+				"parent" : 0
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 40,
+				"parent" : 0
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 63,
+				"parent" : 0
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 64,
+				"parent" : 0
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 65,
+				"parent" : 0
+			},
+			{
+				"command" : 6,
+				"file" : 0,
+				"line" : 16,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g -std=gnu++20"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Wall"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Wextra"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Wpedantic"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 4,
+					"define" : "GRAPHICS_WRAPPER_EXPORTS"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 5,
+					"path" : "E:/Code/C_code/libraries/GraphicsWrapper/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "E:/Code/C_code/libraries/GraphicsWrapper/Vendor/stb_image"
+				},
+				{
+					"backtrace" : 7,
+					"isSystem" : true,
+					"path" : "E:/API/Vulkan/Include"
+				},
+				{
+					"backtrace" : 8,
+					"isSystem" : true,
+					"path" : "E:/Code/C_code/libraries/CommonApi/install/clang-debug/include"
+				},
+				{
+					"backtrace" : 9,
+					"isSystem" : true,
+					"path" : "E:/Code/C_code/libraries/Containers/install/clang-debug/include"
+				},
+				{
+					"backtrace" : 10,
+					"isSystem" : true,
+					"path" : "E:/Code/C_code/libraries/PlatformKit/install/clang-debug/include"
+				}
+			],
+			"language" : "CXX",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					11
+				],
+				"standard" : "20"
+			},
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20,
+				21,
+				22,
+				23,
+				24,
+				25,
+				26,
+				27,
+				28,
+				29,
+				30,
+				31,
+				32
+			]
+		}
+	],
+	"id" : "GraphicsWrapper::@b818e5f2ddefbb854c33",
+	"install" : 
+	{
+		"destinations" : 
+		[
+			{
+				"backtrace" : 2,
+				"path" : "lib"
+			}
+		],
+		"prefix" : 
+		{
+			"path" : "E:/Code/C_code/libraries/GUI/install/clang-debug"
+		}
+	},
+	"name" : "GraphicsWrapper",
+	"nameOnDisk" : "libGraphicsWrapper.a",
+	"paths" : 
+	{
+		"build" : "GraphicsWrapper",
+		"source" : "E:/Code/C_code/libraries/GraphicsWrapper"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20,
+				21,
+				22,
+				23,
+				24,
+				25,
+				26,
+				27,
+				28,
+				29,
+				30,
+				31,
+				32
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/Buffer.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/CommandBuffer.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/CommandPool.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/DebugUtilsMessenger.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/DescriptorPool.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/DescriptorSet.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/Device.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/Fence.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/FrameBuffer.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/Image.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/Instance.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/Memory.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/PhysicalDevice.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/PhysicalDeviceCache.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/Pipeline.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/Queue.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/RenderPass.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/Sampler.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/Semaphore.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/ShaderModule.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/Surface.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/SwapChain.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/TaskTables/FeatureTaskTables.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/TaskTables/PhysicalDeviceCacheTaskTables.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/TaskTables/PropertyTaskTables.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/TaskTables/QueuePropertyTaskTables.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/Utility/Camera.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/Utility/PixelData2D.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/Utility/Utility.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/Wrappers/DebugLogger.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/Wrappers/DeviceWrapper.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/Wrappers/InstanceWrapper.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/Wrappers/PipelineWrapper.cpp",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "STATIC_LIBRARY"
+}

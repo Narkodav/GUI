@@ -1,0 +1,10 @@
+{
+	"InstallScripts" : 
+	[
+		"E:/Code/C_code/libraries/GUI/build/clang-debug/cmake_install.cmake",
+		"E:/Code/C_code/libraries/GUI/build/clang-debug/freetype/cmake_install.cmake",
+		"E:/Code/C_code/libraries/GUI/build/clang-debug/harfbuzz/cmake_install.cmake",
+		"E:/Code/C_code/libraries/GUI/build/clang-debug/GraphicsWrapper/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

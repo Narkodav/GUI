@@ -1,0 +1,108 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"E:/Code/C_code/libraries/GraphicsWrapper/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 98,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 106,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 110,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 124,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"GraphicsWrapper/libGraphicsWrapper.a"
+			],
+			"targetId" : "GraphicsWrapper::@b818e5f2ddefbb854c33",
+			"targetIndex" : 2,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "Unspecified",
+			"destination" : "include",
+			"paths" : 
+			[
+				{
+					"from" : "E:/Code/C_code/libraries/GraphicsWrapper/include",
+					"to" : "."
+				}
+			],
+			"type" : "directory"
+		},
+		{
+			"backtrace" : 3,
+			"component" : "Unspecified",
+			"destination" : "lib/cmake/GraphicsWrapper",
+			"exportName" : "GraphicsWrapperTargets",
+			"exportTargets" : 
+			[
+				{
+					"id" : "GraphicsWrapper::@b818e5f2ddefbb854c33",
+					"index" : 2
+				},
+				{
+					"id" : "GraphicsWrapper_stb_image::@b818e5f2ddefbb854c33",
+					"index" : 0
+				}
+			],
+			"paths" : 
+			[
+				"GraphicsWrapper/CMakeFiles/Export/10b2b24c0bfcbe3ea30123437197e5d6/GraphicsWrapperTargets.cmake"
+			],
+			"type" : "export"
+		},
+		{
+			"backtrace" : 4,
+			"component" : "Unspecified",
+			"destination" : "lib/cmake/GraphicsWrapper",
+			"paths" : 
+			[
+				"build/clang-debug/GraphicsWrapper/GraphicsWrapperConfig.cmake"
+			],
+			"type" : "file"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "GraphicsWrapper",
+		"source" : "E:/Code/C_code/libraries/GraphicsWrapper"
+	}
+}

@@ -1,0 +1,728 @@
+[
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGUI_EXPORTS @CMakeFiles/GUI.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -pthread -o CMakeFiles\\GUI.dir\\src\\GUI\\Interface.cpp.obj -c E:\\Code\\C_code\\libraries\\GUI\\src\\GUI\\Interface.cpp",
+  "file": "E:/Code/C_code/libraries/GUI/src/GUI/Interface.cpp",
+  "output": "CMakeFiles/GUI.dir/src/GUI/Interface.cpp.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGUI_EXPORTS @CMakeFiles/GUI.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -pthread -o CMakeFiles\\GUI.dir\\src\\GUI\\Rendering\\Font.cpp.obj -c E:\\Code\\C_code\\libraries\\GUI\\src\\GUI\\Rendering\\Font.cpp",
+  "file": "E:/Code/C_code/libraries/GUI/src/GUI/Rendering/Font.cpp",
+  "output": "CMakeFiles/GUI.dir/src/GUI/Rendering/Font.cpp.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGUI_EXPORTS @CMakeFiles/GUI.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -pthread -o CMakeFiles\\GUI.dir\\src\\GUI\\TextRendering\\Font.cpp.obj -c E:\\Code\\C_code\\libraries\\GUI\\src\\GUI\\TextRendering\\Font.cpp",
+  "file": "E:/Code/C_code/libraries/GUI/src/GUI/TextRendering/Font.cpp",
+  "output": "CMakeFiles/GUI.dir/src/GUI/TextRendering/Font.cpp.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGUI_EXPORTS @CMakeFiles/GUI.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -pthread -o CMakeFiles\\GUI.dir\\src\\GUI\\TextRendering\\Text.cpp.obj -c E:\\Code\\C_code\\libraries\\GUI\\src\\GUI\\TextRendering\\Text.cpp",
+  "file": "E:/Code/C_code/libraries/GUI/src/GUI/TextRendering/Text.cpp",
+  "output": "CMakeFiles/GUI.dir/src/GUI/TextRendering/Text.cpp.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe  @CMakeFiles/GUITests.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -pthread -o CMakeFiles\\GUITests.dir\\tests\\main.cpp.obj -c E:\\Code\\C_code\\libraries\\GUI\\tests\\main.cpp",
+  "file": "E:/Code/C_code/libraries/GUI/tests/main.cpp",
+  "output": "CMakeFiles/GUITests.dir/tests/main.cpp.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/freetype",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/freetype.dir/includes_C.rsp -g -o CMakeFiles\\freetype.dir\\src\\autofit\\autofit.c.obj -c E:\\API\\freetype-master\\src\\autofit\\autofit.c",
+  "file": "E:/API/freetype-master/src/autofit/autofit.c",
+  "output": "freetype/CMakeFiles/freetype.dir/src/autofit/autofit.c.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/freetype",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/freetype.dir/includes_C.rsp -g -o CMakeFiles\\freetype.dir\\src\\base\\ftbase.c.obj -c E:\\API\\freetype-master\\src\\base\\ftbase.c",
+  "file": "E:/API/freetype-master/src/base/ftbase.c",
+  "output": "freetype/CMakeFiles/freetype.dir/src/base/ftbase.c.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/freetype",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/freetype.dir/includes_C.rsp -g -o CMakeFiles\\freetype.dir\\src\\base\\ftbbox.c.obj -c E:\\API\\freetype-master\\src\\base\\ftbbox.c",
+  "file": "E:/API/freetype-master/src/base/ftbbox.c",
+  "output": "freetype/CMakeFiles/freetype.dir/src/base/ftbbox.c.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/freetype",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/freetype.dir/includes_C.rsp -g -o CMakeFiles\\freetype.dir\\src\\base\\ftbdf.c.obj -c E:\\API\\freetype-master\\src\\base\\ftbdf.c",
+  "file": "E:/API/freetype-master/src/base/ftbdf.c",
+  "output": "freetype/CMakeFiles/freetype.dir/src/base/ftbdf.c.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/freetype",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/freetype.dir/includes_C.rsp -g -o CMakeFiles\\freetype.dir\\src\\base\\ftbitmap.c.obj -c E:\\API\\freetype-master\\src\\base\\ftbitmap.c",
+  "file": "E:/API/freetype-master/src/base/ftbitmap.c",
+  "output": "freetype/CMakeFiles/freetype.dir/src/base/ftbitmap.c.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/freetype",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/freetype.dir/includes_C.rsp -g -o CMakeFiles\\freetype.dir\\src\\base\\ftcid.c.obj -c E:\\API\\freetype-master\\src\\base\\ftcid.c",
+  "file": "E:/API/freetype-master/src/base/ftcid.c",
+  "output": "freetype/CMakeFiles/freetype.dir/src/base/ftcid.c.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/freetype",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/freetype.dir/includes_C.rsp -g -o CMakeFiles\\freetype.dir\\src\\base\\ftfstype.c.obj -c E:\\API\\freetype-master\\src\\base\\ftfstype.c",
+  "file": "E:/API/freetype-master/src/base/ftfstype.c",
+  "output": "freetype/CMakeFiles/freetype.dir/src/base/ftfstype.c.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/freetype",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/freetype.dir/includes_C.rsp -g -o CMakeFiles\\freetype.dir\\src\\base\\ftgasp.c.obj -c E:\\API\\freetype-master\\src\\base\\ftgasp.c",
+  "file": "E:/API/freetype-master/src/base/ftgasp.c",
+  "output": "freetype/CMakeFiles/freetype.dir/src/base/ftgasp.c.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/freetype",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/freetype.dir/includes_C.rsp -g -o CMakeFiles\\freetype.dir\\src\\base\\ftglyph.c.obj -c E:\\API\\freetype-master\\src\\base\\ftglyph.c",
+  "file": "E:/API/freetype-master/src/base/ftglyph.c",
+  "output": "freetype/CMakeFiles/freetype.dir/src/base/ftglyph.c.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/freetype",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/freetype.dir/includes_C.rsp -g -o CMakeFiles\\freetype.dir\\src\\base\\ftgxval.c.obj -c E:\\API\\freetype-master\\src\\base\\ftgxval.c",
+  "file": "E:/API/freetype-master/src/base/ftgxval.c",
+  "output": "freetype/CMakeFiles/freetype.dir/src/base/ftgxval.c.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/freetype",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/freetype.dir/includes_C.rsp -g -o CMakeFiles\\freetype.dir\\src\\base\\ftinit.c.obj -c E:\\API\\freetype-master\\src\\base\\ftinit.c",
+  "file": "E:/API/freetype-master/src/base/ftinit.c",
+  "output": "freetype/CMakeFiles/freetype.dir/src/base/ftinit.c.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/freetype",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/freetype.dir/includes_C.rsp -g -o CMakeFiles\\freetype.dir\\src\\base\\ftmm.c.obj -c E:\\API\\freetype-master\\src\\base\\ftmm.c",
+  "file": "E:/API/freetype-master/src/base/ftmm.c",
+  "output": "freetype/CMakeFiles/freetype.dir/src/base/ftmm.c.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/freetype",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/freetype.dir/includes_C.rsp -g -o CMakeFiles\\freetype.dir\\src\\base\\ftotval.c.obj -c E:\\API\\freetype-master\\src\\base\\ftotval.c",
+  "file": "E:/API/freetype-master/src/base/ftotval.c",
+  "output": "freetype/CMakeFiles/freetype.dir/src/base/ftotval.c.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/freetype",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/freetype.dir/includes_C.rsp -g -o CMakeFiles\\freetype.dir\\src\\base\\ftpatent.c.obj -c E:\\API\\freetype-master\\src\\base\\ftpatent.c",
+  "file": "E:/API/freetype-master/src/base/ftpatent.c",
+  "output": "freetype/CMakeFiles/freetype.dir/src/base/ftpatent.c.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/freetype",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/freetype.dir/includes_C.rsp -g -o CMakeFiles\\freetype.dir\\src\\base\\ftpfr.c.obj -c E:\\API\\freetype-master\\src\\base\\ftpfr.c",
+  "file": "E:/API/freetype-master/src/base/ftpfr.c",
+  "output": "freetype/CMakeFiles/freetype.dir/src/base/ftpfr.c.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/freetype",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/freetype.dir/includes_C.rsp -g -o CMakeFiles\\freetype.dir\\src\\base\\ftstroke.c.obj -c E:\\API\\freetype-master\\src\\base\\ftstroke.c",
+  "file": "E:/API/freetype-master/src/base/ftstroke.c",
+  "output": "freetype/CMakeFiles/freetype.dir/src/base/ftstroke.c.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/freetype",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/freetype.dir/includes_C.rsp -g -o CMakeFiles\\freetype.dir\\src\\base\\ftsynth.c.obj -c E:\\API\\freetype-master\\src\\base\\ftsynth.c",
+  "file": "E:/API/freetype-master/src/base/ftsynth.c",
+  "output": "freetype/CMakeFiles/freetype.dir/src/base/ftsynth.c.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/freetype",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/freetype.dir/includes_C.rsp -g -o CMakeFiles\\freetype.dir\\src\\base\\fttype1.c.obj -c E:\\API\\freetype-master\\src\\base\\fttype1.c",
+  "file": "E:/API/freetype-master/src/base/fttype1.c",
+  "output": "freetype/CMakeFiles/freetype.dir/src/base/fttype1.c.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/freetype",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/freetype.dir/includes_C.rsp -g -o CMakeFiles\\freetype.dir\\src\\base\\ftwinfnt.c.obj -c E:\\API\\freetype-master\\src\\base\\ftwinfnt.c",
+  "file": "E:/API/freetype-master/src/base/ftwinfnt.c",
+  "output": "freetype/CMakeFiles/freetype.dir/src/base/ftwinfnt.c.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/freetype",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/freetype.dir/includes_C.rsp -g -o CMakeFiles\\freetype.dir\\src\\bdf\\bdf.c.obj -c E:\\API\\freetype-master\\src\\bdf\\bdf.c",
+  "file": "E:/API/freetype-master/src/bdf/bdf.c",
+  "output": "freetype/CMakeFiles/freetype.dir/src/bdf/bdf.c.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/freetype",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/freetype.dir/includes_C.rsp -g -o CMakeFiles\\freetype.dir\\src\\bzip2\\ftbzip2.c.obj -c E:\\API\\freetype-master\\src\\bzip2\\ftbzip2.c",
+  "file": "E:/API/freetype-master/src/bzip2/ftbzip2.c",
+  "output": "freetype/CMakeFiles/freetype.dir/src/bzip2/ftbzip2.c.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/freetype",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/freetype.dir/includes_C.rsp -g -o CMakeFiles\\freetype.dir\\src\\cache\\ftcache.c.obj -c E:\\API\\freetype-master\\src\\cache\\ftcache.c",
+  "file": "E:/API/freetype-master/src/cache/ftcache.c",
+  "output": "freetype/CMakeFiles/freetype.dir/src/cache/ftcache.c.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/freetype",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/freetype.dir/includes_C.rsp -g -o CMakeFiles\\freetype.dir\\src\\cff\\cff.c.obj -c E:\\API\\freetype-master\\src\\cff\\cff.c",
+  "file": "E:/API/freetype-master/src/cff/cff.c",
+  "output": "freetype/CMakeFiles/freetype.dir/src/cff/cff.c.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/freetype",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/freetype.dir/includes_C.rsp -g -o CMakeFiles\\freetype.dir\\src\\cid\\type1cid.c.obj -c E:\\API\\freetype-master\\src\\cid\\type1cid.c",
+  "file": "E:/API/freetype-master/src/cid/type1cid.c",
+  "output": "freetype/CMakeFiles/freetype.dir/src/cid/type1cid.c.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/freetype",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/freetype.dir/includes_C.rsp -g -o CMakeFiles\\freetype.dir\\src\\gzip\\ftgzip.c.obj -c E:\\API\\freetype-master\\src\\gzip\\ftgzip.c",
+  "file": "E:/API/freetype-master/src/gzip/ftgzip.c",
+  "output": "freetype/CMakeFiles/freetype.dir/src/gzip/ftgzip.c.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/freetype",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/freetype.dir/includes_C.rsp -g -o CMakeFiles\\freetype.dir\\src\\hvf\\hvf.c.obj -c E:\\API\\freetype-master\\src\\hvf\\hvf.c",
+  "file": "E:/API/freetype-master/src/hvf/hvf.c",
+  "output": "freetype/CMakeFiles/freetype.dir/src/hvf/hvf.c.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/freetype",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/freetype.dir/includes_C.rsp -g -o CMakeFiles\\freetype.dir\\src\\lzw\\ftlzw.c.obj -c E:\\API\\freetype-master\\src\\lzw\\ftlzw.c",
+  "file": "E:/API/freetype-master/src/lzw/ftlzw.c",
+  "output": "freetype/CMakeFiles/freetype.dir/src/lzw/ftlzw.c.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/freetype",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/freetype.dir/includes_C.rsp -g -o CMakeFiles\\freetype.dir\\src\\pcf\\pcf.c.obj -c E:\\API\\freetype-master\\src\\pcf\\pcf.c",
+  "file": "E:/API/freetype-master/src/pcf/pcf.c",
+  "output": "freetype/CMakeFiles/freetype.dir/src/pcf/pcf.c.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/freetype",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/freetype.dir/includes_C.rsp -g -o CMakeFiles\\freetype.dir\\src\\pfr\\pfr.c.obj -c E:\\API\\freetype-master\\src\\pfr\\pfr.c",
+  "file": "E:/API/freetype-master/src/pfr/pfr.c",
+  "output": "freetype/CMakeFiles/freetype.dir/src/pfr/pfr.c.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/freetype",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/freetype.dir/includes_C.rsp -g -o CMakeFiles\\freetype.dir\\src\\psaux\\psaux.c.obj -c E:\\API\\freetype-master\\src\\psaux\\psaux.c",
+  "file": "E:/API/freetype-master/src/psaux/psaux.c",
+  "output": "freetype/CMakeFiles/freetype.dir/src/psaux/psaux.c.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/freetype",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/freetype.dir/includes_C.rsp -g -o CMakeFiles\\freetype.dir\\src\\pshinter\\pshinter.c.obj -c E:\\API\\freetype-master\\src\\pshinter\\pshinter.c",
+  "file": "E:/API/freetype-master/src/pshinter/pshinter.c",
+  "output": "freetype/CMakeFiles/freetype.dir/src/pshinter/pshinter.c.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/freetype",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/freetype.dir/includes_C.rsp -g -o CMakeFiles\\freetype.dir\\src\\psnames\\psnames.c.obj -c E:\\API\\freetype-master\\src\\psnames\\psnames.c",
+  "file": "E:/API/freetype-master/src/psnames/psnames.c",
+  "output": "freetype/CMakeFiles/freetype.dir/src/psnames/psnames.c.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/freetype",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/freetype.dir/includes_C.rsp -g -o CMakeFiles\\freetype.dir\\src\\raster\\raster.c.obj -c E:\\API\\freetype-master\\src\\raster\\raster.c",
+  "file": "E:/API/freetype-master/src/raster/raster.c",
+  "output": "freetype/CMakeFiles/freetype.dir/src/raster/raster.c.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/freetype",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/freetype.dir/includes_C.rsp -g -o CMakeFiles\\freetype.dir\\src\\sdf\\sdf.c.obj -c E:\\API\\freetype-master\\src\\sdf\\sdf.c",
+  "file": "E:/API/freetype-master/src/sdf/sdf.c",
+  "output": "freetype/CMakeFiles/freetype.dir/src/sdf/sdf.c.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/freetype",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/freetype.dir/includes_C.rsp -g -o CMakeFiles\\freetype.dir\\src\\sfnt\\sfnt.c.obj -c E:\\API\\freetype-master\\src\\sfnt\\sfnt.c",
+  "file": "E:/API/freetype-master/src/sfnt/sfnt.c",
+  "output": "freetype/CMakeFiles/freetype.dir/src/sfnt/sfnt.c.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/freetype",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/freetype.dir/includes_C.rsp -g -o CMakeFiles\\freetype.dir\\src\\smooth\\smooth.c.obj -c E:\\API\\freetype-master\\src\\smooth\\smooth.c",
+  "file": "E:/API/freetype-master/src/smooth/smooth.c",
+  "output": "freetype/CMakeFiles/freetype.dir/src/smooth/smooth.c.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/freetype",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/freetype.dir/includes_C.rsp -g -o CMakeFiles\\freetype.dir\\src\\svg\\svg.c.obj -c E:\\API\\freetype-master\\src\\svg\\svg.c",
+  "file": "E:/API/freetype-master/src/svg/svg.c",
+  "output": "freetype/CMakeFiles/freetype.dir/src/svg/svg.c.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/freetype",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/freetype.dir/includes_C.rsp -g -o CMakeFiles\\freetype.dir\\src\\truetype\\truetype.c.obj -c E:\\API\\freetype-master\\src\\truetype\\truetype.c",
+  "file": "E:/API/freetype-master/src/truetype/truetype.c",
+  "output": "freetype/CMakeFiles/freetype.dir/src/truetype/truetype.c.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/freetype",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/freetype.dir/includes_C.rsp -g -o CMakeFiles\\freetype.dir\\src\\type1\\type1.c.obj -c E:\\API\\freetype-master\\src\\type1\\type1.c",
+  "file": "E:/API/freetype-master/src/type1/type1.c",
+  "output": "freetype/CMakeFiles/freetype.dir/src/type1/type1.c.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/freetype",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/freetype.dir/includes_C.rsp -g -o CMakeFiles\\freetype.dir\\src\\type42\\type42.c.obj -c E:\\API\\freetype-master\\src\\type42\\type42.c",
+  "file": "E:/API/freetype-master/src/type42/type42.c",
+  "output": "freetype/CMakeFiles/freetype.dir/src/type42/type42.c.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/freetype",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/freetype.dir/includes_C.rsp -g -o CMakeFiles\\freetype.dir\\src\\winfonts\\winfnt.c.obj -c E:\\API\\freetype-master\\src\\winfonts\\winfnt.c",
+  "file": "E:/API/freetype-master/src/winfonts/winfnt.c",
+  "output": "freetype/CMakeFiles/freetype.dir/src/winfonts/winfnt.c.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/freetype",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/freetype.dir/includes_C.rsp -g -o CMakeFiles\\freetype.dir\\builds\\windows\\ftsystem.c.obj -c E:\\API\\freetype-master\\builds\\windows\\ftsystem.c",
+  "file": "E:/API/freetype-master/builds/windows/ftsystem.c",
+  "output": "freetype/CMakeFiles/freetype.dir/builds/windows/ftsystem.c.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/freetype",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/freetype.dir/includes_C.rsp -g -o CMakeFiles\\freetype.dir\\builds\\windows\\ftdebug.c.obj -c E:\\API\\freetype-master\\builds\\windows\\ftdebug.c",
+  "file": "E:/API/freetype-master/builds/windows/ftdebug.c",
+  "output": "freetype/CMakeFiles/freetype.dir/builds/windows/ftdebug.c.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/harfbuzz",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DHAVE_ATEXIT -DHAVE_FREETYPE=1 -DHAVE_ISATTY -DHAVE_PTHREAD -DHAVE_STDBOOL_H -DHAVE_UNISTD_H @CMakeFiles/harfbuzz.dir/includes_CXX.rsp  -fno-rtti -fno-exceptions -fno-threadsafe-statics -std=c++11 -g -std=gnu++11 -fvisibility-inlines-hidden -Wa,-mbig-obj -pthread -o CMakeFiles\\harfbuzz.dir\\src\\harfbuzz.cc.obj -c E:\\API\\harfbuzz-main\\src\\harfbuzz.cc",
+  "file": "E:/API/harfbuzz-main/src/harfbuzz.cc",
+  "output": "harfbuzz/CMakeFiles/harfbuzz.dir/src/harfbuzz.cc.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/harfbuzz",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DHAVE_ATEXIT -DHAVE_FREETYPE=1 -DHAVE_ISATTY -DHAVE_PTHREAD -DHAVE_STDBOOL_H -DHAVE_UNISTD_H @CMakeFiles/harfbuzz-subset.dir/includes_CXX.rsp  -fno-rtti -fno-exceptions -fno-threadsafe-statics -std=c++11 -g -std=gnu++11 -fvisibility-inlines-hidden -Wa,-mbig-obj -pthread -o CMakeFiles\\harfbuzz-subset.dir\\src\\hb-number.cc.obj -c E:\\API\\harfbuzz-main\\src\\hb-number.cc",
+  "file": "E:/API/harfbuzz-main/src/hb-number.cc",
+  "output": "harfbuzz/CMakeFiles/harfbuzz-subset.dir/src/hb-number.cc.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/harfbuzz",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DHAVE_ATEXIT -DHAVE_FREETYPE=1 -DHAVE_ISATTY -DHAVE_PTHREAD -DHAVE_STDBOOL_H -DHAVE_UNISTD_H @CMakeFiles/harfbuzz-subset.dir/includes_CXX.rsp  -fno-rtti -fno-exceptions -fno-threadsafe-statics -std=c++11 -g -std=gnu++11 -fvisibility-inlines-hidden -Wa,-mbig-obj -pthread -o CMakeFiles\\harfbuzz-subset.dir\\src\\hb-ot-cff1-table.cc.obj -c E:\\API\\harfbuzz-main\\src\\hb-ot-cff1-table.cc",
+  "file": "E:/API/harfbuzz-main/src/hb-ot-cff1-table.cc",
+  "output": "harfbuzz/CMakeFiles/harfbuzz-subset.dir/src/hb-ot-cff1-table.cc.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/harfbuzz",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DHAVE_ATEXIT -DHAVE_FREETYPE=1 -DHAVE_ISATTY -DHAVE_PTHREAD -DHAVE_STDBOOL_H -DHAVE_UNISTD_H @CMakeFiles/harfbuzz-subset.dir/includes_CXX.rsp  -fno-rtti -fno-exceptions -fno-threadsafe-statics -std=c++11 -g -std=gnu++11 -fvisibility-inlines-hidden -Wa,-mbig-obj -pthread -o CMakeFiles\\harfbuzz-subset.dir\\src\\hb-ot-cff2-table.cc.obj -c E:\\API\\harfbuzz-main\\src\\hb-ot-cff2-table.cc",
+  "file": "E:/API/harfbuzz-main/src/hb-ot-cff2-table.cc",
+  "output": "harfbuzz/CMakeFiles/harfbuzz-subset.dir/src/hb-ot-cff2-table.cc.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/harfbuzz",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DHAVE_ATEXIT -DHAVE_FREETYPE=1 -DHAVE_ISATTY -DHAVE_PTHREAD -DHAVE_STDBOOL_H -DHAVE_UNISTD_H @CMakeFiles/harfbuzz-subset.dir/includes_CXX.rsp  -fno-rtti -fno-exceptions -fno-threadsafe-statics -std=c++11 -g -std=gnu++11 -fvisibility-inlines-hidden -Wa,-mbig-obj -pthread -o CMakeFiles\\harfbuzz-subset.dir\\src\\hb-static.cc.obj -c E:\\API\\harfbuzz-main\\src\\hb-static.cc",
+  "file": "E:/API/harfbuzz-main/src/hb-static.cc",
+  "output": "harfbuzz/CMakeFiles/harfbuzz-subset.dir/src/hb-static.cc.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/harfbuzz",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DHAVE_ATEXIT -DHAVE_FREETYPE=1 -DHAVE_ISATTY -DHAVE_PTHREAD -DHAVE_STDBOOL_H -DHAVE_UNISTD_H @CMakeFiles/harfbuzz-subset.dir/includes_CXX.rsp  -fno-rtti -fno-exceptions -fno-threadsafe-statics -std=c++11 -g -std=gnu++11 -fvisibility-inlines-hidden -Wa,-mbig-obj -pthread -o CMakeFiles\\harfbuzz-subset.dir\\src\\hb-subset-cff-common.cc.obj -c E:\\API\\harfbuzz-main\\src\\hb-subset-cff-common.cc",
+  "file": "E:/API/harfbuzz-main/src/hb-subset-cff-common.cc",
+  "output": "harfbuzz/CMakeFiles/harfbuzz-subset.dir/src/hb-subset-cff-common.cc.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/harfbuzz",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DHAVE_ATEXIT -DHAVE_FREETYPE=1 -DHAVE_ISATTY -DHAVE_PTHREAD -DHAVE_STDBOOL_H -DHAVE_UNISTD_H @CMakeFiles/harfbuzz-subset.dir/includes_CXX.rsp  -fno-rtti -fno-exceptions -fno-threadsafe-statics -std=c++11 -g -std=gnu++11 -fvisibility-inlines-hidden -Wa,-mbig-obj -pthread -o CMakeFiles\\harfbuzz-subset.dir\\src\\hb-subset-cff1.cc.obj -c E:\\API\\harfbuzz-main\\src\\hb-subset-cff1.cc",
+  "file": "E:/API/harfbuzz-main/src/hb-subset-cff1.cc",
+  "output": "harfbuzz/CMakeFiles/harfbuzz-subset.dir/src/hb-subset-cff1.cc.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/harfbuzz",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DHAVE_ATEXIT -DHAVE_FREETYPE=1 -DHAVE_ISATTY -DHAVE_PTHREAD -DHAVE_STDBOOL_H -DHAVE_UNISTD_H @CMakeFiles/harfbuzz-subset.dir/includes_CXX.rsp  -fno-rtti -fno-exceptions -fno-threadsafe-statics -std=c++11 -g -std=gnu++11 -fvisibility-inlines-hidden -Wa,-mbig-obj -pthread -o CMakeFiles\\harfbuzz-subset.dir\\src\\hb-subset-cff2.cc.obj -c E:\\API\\harfbuzz-main\\src\\hb-subset-cff2.cc",
+  "file": "E:/API/harfbuzz-main/src/hb-subset-cff2.cc",
+  "output": "harfbuzz/CMakeFiles/harfbuzz-subset.dir/src/hb-subset-cff2.cc.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/harfbuzz",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DHAVE_ATEXIT -DHAVE_FREETYPE=1 -DHAVE_ISATTY -DHAVE_PTHREAD -DHAVE_STDBOOL_H -DHAVE_UNISTD_H @CMakeFiles/harfbuzz-subset.dir/includes_CXX.rsp  -fno-rtti -fno-exceptions -fno-threadsafe-statics -std=c++11 -g -std=gnu++11 -fvisibility-inlines-hidden -Wa,-mbig-obj -pthread -o CMakeFiles\\harfbuzz-subset.dir\\src\\hb-subset-input.cc.obj -c E:\\API\\harfbuzz-main\\src\\hb-subset-input.cc",
+  "file": "E:/API/harfbuzz-main/src/hb-subset-input.cc",
+  "output": "harfbuzz/CMakeFiles/harfbuzz-subset.dir/src/hb-subset-input.cc.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/harfbuzz",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DHAVE_ATEXIT -DHAVE_FREETYPE=1 -DHAVE_ISATTY -DHAVE_PTHREAD -DHAVE_STDBOOL_H -DHAVE_UNISTD_H @CMakeFiles/harfbuzz-subset.dir/includes_CXX.rsp  -fno-rtti -fno-exceptions -fno-threadsafe-statics -std=c++11 -g -std=gnu++11 -fvisibility-inlines-hidden -Wa,-mbig-obj -pthread -o CMakeFiles\\harfbuzz-subset.dir\\src\\hb-subset-instancer-iup.cc.obj -c E:\\API\\harfbuzz-main\\src\\hb-subset-instancer-iup.cc",
+  "file": "E:/API/harfbuzz-main/src/hb-subset-instancer-iup.cc",
+  "output": "harfbuzz/CMakeFiles/harfbuzz-subset.dir/src/hb-subset-instancer-iup.cc.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/harfbuzz",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DHAVE_ATEXIT -DHAVE_FREETYPE=1 -DHAVE_ISATTY -DHAVE_PTHREAD -DHAVE_STDBOOL_H -DHAVE_UNISTD_H @CMakeFiles/harfbuzz-subset.dir/includes_CXX.rsp  -fno-rtti -fno-exceptions -fno-threadsafe-statics -std=c++11 -g -std=gnu++11 -fvisibility-inlines-hidden -Wa,-mbig-obj -pthread -o CMakeFiles\\harfbuzz-subset.dir\\src\\hb-subset-instancer-solver.cc.obj -c E:\\API\\harfbuzz-main\\src\\hb-subset-instancer-solver.cc",
+  "file": "E:/API/harfbuzz-main/src/hb-subset-instancer-solver.cc",
+  "output": "harfbuzz/CMakeFiles/harfbuzz-subset.dir/src/hb-subset-instancer-solver.cc.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/harfbuzz",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DHAVE_ATEXIT -DHAVE_FREETYPE=1 -DHAVE_ISATTY -DHAVE_PTHREAD -DHAVE_STDBOOL_H -DHAVE_UNISTD_H @CMakeFiles/harfbuzz-subset.dir/includes_CXX.rsp  -fno-rtti -fno-exceptions -fno-threadsafe-statics -std=c++11 -g -std=gnu++11 -fvisibility-inlines-hidden -Wa,-mbig-obj -pthread -o CMakeFiles\\harfbuzz-subset.dir\\src\\hb-subset-plan.cc.obj -c E:\\API\\harfbuzz-main\\src\\hb-subset-plan.cc",
+  "file": "E:/API/harfbuzz-main/src/hb-subset-plan.cc",
+  "output": "harfbuzz/CMakeFiles/harfbuzz-subset.dir/src/hb-subset-plan.cc.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/harfbuzz",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DHAVE_ATEXIT -DHAVE_FREETYPE=1 -DHAVE_ISATTY -DHAVE_PTHREAD -DHAVE_STDBOOL_H -DHAVE_UNISTD_H @CMakeFiles/harfbuzz-subset.dir/includes_CXX.rsp  -fno-rtti -fno-exceptions -fno-threadsafe-statics -std=c++11 -g -std=gnu++11 -fvisibility-inlines-hidden -Wa,-mbig-obj -pthread -o CMakeFiles\\harfbuzz-subset.dir\\src\\hb-subset-plan-layout.cc.obj -c E:\\API\\harfbuzz-main\\src\\hb-subset-plan-layout.cc",
+  "file": "E:/API/harfbuzz-main/src/hb-subset-plan-layout.cc",
+  "output": "harfbuzz/CMakeFiles/harfbuzz-subset.dir/src/hb-subset-plan-layout.cc.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/harfbuzz",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DHAVE_ATEXIT -DHAVE_FREETYPE=1 -DHAVE_ISATTY -DHAVE_PTHREAD -DHAVE_STDBOOL_H -DHAVE_UNISTD_H @CMakeFiles/harfbuzz-subset.dir/includes_CXX.rsp  -fno-rtti -fno-exceptions -fno-threadsafe-statics -std=c++11 -g -std=gnu++11 -fvisibility-inlines-hidden -Wa,-mbig-obj -pthread -o CMakeFiles\\harfbuzz-subset.dir\\src\\hb-subset-plan-var.cc.obj -c E:\\API\\harfbuzz-main\\src\\hb-subset-plan-var.cc",
+  "file": "E:/API/harfbuzz-main/src/hb-subset-plan-var.cc",
+  "output": "harfbuzz/CMakeFiles/harfbuzz-subset.dir/src/hb-subset-plan-var.cc.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/harfbuzz",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DHAVE_ATEXIT -DHAVE_FREETYPE=1 -DHAVE_ISATTY -DHAVE_PTHREAD -DHAVE_STDBOOL_H -DHAVE_UNISTD_H @CMakeFiles/harfbuzz-subset.dir/includes_CXX.rsp  -fno-rtti -fno-exceptions -fno-threadsafe-statics -std=c++11 -g -std=gnu++11 -fvisibility-inlines-hidden -Wa,-mbig-obj -pthread -o CMakeFiles\\harfbuzz-subset.dir\\src\\hb-subset-serialize.cc.obj -c E:\\API\\harfbuzz-main\\src\\hb-subset-serialize.cc",
+  "file": "E:/API/harfbuzz-main/src/hb-subset-serialize.cc",
+  "output": "harfbuzz/CMakeFiles/harfbuzz-subset.dir/src/hb-subset-serialize.cc.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/harfbuzz",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DHAVE_ATEXIT -DHAVE_FREETYPE=1 -DHAVE_ISATTY -DHAVE_PTHREAD -DHAVE_STDBOOL_H -DHAVE_UNISTD_H @CMakeFiles/harfbuzz-subset.dir/includes_CXX.rsp  -fno-rtti -fno-exceptions -fno-threadsafe-statics -std=c++11 -g -std=gnu++11 -fvisibility-inlines-hidden -Wa,-mbig-obj -pthread -o CMakeFiles\\harfbuzz-subset.dir\\src\\hb-subset-table-layout.cc.obj -c E:\\API\\harfbuzz-main\\src\\hb-subset-table-layout.cc",
+  "file": "E:/API/harfbuzz-main/src/hb-subset-table-layout.cc",
+  "output": "harfbuzz/CMakeFiles/harfbuzz-subset.dir/src/hb-subset-table-layout.cc.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/harfbuzz",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DHAVE_ATEXIT -DHAVE_FREETYPE=1 -DHAVE_ISATTY -DHAVE_PTHREAD -DHAVE_STDBOOL_H -DHAVE_UNISTD_H @CMakeFiles/harfbuzz-subset.dir/includes_CXX.rsp  -fno-rtti -fno-exceptions -fno-threadsafe-statics -std=c++11 -g -std=gnu++11 -fvisibility-inlines-hidden -Wa,-mbig-obj -pthread -o CMakeFiles\\harfbuzz-subset.dir\\src\\hb-subset-table-var.cc.obj -c E:\\API\\harfbuzz-main\\src\\hb-subset-table-var.cc",
+  "file": "E:/API/harfbuzz-main/src/hb-subset-table-var.cc",
+  "output": "harfbuzz/CMakeFiles/harfbuzz-subset.dir/src/hb-subset-table-var.cc.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/harfbuzz",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DHAVE_ATEXIT -DHAVE_FREETYPE=1 -DHAVE_ISATTY -DHAVE_PTHREAD -DHAVE_STDBOOL_H -DHAVE_UNISTD_H @CMakeFiles/harfbuzz-subset.dir/includes_CXX.rsp  -fno-rtti -fno-exceptions -fno-threadsafe-statics -std=c++11 -g -std=gnu++11 -fvisibility-inlines-hidden -Wa,-mbig-obj -pthread -o CMakeFiles\\harfbuzz-subset.dir\\src\\hb-subset-table-cff.cc.obj -c E:\\API\\harfbuzz-main\\src\\hb-subset-table-cff.cc",
+  "file": "E:/API/harfbuzz-main/src/hb-subset-table-cff.cc",
+  "output": "harfbuzz/CMakeFiles/harfbuzz-subset.dir/src/hb-subset-table-cff.cc.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/harfbuzz",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DHAVE_ATEXIT -DHAVE_FREETYPE=1 -DHAVE_ISATTY -DHAVE_PTHREAD -DHAVE_STDBOOL_H -DHAVE_UNISTD_H @CMakeFiles/harfbuzz-subset.dir/includes_CXX.rsp  -fno-rtti -fno-exceptions -fno-threadsafe-statics -std=c++11 -g -std=gnu++11 -fvisibility-inlines-hidden -Wa,-mbig-obj -pthread -o CMakeFiles\\harfbuzz-subset.dir\\src\\hb-subset-table-color.cc.obj -c E:\\API\\harfbuzz-main\\src\\hb-subset-table-color.cc",
+  "file": "E:/API/harfbuzz-main/src/hb-subset-table-color.cc",
+  "output": "harfbuzz/CMakeFiles/harfbuzz-subset.dir/src/hb-subset-table-color.cc.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/harfbuzz",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DHAVE_ATEXIT -DHAVE_FREETYPE=1 -DHAVE_ISATTY -DHAVE_PTHREAD -DHAVE_STDBOOL_H -DHAVE_UNISTD_H @CMakeFiles/harfbuzz-subset.dir/includes_CXX.rsp  -fno-rtti -fno-exceptions -fno-threadsafe-statics -std=c++11 -g -std=gnu++11 -fvisibility-inlines-hidden -Wa,-mbig-obj -pthread -o CMakeFiles\\harfbuzz-subset.dir\\src\\hb-subset-table-other.cc.obj -c E:\\API\\harfbuzz-main\\src\\hb-subset-table-other.cc",
+  "file": "E:/API/harfbuzz-main/src/hb-subset-table-other.cc",
+  "output": "harfbuzz/CMakeFiles/harfbuzz-subset.dir/src/hb-subset-table-other.cc.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/harfbuzz",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DHAVE_ATEXIT -DHAVE_FREETYPE=1 -DHAVE_ISATTY -DHAVE_PTHREAD -DHAVE_STDBOOL_H -DHAVE_UNISTD_H @CMakeFiles/harfbuzz-subset.dir/includes_CXX.rsp  -fno-rtti -fno-exceptions -fno-threadsafe-statics -std=c++11 -g -std=gnu++11 -fvisibility-inlines-hidden -Wa,-mbig-obj -pthread -o CMakeFiles\\harfbuzz-subset.dir\\src\\hb-subset.cc.obj -c E:\\API\\harfbuzz-main\\src\\hb-subset.cc",
+  "file": "E:/API/harfbuzz-main/src/hb-subset.cc",
+  "output": "harfbuzz/CMakeFiles/harfbuzz-subset.dir/src/hb-subset.cc.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/harfbuzz",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DHAVE_ATEXIT -DHAVE_FREETYPE=1 -DHAVE_ISATTY -DHAVE_PTHREAD -DHAVE_STDBOOL_H -DHAVE_UNISTD_H @CMakeFiles/harfbuzz-subset.dir/includes_CXX.rsp  -fno-rtti -fno-exceptions -fno-threadsafe-statics -std=c++11 -g -std=gnu++11 -fvisibility-inlines-hidden -Wa,-mbig-obj -pthread -o CMakeFiles\\harfbuzz-subset.dir\\src\\graph\\gsubgpos-context.cc.obj -c E:\\API\\harfbuzz-main\\src\\graph\\gsubgpos-context.cc",
+  "file": "E:/API/harfbuzz-main/src/graph/gsubgpos-context.cc",
+  "output": "harfbuzz/CMakeFiles/harfbuzz-subset.dir/src/graph/gsubgpos-context.cc.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/harfbuzz",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DHAVE_ATEXIT -DHAVE_FREETYPE=1 -DHAVE_ISATTY -DHAVE_PTHREAD -DHAVE_STDBOOL_H -DHAVE_UNISTD_H @CMakeFiles/harfbuzz-raster.dir/includes_CXX.rsp  -fno-rtti -fno-exceptions -fno-threadsafe-statics -std=c++11 -g -std=gnu++11 -fvisibility-inlines-hidden -Wa,-mbig-obj -pthread -o CMakeFiles\\harfbuzz-raster.dir\\src\\hb-raster.cc.obj -c E:\\API\\harfbuzz-main\\src\\hb-raster.cc",
+  "file": "E:/API/harfbuzz-main/src/hb-raster.cc",
+  "output": "harfbuzz/CMakeFiles/harfbuzz-raster.dir/src/hb-raster.cc.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/harfbuzz",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DHAVE_ATEXIT -DHAVE_FREETYPE=1 -DHAVE_ISATTY -DHAVE_PTHREAD -DHAVE_STDBOOL_H -DHAVE_UNISTD_H @CMakeFiles/harfbuzz-raster.dir/includes_CXX.rsp  -fno-rtti -fno-exceptions -fno-threadsafe-statics -std=c++11 -g -std=gnu++11 -fvisibility-inlines-hidden -Wa,-mbig-obj -pthread -o CMakeFiles\\harfbuzz-raster.dir\\src\\hb-raster-image.cc.obj -c E:\\API\\harfbuzz-main\\src\\hb-raster-image.cc",
+  "file": "E:/API/harfbuzz-main/src/hb-raster-image.cc",
+  "output": "harfbuzz/CMakeFiles/harfbuzz-raster.dir/src/hb-raster-image.cc.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/harfbuzz",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DHAVE_ATEXIT -DHAVE_FREETYPE=1 -DHAVE_ISATTY -DHAVE_PTHREAD -DHAVE_STDBOOL_H -DHAVE_UNISTD_H @CMakeFiles/harfbuzz-raster.dir/includes_CXX.rsp  -fno-rtti -fno-exceptions -fno-threadsafe-statics -std=c++11 -g -std=gnu++11 -fvisibility-inlines-hidden -Wa,-mbig-obj -pthread -o CMakeFiles\\harfbuzz-raster.dir\\src\\hb-raster-draw.cc.obj -c E:\\API\\harfbuzz-main\\src\\hb-raster-draw.cc",
+  "file": "E:/API/harfbuzz-main/src/hb-raster-draw.cc",
+  "output": "harfbuzz/CMakeFiles/harfbuzz-raster.dir/src/hb-raster-draw.cc.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/harfbuzz",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DHAVE_ATEXIT -DHAVE_FREETYPE=1 -DHAVE_ISATTY -DHAVE_PTHREAD -DHAVE_STDBOOL_H -DHAVE_UNISTD_H @CMakeFiles/harfbuzz-raster.dir/includes_CXX.rsp  -fno-rtti -fno-exceptions -fno-threadsafe-statics -std=c++11 -g -std=gnu++11 -fvisibility-inlines-hidden -Wa,-mbig-obj -pthread -o CMakeFiles\\harfbuzz-raster.dir\\src\\hb-raster-paint.cc.obj -c E:\\API\\harfbuzz-main\\src\\hb-raster-paint.cc",
+  "file": "E:/API/harfbuzz-main/src/hb-raster-paint.cc",
+  "output": "harfbuzz/CMakeFiles/harfbuzz-raster.dir/src/hb-raster-paint.cc.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/harfbuzz",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DHAVE_ATEXIT -DHAVE_FREETYPE=1 -DHAVE_ISATTY -DHAVE_PTHREAD -DHAVE_STDBOOL_H -DHAVE_UNISTD_H @CMakeFiles/harfbuzz-raster.dir/includes_CXX.rsp  -fno-rtti -fno-exceptions -fno-threadsafe-statics -std=c++11 -g -std=gnu++11 -fvisibility-inlines-hidden -Wa,-mbig-obj -pthread -o CMakeFiles\\harfbuzz-raster.dir\\src\\hb-static.cc.obj -c E:\\API\\harfbuzz-main\\src\\hb-static.cc",
+  "file": "E:/API/harfbuzz-main/src/hb-static.cc",
+  "output": "harfbuzz/CMakeFiles/harfbuzz-raster.dir/src/hb-static.cc.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/harfbuzz",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DHAVE_ATEXIT -DHAVE_FREETYPE=1 -DHAVE_ISATTY -DHAVE_PTHREAD -DHAVE_STDBOOL_H -DHAVE_UNISTD_H @CMakeFiles/harfbuzz-vector.dir/includes_CXX.rsp  -fno-rtti -fno-exceptions -fno-threadsafe-statics -std=c++11 -g -std=gnu++11 -fvisibility-inlines-hidden -Wa,-mbig-obj -pthread -o CMakeFiles\\harfbuzz-vector.dir\\src\\hb-zlib.cc.obj -c E:\\API\\harfbuzz-main\\src\\hb-zlib.cc",
+  "file": "E:/API/harfbuzz-main/src/hb-zlib.cc",
+  "output": "harfbuzz/CMakeFiles/harfbuzz-vector.dir/src/hb-zlib.cc.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/harfbuzz",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DHAVE_ATEXIT -DHAVE_FREETYPE=1 -DHAVE_ISATTY -DHAVE_PTHREAD -DHAVE_STDBOOL_H -DHAVE_UNISTD_H @CMakeFiles/harfbuzz-vector.dir/includes_CXX.rsp  -fno-rtti -fno-exceptions -fno-threadsafe-statics -std=c++11 -g -std=gnu++11 -fvisibility-inlines-hidden -Wa,-mbig-obj -pthread -o CMakeFiles\\harfbuzz-vector.dir\\src\\hb-vector.cc.obj -c E:\\API\\harfbuzz-main\\src\\hb-vector.cc",
+  "file": "E:/API/harfbuzz-main/src/hb-vector.cc",
+  "output": "harfbuzz/CMakeFiles/harfbuzz-vector.dir/src/hb-vector.cc.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/harfbuzz",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DHAVE_ATEXIT -DHAVE_FREETYPE=1 -DHAVE_ISATTY -DHAVE_PTHREAD -DHAVE_STDBOOL_H -DHAVE_UNISTD_H @CMakeFiles/harfbuzz-vector.dir/includes_CXX.rsp  -fno-rtti -fno-exceptions -fno-threadsafe-statics -std=c++11 -g -std=gnu++11 -fvisibility-inlines-hidden -Wa,-mbig-obj -pthread -o CMakeFiles\\harfbuzz-vector.dir\\src\\hb-vector-draw.cc.obj -c E:\\API\\harfbuzz-main\\src\\hb-vector-draw.cc",
+  "file": "E:/API/harfbuzz-main/src/hb-vector-draw.cc",
+  "output": "harfbuzz/CMakeFiles/harfbuzz-vector.dir/src/hb-vector-draw.cc.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/harfbuzz",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DHAVE_ATEXIT -DHAVE_FREETYPE=1 -DHAVE_ISATTY -DHAVE_PTHREAD -DHAVE_STDBOOL_H -DHAVE_UNISTD_H @CMakeFiles/harfbuzz-vector.dir/includes_CXX.rsp  -fno-rtti -fno-exceptions -fno-threadsafe-statics -std=c++11 -g -std=gnu++11 -fvisibility-inlines-hidden -Wa,-mbig-obj -pthread -o CMakeFiles\\harfbuzz-vector.dir\\src\\hb-vector-path.cc.obj -c E:\\API\\harfbuzz-main\\src\\hb-vector-path.cc",
+  "file": "E:/API/harfbuzz-main/src/hb-vector-path.cc",
+  "output": "harfbuzz/CMakeFiles/harfbuzz-vector.dir/src/hb-vector-path.cc.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/harfbuzz",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DHAVE_ATEXIT -DHAVE_FREETYPE=1 -DHAVE_ISATTY -DHAVE_PTHREAD -DHAVE_STDBOOL_H -DHAVE_UNISTD_H @CMakeFiles/harfbuzz-vector.dir/includes_CXX.rsp  -fno-rtti -fno-exceptions -fno-threadsafe-statics -std=c++11 -g -std=gnu++11 -fvisibility-inlines-hidden -Wa,-mbig-obj -pthread -o CMakeFiles\\harfbuzz-vector.dir\\src\\hb-vector-paint.cc.obj -c E:\\API\\harfbuzz-main\\src\\hb-vector-paint.cc",
+  "file": "E:/API/harfbuzz-main/src/hb-vector-paint.cc",
+  "output": "harfbuzz/CMakeFiles/harfbuzz-vector.dir/src/hb-vector-paint.cc.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/harfbuzz",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DHAVE_ATEXIT -DHAVE_FREETYPE=1 -DHAVE_ISATTY -DHAVE_PTHREAD -DHAVE_STDBOOL_H -DHAVE_UNISTD_H @CMakeFiles/harfbuzz-vector.dir/includes_CXX.rsp  -fno-rtti -fno-exceptions -fno-threadsafe-statics -std=c++11 -g -std=gnu++11 -fvisibility-inlines-hidden -Wa,-mbig-obj -pthread -o CMakeFiles\\harfbuzz-vector.dir\\src\\hb-vector-paint-svg.cc.obj -c E:\\API\\harfbuzz-main\\src\\hb-vector-paint-svg.cc",
+  "file": "E:/API/harfbuzz-main/src/hb-vector-paint-svg.cc",
+  "output": "harfbuzz/CMakeFiles/harfbuzz-vector.dir/src/hb-vector-paint-svg.cc.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/harfbuzz",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DHAVE_ATEXIT -DHAVE_FREETYPE=1 -DHAVE_ISATTY -DHAVE_PTHREAD -DHAVE_STDBOOL_H -DHAVE_UNISTD_H @CMakeFiles/harfbuzz-vector.dir/includes_CXX.rsp  -fno-rtti -fno-exceptions -fno-threadsafe-statics -std=c++11 -g -std=gnu++11 -fvisibility-inlines-hidden -Wa,-mbig-obj -pthread -o CMakeFiles\\harfbuzz-vector.dir\\src\\hb-vector-paint-pdf.cc.obj -c E:\\API\\harfbuzz-main\\src\\hb-vector-paint-pdf.cc",
+  "file": "E:/API/harfbuzz-main/src/hb-vector-paint-pdf.cc",
+  "output": "harfbuzz/CMakeFiles/harfbuzz-vector.dir/src/hb-vector-paint-pdf.cc.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/harfbuzz",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DHAVE_ATEXIT -DHAVE_FREETYPE=1 -DHAVE_ISATTY -DHAVE_PTHREAD -DHAVE_STDBOOL_H -DHAVE_UNISTD_H @CMakeFiles/harfbuzz-vector.dir/includes_CXX.rsp  -fno-rtti -fno-exceptions -fno-threadsafe-statics -std=c++11 -g -std=gnu++11 -fvisibility-inlines-hidden -Wa,-mbig-obj -pthread -o CMakeFiles\\harfbuzz-vector.dir\\src\\hb-static.cc.obj -c E:\\API\\harfbuzz-main\\src\\hb-static.cc",
+  "file": "E:/API/harfbuzz-main/src/hb-static.cc",
+  "output": "harfbuzz/CMakeFiles/harfbuzz-vector.dir/src/hb-static.cc.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/harfbuzz",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DHAVE_ATEXIT -DHAVE_FREETYPE=1 -DHAVE_ISATTY -DHAVE_PTHREAD -DHAVE_STDBOOL_H -DHAVE_UNISTD_H @CMakeFiles/harfbuzz-gpu.dir/includes_CXX.rsp  -fno-rtti -fno-exceptions -fno-threadsafe-statics -std=c++11 -g -std=gnu++11 -fvisibility-inlines-hidden -Wa,-mbig-obj -pthread -o CMakeFiles\\harfbuzz-gpu.dir\\src\\hb-gpu.cc.obj -c E:\\API\\harfbuzz-main\\src\\hb-gpu.cc",
+  "file": "E:/API/harfbuzz-main/src/hb-gpu.cc",
+  "output": "harfbuzz/CMakeFiles/harfbuzz-gpu.dir/src/hb-gpu.cc.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/harfbuzz",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DHAVE_ATEXIT -DHAVE_FREETYPE=1 -DHAVE_ISATTY -DHAVE_PTHREAD -DHAVE_STDBOOL_H -DHAVE_UNISTD_H @CMakeFiles/harfbuzz-gpu.dir/includes_CXX.rsp  -fno-rtti -fno-exceptions -fno-threadsafe-statics -std=c++11 -g -std=gnu++11 -fvisibility-inlines-hidden -Wa,-mbig-obj -pthread -o CMakeFiles\\harfbuzz-gpu.dir\\src\\hb-gpu-draw.cc.obj -c E:\\API\\harfbuzz-main\\src\\hb-gpu-draw.cc",
+  "file": "E:/API/harfbuzz-main/src/hb-gpu-draw.cc",
+  "output": "harfbuzz/CMakeFiles/harfbuzz-gpu.dir/src/hb-gpu-draw.cc.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/harfbuzz",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DHAVE_ATEXIT -DHAVE_FREETYPE=1 -DHAVE_ISATTY -DHAVE_PTHREAD -DHAVE_STDBOOL_H -DHAVE_UNISTD_H @CMakeFiles/harfbuzz-gpu.dir/includes_CXX.rsp  -fno-rtti -fno-exceptions -fno-threadsafe-statics -std=c++11 -g -std=gnu++11 -fvisibility-inlines-hidden -Wa,-mbig-obj -pthread -o CMakeFiles\\harfbuzz-gpu.dir\\src\\hb-gpu-paint.cc.obj -c E:\\API\\harfbuzz-main\\src\\hb-gpu-paint.cc",
+  "file": "E:/API/harfbuzz-main/src/hb-gpu-paint.cc",
+  "output": "harfbuzz/CMakeFiles/harfbuzz-gpu.dir/src/hb-gpu-paint.cc.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/harfbuzz",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DHAVE_ATEXIT -DHAVE_FREETYPE=1 -DHAVE_ISATTY -DHAVE_PTHREAD -DHAVE_STDBOOL_H -DHAVE_UNISTD_H @CMakeFiles/harfbuzz-gpu.dir/includes_CXX.rsp  -fno-rtti -fno-exceptions -fno-threadsafe-statics -std=c++11 -g -std=gnu++11 -fvisibility-inlines-hidden -Wa,-mbig-obj -pthread -o CMakeFiles\\harfbuzz-gpu.dir\\src\\hb-static.cc.obj -c E:\\API\\harfbuzz-main\\src\\hb-static.cc",
+  "file": "E:/API/harfbuzz-main/src/hb-static.cc",
+  "output": "harfbuzz/CMakeFiles/harfbuzz-gpu.dir/src/hb-static.cc.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\HandleTypes\\Buffer.cpp.obj -c E:\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\HandleTypes\\Buffer.cpp",
+  "file": "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/Buffer.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/HandleTypes/Buffer.cpp.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\HandleTypes\\CommandBuffer.cpp.obj -c E:\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\HandleTypes\\CommandBuffer.cpp",
+  "file": "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/CommandBuffer.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/HandleTypes/CommandBuffer.cpp.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\HandleTypes\\CommandPool.cpp.obj -c E:\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\HandleTypes\\CommandPool.cpp",
+  "file": "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/CommandPool.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/HandleTypes/CommandPool.cpp.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\HandleTypes\\DebugUtilsMessenger.cpp.obj -c E:\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\HandleTypes\\DebugUtilsMessenger.cpp",
+  "file": "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/DebugUtilsMessenger.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/HandleTypes/DebugUtilsMessenger.cpp.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\HandleTypes\\DescriptorPool.cpp.obj -c E:\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\HandleTypes\\DescriptorPool.cpp",
+  "file": "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/DescriptorPool.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/HandleTypes/DescriptorPool.cpp.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\HandleTypes\\DescriptorSet.cpp.obj -c E:\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\HandleTypes\\DescriptorSet.cpp",
+  "file": "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/DescriptorSet.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/HandleTypes/DescriptorSet.cpp.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\HandleTypes\\Device.cpp.obj -c E:\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\HandleTypes\\Device.cpp",
+  "file": "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/Device.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/HandleTypes/Device.cpp.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\HandleTypes\\Fence.cpp.obj -c E:\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\HandleTypes\\Fence.cpp",
+  "file": "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/Fence.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/HandleTypes/Fence.cpp.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\HandleTypes\\FrameBuffer.cpp.obj -c E:\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\HandleTypes\\FrameBuffer.cpp",
+  "file": "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/FrameBuffer.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/HandleTypes/FrameBuffer.cpp.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\HandleTypes\\Image.cpp.obj -c E:\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\HandleTypes\\Image.cpp",
+  "file": "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/Image.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/HandleTypes/Image.cpp.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\HandleTypes\\Instance.cpp.obj -c E:\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\HandleTypes\\Instance.cpp",
+  "file": "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/Instance.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/HandleTypes/Instance.cpp.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\HandleTypes\\Memory.cpp.obj -c E:\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\HandleTypes\\Memory.cpp",
+  "file": "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/Memory.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/HandleTypes/Memory.cpp.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\HandleTypes\\PhysicalDevice.cpp.obj -c E:\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\HandleTypes\\PhysicalDevice.cpp",
+  "file": "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/PhysicalDevice.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/HandleTypes/PhysicalDevice.cpp.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\HandleTypes\\PhysicalDeviceCache.cpp.obj -c E:\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\HandleTypes\\PhysicalDeviceCache.cpp",
+  "file": "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/PhysicalDeviceCache.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/HandleTypes/PhysicalDeviceCache.cpp.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\HandleTypes\\Pipeline.cpp.obj -c E:\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\HandleTypes\\Pipeline.cpp",
+  "file": "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/Pipeline.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/HandleTypes/Pipeline.cpp.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\HandleTypes\\Queue.cpp.obj -c E:\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\HandleTypes\\Queue.cpp",
+  "file": "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/Queue.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/HandleTypes/Queue.cpp.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\HandleTypes\\RenderPass.cpp.obj -c E:\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\HandleTypes\\RenderPass.cpp",
+  "file": "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/RenderPass.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/HandleTypes/RenderPass.cpp.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\HandleTypes\\Sampler.cpp.obj -c E:\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\HandleTypes\\Sampler.cpp",
+  "file": "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/Sampler.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/HandleTypes/Sampler.cpp.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\HandleTypes\\Semaphore.cpp.obj -c E:\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\HandleTypes\\Semaphore.cpp",
+  "file": "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/Semaphore.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/HandleTypes/Semaphore.cpp.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\HandleTypes\\ShaderModule.cpp.obj -c E:\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\HandleTypes\\ShaderModule.cpp",
+  "file": "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/ShaderModule.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/HandleTypes/ShaderModule.cpp.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\HandleTypes\\Surface.cpp.obj -c E:\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\HandleTypes\\Surface.cpp",
+  "file": "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/Surface.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/HandleTypes/Surface.cpp.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\HandleTypes\\SwapChain.cpp.obj -c E:\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\HandleTypes\\SwapChain.cpp",
+  "file": "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/HandleTypes/SwapChain.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/HandleTypes/SwapChain.cpp.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\TaskTables\\FeatureTaskTables.cpp.obj -c E:\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\TaskTables\\FeatureTaskTables.cpp",
+  "file": "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/TaskTables/FeatureTaskTables.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/TaskTables/FeatureTaskTables.cpp.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\TaskTables\\PhysicalDeviceCacheTaskTables.cpp.obj -c E:\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\TaskTables\\PhysicalDeviceCacheTaskTables.cpp",
+  "file": "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/TaskTables/PhysicalDeviceCacheTaskTables.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/TaskTables/PhysicalDeviceCacheTaskTables.cpp.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\TaskTables\\PropertyTaskTables.cpp.obj -c E:\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\TaskTables\\PropertyTaskTables.cpp",
+  "file": "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/TaskTables/PropertyTaskTables.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/TaskTables/PropertyTaskTables.cpp.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\TaskTables\\QueuePropertyTaskTables.cpp.obj -c E:\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\TaskTables\\QueuePropertyTaskTables.cpp",
+  "file": "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/TaskTables/QueuePropertyTaskTables.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/TaskTables/QueuePropertyTaskTables.cpp.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\Utility\\Camera.cpp.obj -c E:\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\Utility\\Camera.cpp",
+  "file": "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/Utility/Camera.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/Utility/Camera.cpp.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\Utility\\PixelData2D.cpp.obj -c E:\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\Utility\\PixelData2D.cpp",
+  "file": "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/Utility/PixelData2D.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/Utility/PixelData2D.cpp.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\Utility\\Utility.cpp.obj -c E:\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\Utility\\Utility.cpp",
+  "file": "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/Utility/Utility.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/Utility/Utility.cpp.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\Wrappers\\DebugLogger.cpp.obj -c E:\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\Wrappers\\DebugLogger.cpp",
+  "file": "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/Wrappers/DebugLogger.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/Wrappers/DebugLogger.cpp.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\Wrappers\\DeviceWrapper.cpp.obj -c E:\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\Wrappers\\DeviceWrapper.cpp",
+  "file": "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/Wrappers/DeviceWrapper.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/Wrappers/DeviceWrapper.cpp.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\Wrappers\\InstanceWrapper.cpp.obj -c E:\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\Wrappers\\InstanceWrapper.cpp",
+  "file": "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/Wrappers/InstanceWrapper.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/Wrappers/InstanceWrapper.cpp.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGRAPHICS_WRAPPER_EXPORTS @CMakeFiles/GraphicsWrapper.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapper.dir\\src\\Graphics\\Wrappers\\PipelineWrapper.cpp.obj -c E:\\Code\\C_code\\libraries\\GraphicsWrapper\\src\\Graphics\\Wrappers\\PipelineWrapper.cpp",
+  "file": "E:/Code/C_code/libraries/GraphicsWrapper/src/Graphics/Wrappers/PipelineWrapper.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/Wrappers/PipelineWrapper.cpp.obj"
+},
+{
+  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug/GraphicsWrapper",
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe  @CMakeFiles/GraphicsWrapperTests.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles\\GraphicsWrapperTests.dir\\tests\\main.cpp.obj -c E:\\Code\\C_code\\libraries\\GraphicsWrapper\\tests\\main.cpp",
+  "file": "E:/Code/C_code/libraries/GraphicsWrapper/tests/main.cpp",
+  "output": "GraphicsWrapper/CMakeFiles/GraphicsWrapperTests.dir/tests/main.cpp.obj"
+}
+]

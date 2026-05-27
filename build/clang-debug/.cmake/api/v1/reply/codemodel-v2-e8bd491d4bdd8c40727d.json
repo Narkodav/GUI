@@ -1,0 +1,232 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						2,
+						3
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-9983aa26fa4596fc990a.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.20"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				},
+				{
+					"build" : "freetype",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-freetype-Debug-b16402bb9bc109523481.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 1,
+					"source" : "E:/API/freetype-master",
+					"targetIndexes" : 
+					[
+						4
+					]
+				},
+				{
+					"build" : "harfbuzz",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-harfbuzz-Debug-1e3f5c87ddaf82a0cd4d.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.14"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 2,
+					"source" : "E:/API/harfbuzz-main",
+					"targetIndexes" : 
+					[
+						5,
+						6,
+						7,
+						8,
+						9
+					]
+				},
+				{
+					"build" : "GraphicsWrapper",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-GraphicsWrapper-Debug-c1fcce46a5c24e0eb86f.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.20"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 3,
+					"source" : "E:/Code/C_code/libraries/GraphicsWrapper",
+					"targetIndexes" : 
+					[
+						2,
+						3
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1,
+						2,
+						3
+					],
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "GUI",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						1
+					],
+					"name" : "freetype",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						4
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						2
+					],
+					"name" : "harfbuzz",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						5,
+						6,
+						7,
+						8,
+						9
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						3
+					],
+					"name" : "GraphicsWrapper",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						2,
+						3
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "GUI::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-GUI-Debug-aa521ac00f59e3c1b089.json",
+					"name" : "GUI",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "GUITests::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-GUITests-Debug-6129b40602bcd83d5bc4.json",
+					"name" : "GUITests",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "GraphicsWrapper::@b818e5f2ddefbb854c33",
+					"jsonFile" : "target-GraphicsWrapper-Debug-4777eeff60ae877fc03b.json",
+					"name" : "GraphicsWrapper",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "GraphicsWrapperTests::@b818e5f2ddefbb854c33",
+					"jsonFile" : "target-GraphicsWrapperTests-Debug-5140ecb9de5cab016784.json",
+					"name" : "GraphicsWrapperTests",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "freetype::@96957e95d729942f8bb0",
+					"jsonFile" : "target-freetype-Debug-61489ea3e272e675bb1b.json",
+					"name" : "freetype",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "harfbuzz::@3038d492387f26df9bfa",
+					"jsonFile" : "target-harfbuzz-Debug-725cfa31cddc5122e079.json",
+					"name" : "harfbuzz",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "harfbuzz-gpu::@3038d492387f26df9bfa",
+					"jsonFile" : "target-harfbuzz-gpu-Debug-3e42c9670d589f1eb7e9.json",
+					"name" : "harfbuzz-gpu",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "harfbuzz-raster::@3038d492387f26df9bfa",
+					"jsonFile" : "target-harfbuzz-raster-Debug-b7d35439399d4da91df8.json",
+					"name" : "harfbuzz-raster",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "harfbuzz-subset::@3038d492387f26df9bfa",
+					"jsonFile" : "target-harfbuzz-subset-Debug-aec7858e5526bcab3eb2.json",
+					"name" : "harfbuzz-subset",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "harfbuzz-vector::@3038d492387f26df9bfa",
+					"jsonFile" : "target-harfbuzz-vector-Debug-44013193c517675d4fac.json",
+					"name" : "harfbuzz-vector",
+					"projectIndex" : 2
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "E:/Code/C_code/libraries/GUI/build/clang-debug",
+		"source" : "E:/Code/C_code/libraries/GUI"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 8
+	}
+}

@@ -1,0 +1,2 @@
+C:\Users\user\.utils\llvm-mingw\bin\llvm-ar.exe qc libGUI.a CMakeFiles/GUI.dir/src/GUI/Interface.cpp.obj CMakeFiles/GUI.dir/src/GUI/Rendering/Font.cpp.obj CMakeFiles/GUI.dir/src/GUI/TextRendering/Font.cpp.obj CMakeFiles/GUI.dir/src/GUI/TextRendering/Text.cpp.obj
+C:\Users\user\.utils\llvm-mingw\bin\llvm-ranlib.exe libGUI.a

@@ -1,75 +1,71 @@
 #pragma once
 #include "Common.h"
-#include "Element.h"
+#include "Elements/Element.h"
 #include "Window.h"
 
 #include "Rendering/FrameBuffer.h"
+#include "Shaders/ShaderCache.h"
 
 namespace GUI
 {
-    class Layer
+    class Layer : public LayerInterface
     {
     private:
-        enum class Shaders
-        {
-            FLAT_TO_SCREEN_PROJECTION,
-            NUM,
-        };
-
-        static inline const std::array<std::string,
-            static_cast<size_t>(Shaders::NUM)> shaderPaths = {
-                "Shaders/FlatToScreenProjection.shader",
-        };
-
-        std::vector<MT::EventSystem<WindowEventPolicy>::Subscription> m_windowEventsSubs;
-        std::vector<MT::EventSystem<IOEventPolicy>::Subscription> m_IOEventsSubs;
+        MT::EventSystem<WindowEventPolicy>::Subscription m_windowResizeSubscription;
 
         FrameBuffer m_frameBuffer;
         bool m_isDirty;  // Track if layer needs redraw
         std::vector<std::unique_ptr<Element>> m_elements;
 
         //coordinates are in NDC
-        glm::vec2 m_position;   // center from -1 to 1
-        glm::vec2 m_size;       // width and height from 0 to 2
+        //glm::vec2 m_position;   // center from -1 to 1
+        //glm::vec2 m_size;       // width and height from 0 to 2
 
         Extent2D m_windowSize; //in pixels
-
-        //each layer owns its own shaders
-        std::array<Shader, static_cast<size_t>(Shaders::NUM)> m_shaders;
     public:
 
-        Layer(const Window& window, glm::vec2 position = glm::vec2(0.0f),
-            glm::vec2 size = glm::vec2(2.0f));
+        Layer(Window& window);
 
 
-        void addElement(std::unique_ptr<Element>&& element) { m_elements.push_back(std::move(element)); };
+        void addElement(std::unique_ptr<Element>&& element, Window& window) {
+            m_elements.push_back(std::move(element));
+            m_elements.back()->setLayer(this);
+            m_elements.back()->onRegistration(window);
+            markDirty();
+        };
 
         void clear() { m_elements.clear(); };
 
-        void render(const Window& window) {
+        void render() {
             if (!m_isDirty) return;
                         
-            m_frameBuffer.clear();
+            m_frameBuffer.clear(glm::vec4(1.0f, 1.0f, 0.0f, 0.4f));
             m_frameBuffer.bind();
 
             for (auto& element : m_elements) {
-                element->render();
+                element->render(Extent2D(m_frameBuffer.getWidth(), m_frameBuffer.getHeight()));
             }
 
             m_frameBuffer.unbind();
-
-            m_isDirty = false;        
+            m_isDirty = false;
         };
 
         void draw()
         {
-            Extent2D sizePixels = fromNDC(m_size, m_windowSize);
-            Extent2D positionPixels = fromNDC(m_position, m_windowSize);
-            positionPixels.width -= sizePixels.width / 2;
-            positionPixels.height -= sizePixels.height / 2;
+            m_frameBuffer.drawToScreen();
+        }
 
-            m_frameBuffer.drawToScreen(positionPixels.width, positionPixels.height,
-                sizePixels.width, sizePixels.height, m_windowSize.width, m_windowSize.height);
+    private:
+
+        virtual void onWindowResize(int width, int height) {
+            m_windowSize.width = width;
+            m_windowSize.height = height;
+            m_frameBuffer.resetProjection(width, height);
+            markDirty();
+        }
+
+        virtual void markDirty() {
+            m_isDirty = true;
         }
     };
 }
