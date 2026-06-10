@@ -890,32 +890,32 @@ GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/Wrappers/DebugLogger
   C:/Users/user/.utils/llvm-mingw/include/c++/v1/shared_mutex \
   E:/Code/C_code/libraries/GraphicsWrapper/include/Graphics/HandleTypes/DebugUtilsMessenger.h \
   E:/Code/C_code/libraries/GraphicsWrapper/include/Graphics/HandleTypes/../Common.h \
-  E:/API/Vulkan/Include/vulkan/vulkan_core.h \
-  E:/API/Vulkan/Include/vulkan/vk_platform.h \
-  E:/API/Vulkan/Include/vk_video/vulkan_video_codec_h264std.h \
-  E:/API/Vulkan/Include/vk_video/vulkan_video_codecs_common.h \
-  E:/API/Vulkan/Include/vk_video/vulkan_video_codec_h264std_encode.h \
-  E:/API/Vulkan/Include/vk_video/vulkan_video_codec_h265std.h \
-  E:/API/Vulkan/Include/vk_video/vulkan_video_codec_h265std_encode.h \
-  E:/API/Vulkan/Include/vk_video/vulkan_video_codec_h264std_decode.h \
-  E:/API/Vulkan/Include/vk_video/vulkan_video_codec_h265std_decode.h \
-  E:/API/Vulkan/Include/vk_video/vulkan_video_codec_av1std.h \
-  E:/API/Vulkan/Include/vk_video/vulkan_video_codec_av1std_decode.h \
-  E:/API/Vulkan/Include/vk_video/vulkan_video_codec_av1std_encode.h \
-  E:/API/Vulkan/Include/vk_video/vulkan_video_codec_vp9std.h \
-  E:/API/Vulkan/Include/vk_video/vulkan_video_codec_vp9std_decode.h \
-  E:/API/Vulkan/Include/vulkan/vulkan.h \
-  E:/API/Vulkan/Include/vulkan/vulkan.hpp \
-  E:/API/Vulkan/Include/vulkan/vulkan_hpp_macros.hpp \
+  E:/API/Vulkan/include/vulkan/vulkan_core.h \
+  E:/API/Vulkan/include/vulkan/vk_platform.h \
+  E:/API/Vulkan/include/vk_video/vulkan_video_codec_h264std.h \
+  E:/API/Vulkan/include/vk_video/vulkan_video_codecs_common.h \
+  E:/API/Vulkan/include/vk_video/vulkan_video_codec_h264std_encode.h \
+  E:/API/Vulkan/include/vk_video/vulkan_video_codec_h265std.h \
+  E:/API/Vulkan/include/vk_video/vulkan_video_codec_h265std_encode.h \
+  E:/API/Vulkan/include/vk_video/vulkan_video_codec_h264std_decode.h \
+  E:/API/Vulkan/include/vk_video/vulkan_video_codec_h265std_decode.h \
+  E:/API/Vulkan/include/vk_video/vulkan_video_codec_av1std.h \
+  E:/API/Vulkan/include/vk_video/vulkan_video_codec_av1std_decode.h \
+  E:/API/Vulkan/include/vk_video/vulkan_video_codec_av1std_encode.h \
+  E:/API/Vulkan/include/vk_video/vulkan_video_codec_vp9std.h \
+  E:/API/Vulkan/include/vk_video/vulkan_video_codec_vp9std_decode.h \
+  E:/API/Vulkan/include/vulkan/vulkan.h \
+  E:/API/Vulkan/include/vulkan/vulkan.hpp \
+  E:/API/Vulkan/include/vulkan/vulkan_hpp_macros.hpp \
   C:/Users/user/.utils/llvm-mingw/include/c++/v1/cassert \
   C:/Users/user/.utils/llvm-mingw/include/assert.h \
   C:/Users/user/.utils/llvm-mingw/include/c++/v1/span \
   C:/Users/user/.utils/llvm-mingw/include/c++/v1/__fwd/span.h \
-  E:/API/Vulkan/Include/vulkan/vulkan_enums.hpp \
-  E:/API/Vulkan/Include/vulkan/vulkan_to_string.hpp \
-  E:/API/Vulkan/Include/vulkan/vulkan_handles.hpp \
-  E:/API/Vulkan/Include/vulkan/vulkan_structs.hpp \
-  E:/API/Vulkan/Include/vulkan/vulkan_funcs.hpp \
+  E:/API/Vulkan/include/vulkan/vulkan_enums.hpp \
+  E:/API/Vulkan/include/vulkan/vulkan_to_string.hpp \
+  E:/API/Vulkan/include/vulkan/vulkan_handles.hpp \
+  E:/API/Vulkan/include/vulkan/vulkan_structs.hpp \
+  E:/API/Vulkan/include/vulkan/vulkan_funcs.hpp \
   E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/glm/vec4.hpp \
   E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/glm/./ext/vector_bool4.hpp \
   E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/glm/./ext/../detail/type_vec4.hpp \

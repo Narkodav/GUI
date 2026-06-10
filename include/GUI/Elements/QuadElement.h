@@ -40,31 +40,30 @@ namespace GUI
 template<>
 struct GUI::QuadElementEventPolicy::Trait<GUI::QuadElementEvent::Pressed> {
 	using Signature = void(const GUI::Pointer& pointer, GUI::QuadElement& button);
-	static inline const std::string s_name = "Pressed";
+	static inline const std::string_view s_name = "Pressed";
 };
 
 template<>
 struct GUI::QuadElementEventPolicy::Trait<GUI::QuadElementEvent::Released> {
 	using Signature = void(const GUI::Pointer& pointer, GUI::QuadElement& button);
-	static inline const std::string s_name = "Released";
+	static inline const std::string_view s_name = "Released";
 };
 
 template<>
 struct GUI::QuadElementEventPolicy::Trait<GUI::QuadElementEvent::MovedIn> {
 	using Signature = void(const GUI::Pointer& pointer, GUI::QuadElement& button);
-	static inline const std::string s_name = "MovedIn";
+	static inline const std::string_view s_name = "MovedIn";
 };
 
 template<>
 struct GUI::QuadElementEventPolicy::Trait<GUI::QuadElementEvent::MovedOut> {
 	using Signature = void(const GUI::Pointer& pointer, GUI::QuadElement& button);
-	static inline const std::string s_name = "MovedOut";
+	static inline const std::string_view s_name = "MovedOut";
 };
 
 namespace GUI
 {
-	class QuadElement : public Element
-	{
+	class QuadElement : public Element {
 	public:
 		using EventSystem = Utilities::SingleCallbackEventSystem<QuadElementEventPolicy>;
 	private:

@@ -1,36 +1,36 @@
-#include "Font.h"
+#include "GUI/Rendering/Font.h"
+#include "GUI/Instance.h"
 
-namespace GUI
-{
-    Font::create(const std::string& path, size_t size)
-    {
-        if (FT_New_Face(FTContext::instance(), path.c_str(), 0, &m_face))
+namespace GUI {
+    void Font::create(GUI::InstanceInterface& instance, std::string_view path) {
+        if (FT_New_Face(instance.getFTInstance(), path.data(), 0, &m_face))
             throw std::runtime_error("ERROR::FREETYPE: Failed to load font");
 
         if (FT_Select_Charmap(m_face, FT_ENCODING_UNICODE)) {
             throw std::runtime_error("ERROR::FREETYPE: Failed to set Unicode charmap");
         }
 
-        m_size = size;
-        if (FT_Set_Pixel_Sizes(m_face, 0, size))
-            throw std::runtime_error("ERROR::FREETYPE: Failed to set pixel sizes");
-        m_characters.clear();
-
+        m_sizes.clear();
         m_type = getFontType();
     }
 
-    Font::Type Font::getFontType() const
-    {
-        if ((m_face->face_flags & FT_FACE_FLAG_COLOR) != 0)
-        {
+    void Font::destroy(const Graphics::DeviceFunctionTable& functions, Graphics::DeviceRef device) {
+        FT_Done_Face(m_face);
+        for(auto& size : m_sizes) {
+            size.second.destroy(functions, device);
+        }
+        m_sizes.clear();
+    }
+
+    FontType Font::getFontType() const {
+        if ((m_face->face_flags & FT_FACE_FLAG_COLOR) != 0) {
             // Check for COLR/CPAL
             FT_ULong length = 0;
             bool hasColr = !FT_Load_Sfnt_Table(m_face, FT_MAKE_TAG('C', 'O', 'L', 'R'), 0, NULL, &length) && length > 0;
             length = 0;
             bool hasCpal = !FT_Load_Sfnt_Table(m_face, FT_MAKE_TAG('C', 'P', 'A', 'L'), 0, NULL, &length) && length > 0;
 
-            if (hasColr && hasCpal)
-                return Type::ColoredColrCpal;
+            if (hasColr && hasCpal) return FontType::ColoredColrCpal;
 
             // Check for CBDT/CBLC
             length = 0;
@@ -38,118 +38,111 @@ namespace GUI
             length = 0;
             bool hasCblc = !FT_Load_Sfnt_Table(m_face, FT_MAKE_TAG('C', 'B', 'L', 'C'), 0, NULL, &length) && length > 0;
 
-            if (hasCbdt && hasCblc)
-                return Type::ColoredCbdtCblc;
+            if (hasCbdt && hasCblc) return FontType::ColoredCbdtCblc;
 
             // Check for SBIX
             length = 0;
             if (!FT_Load_Sfnt_Table(m_face, FT_MAKE_TAG('s', 'b', 'i', 'x'), 0, NULL, &length) && length > 0) {
-                return Type::ColoredSbix;
+                return FontType::ColoredSbix;
             }
 
             // Color font but unknown type
-            return Type::Colored;
+            return FontType::Colored;
         }
-        else return Type::Normal;
-        return Type::Colored; //couldn't determine colored type
+        else return FontType::Normal;
+        return FontType::Colored; //couldn't determine colored type
     }
 
-    bool Font::glyphHasColor(CharId character) const {
+    bool Font::Size::glyphHasColor(CharId character) const {
         FT_LayerIterator iterator;
         iterator.p = nullptr;
         FT_UInt layerGlyphIndex;
         FT_UInt layerColorIndex;
 
-        return FT_Get_Color_Glyph_Layer(m_face, character, &layerGlyphIndex, &layerColorIndex, &iterator);
+        return FT_Get_Color_Glyph_Layer(m_font->m_face, character, &layerGlyphIndex, &layerColorIndex, &iterator);
     }
 
-    Font::Char Font::getCharGrayscale(CharId character) const
-    {
-        Texture charTexture;
-        if (FT_Load_Glyph(m_face, character, FT_LOAD_RENDER))
+    Glypth Font::Size::getGlypthGrayscale(GUI::Instance& instance, const Graphics::InstanceFunctionTable& instanceFunctions, 
+        const Graphics::DeviceFunctionTable& functions, Graphics::DeviceRef device, 
+        Graphics::PhysicalDevice physicalDevice, CharId character) const {
+        Glypth glypth;
+        if (FT_Load_Glyph(m_font->m_face, character, FT_LOAD_RENDER))
             throw std::runtime_error("ERROR::FREETYPE: Failed to load a character");
 
-        if (!m_face->glyph->bitmap.buffer)
-        {
-            return Char(character, Texture(),
-                glm::ivec2(m_face->glyph->bitmap.width, m_face->glyph->bitmap.rows),
-                glm::ivec2(m_face->glyph->bitmap_left, m_face->glyph->bitmap_top),
-                glm::ivec2(m_face->glyph->advance.x, m_face->glyph->advance.y));
-        }
+        auto& glypthSlot = m_font->m_face->glyph;
 
-        charTexture.setFromBitmapFlipped(
-            m_face->glyph->bitmap.buffer,
-            m_face->glyph->bitmap.pitch,
-            m_face->glyph->bitmap.rows,
-            Texture::Format::R
+        glypth.create(instance, instanceFunctions, functions, device, physicalDevice, {
+                glm::ivec2(glypthSlot->bitmap.width, glypthSlot->bitmap.rows),
+                glm::ivec2(glypthSlot->bitmap_left, glypthSlot->bitmap_top),
+                glm::ivec2(glypthSlot->advance.x, glypthSlot->advance.y)
+            }, character,
+            glypthSlot->bitmap.buffer,
+            glypthSlot->bitmap.width,
+            glypthSlot->bitmap.rows,
+            glypthSlot->bitmap.pitch,
+            1,
+            Graphics::Format::R8Unorm
         );
-
-        return Char(character, std::move(charTexture),
-            glm::ivec2(m_face->glyph->bitmap.width, m_face->glyph->bitmap.rows),
-            glm::ivec2(m_face->glyph->bitmap_left, m_face->glyph->bitmap_top),
-            glm::ivec2(m_face->glyph->advance.x, m_face->glyph->advance.y));
+        return glypth;
     }
 
-    Font::Char Font::getCharSibix(CharId character) const
-    {
-
-        Texture charTexture;
-        if (FT_Load_Glyph(m_face, character, FT_LOAD_COLOR | FT_LOAD_RENDER))
+    Glypth Font::Size::getGlypthSibix(GUI::Instance& instance, const Graphics::InstanceFunctionTable& instanceFunctions, 
+        const Graphics::DeviceFunctionTable& functions, Graphics::DeviceRef device, 
+        Graphics::PhysicalDevice physicalDevice, CharId character) const {
+        Glypth glypth;
+        if (FT_Load_Glyph(m_font->m_face, character, FT_LOAD_COLOR | FT_LOAD_RENDER))
             throw std::runtime_error("ERROR::FREETYPE: Failed to load a character");
 
-        if (!m_face->glyph->bitmap.buffer)
-        {
-            return Char(character, Texture(),
-                glm::ivec2(m_face->glyph->bitmap.width, m_face->glyph->bitmap.rows),
-                glm::ivec2(m_face->glyph->bitmap_left, m_face->glyph->bitmap_top),
-                glm::ivec2(m_face->glyph->advance.x, m_face->glyph->advance.y));
-        }
+        auto& glypthSlot = m_font->m_face->glyph;
 
-        charTexture.setFromBitmapFlipped(
-            m_face->glyph->bitmap.buffer,
-            m_face->glyph->bitmap.pitch,
-            m_face->glyph->bitmap.rows,
-            Texture::Format::RGBA
+        glypth.create(instance, instanceFunctions, functions, device, physicalDevice, {
+                glm::ivec2(glypthSlot->bitmap.width, glypthSlot->bitmap.rows),
+                glm::ivec2(glypthSlot->bitmap_left, glypthSlot->bitmap_top),
+                glm::ivec2(glypthSlot->advance.x, glypthSlot->advance.y)
+            }, character,
+            glypthSlot->bitmap.buffer,
+            glypthSlot->bitmap.width,
+            glypthSlot->bitmap.rows,
+            glypthSlot->bitmap.pitch,
+            4,
+            Graphics::Format::R8G8B8A8Unorm
         );
-
-        return Char(character, std::move(charTexture),
-            glm::ivec2(m_face->glyph->bitmap.width, m_face->glyph->bitmap.rows),
-            glm::ivec2(m_face->glyph->bitmap_left, m_face->glyph->bitmap_top),
-            glm::ivec2(m_face->glyph->advance.x, m_face->glyph->advance.y), true);
+        return glypth;
     }
 
-    Font::Char Font::getCharCbdtCblc(CharId character) const
-    {
-
-        Texture charTexture;
-        if (FT_Load_Glyph(m_face, character, FT_LOAD_COLOR | FT_LOAD_RENDER))
+    Glypth Font::Size::getGlypthCbdtCblc(GUI::Instance& instance, const Graphics::InstanceFunctionTable& instanceFunctions, 
+        const Graphics::DeviceFunctionTable& functions, Graphics::DeviceRef device, 
+        Graphics::PhysicalDevice physicalDevice, CharId character) const {
+        Glypth glypth;
+        if (FT_Load_Glyph(m_font->m_face, character, FT_LOAD_COLOR | FT_LOAD_RENDER))
             throw std::runtime_error("ERROR::FREETYPE: Failed to load a character");
 
-        if (!m_face->glyph->bitmap.buffer)
-        {
-            return Char(character, Texture(),
-                glm::ivec2(m_face->glyph->bitmap.width, m_face->glyph->bitmap.rows),
-                glm::ivec2(m_face->glyph->bitmap_left, m_face->glyph->bitmap_top),
-                glm::ivec2(m_face->glyph->advance.x, m_face->glyph->advance.y));
-        }
+        auto& glypthSlot = m_font->m_face->glyph;
 
-        charTexture.setFromBitmapFlipped(
-            m_face->glyph->bitmap.buffer,
-            m_face->glyph->bitmap.pitch,
-            m_face->glyph->bitmap.rows,
-            Texture::Format::RGBA
+        glypth.create(instance, instanceFunctions, functions, device, physicalDevice, {
+                glm::ivec2(glypthSlot->bitmap.width, glypthSlot->bitmap.rows),
+                glm::ivec2(glypthSlot->bitmap_left, glypthSlot->bitmap_top),
+                glm::ivec2(glypthSlot->advance.x, glypthSlot->advance.y)
+            }, character,
+            glypthSlot->bitmap.buffer,
+            glypthSlot->bitmap.width,
+            glypthSlot->bitmap.rows,
+            glypthSlot->bitmap.pitch,
+            4,
+            Graphics::Format::R8G8B8A8Unorm
         );
-
-        return Char(character, std::move(charTexture),
-            glm::ivec2(m_face->glyph->bitmap.width, m_face->glyph->bitmap.rows),
-            glm::ivec2(m_face->glyph->bitmap_left, m_face->glyph->bitmap_top),
-            glm::ivec2(m_face->glyph->advance.x, m_face->glyph->advance.y), true);
+        return glypth;
     }
 
-    Font::Char Font::getCharColrCpal(CharId character) const {
+    Glypth Font::Size::getGlypthColrCpal(GUI::Instance& instance, const Graphics::InstanceFunctionTable& instanceFunctions, 
+        const Graphics::DeviceFunctionTable& functions, Graphics::DeviceRef device, 
+        Graphics::PhysicalDevice physicalDevice, CharId character) const {
 
+        auto& face = m_font->m_face;
+
+        Glypth glypth;
         if (!glyphHasColor(character))
-            return getCharGrayscale(character);
+            return getGlypthGrayscale(instance, instanceFunctions, functions, device, physicalDevice, character);
 
         // First pass: calculate total bounding box
         //FT_BBox bbox;
@@ -162,9 +155,9 @@ namespace GUI
         FT_UInt layerColorIndex;
 
         // Get initial metrics
-        FT_Load_Glyph(m_face, character, FT_LOAD_DEFAULT);
-        int originalLeft = m_face->glyph->bitmap_left;
-        int originalTop = m_face->glyph->bitmap_top;
+        FT_Load_Glyph(face, character, FT_LOAD_DEFAULT);
+        int originalLeft = face->glyph->bitmap_left;
+        int originalTop = face->glyph->bitmap_top;
 
         //// First pass to get total bounds
         //while (FT_Get_Color_Glyph_Layer(m_face, character, &layerGlyphIndex, &layerColorIndex, &iterator)) {
@@ -192,16 +185,24 @@ namespace GUI
         //// Ensure minimum dimensions
         //width = std::max(1, width);
         //height = std::max(1, height);
-         
-        int width = m_face->glyph->bitmap.width;
-        int height = m_face->glyph->bitmap.rows;
 
-        if (width == 0 || height == 0)
-        {
-            return Char(character, Texture(),
-                glm::ivec2(m_face->glyph->bitmap.width, m_face->glyph->bitmap.rows),
-                glm::ivec2(m_face->glyph->bitmap_left, m_face->glyph->bitmap_top),
-                glm::ivec2(m_face->glyph->advance.x, m_face->glyph->advance.y));
+        int width = face->glyph->bitmap.width;
+        int height = face->glyph->bitmap.rows;
+
+        if (width == 0 || height == 0) {
+            glypth.create(instance, instanceFunctions, functions, device, physicalDevice, {
+                    glm::ivec2(face->glyph->bitmap.width, face->glyph->bitmap.rows),
+                    glm::ivec2(face->glyph->bitmap_left, face->glyph->bitmap_top),
+                    glm::ivec2(face->glyph->advance.x, face->glyph->advance.y)
+                }, character,
+                face->glyph->bitmap.buffer,
+                face->glyph->bitmap.width,
+                face->glyph->bitmap.rows,
+                face->glyph->bitmap.pitch,
+                4,
+                Graphics::Format::R8G8B8A8Unorm
+            );
+            return glypth;
         }
 
         // Create bitmap buffer for BGRA
@@ -212,27 +213,36 @@ namespace GUI
 
         // Get palette information
         FT_Color* palette = nullptr;
-        FT_Error error = FT_Palette_Select(m_face, 0, &palette);
+        FT_Error error = FT_Palette_Select(face, 0, &palette);
         if (error || !palette) {
             // Handle error or no palette case
-            return Char(character, Texture(),
-                glm::ivec2(width, height),
-                glm::ivec2(m_face->glyph->bitmap_left, m_face->glyph->bitmap_top),
-                glm::ivec2(m_face->glyph->advance.x, m_face->glyph->advance.y));
+            glypth.create(instance, instanceFunctions, functions, device, physicalDevice, {
+                    glm::ivec2(face->glyph->bitmap.width, face->glyph->bitmap.rows),
+                    glm::ivec2(face->glyph->bitmap_left, face->glyph->bitmap_top),
+                    glm::ivec2(face->glyph->advance.x, face->glyph->advance.y)
+                }, character,
+                face->glyph->bitmap.buffer,
+                face->glyph->bitmap.width,
+                face->glyph->bitmap.rows,
+                face->glyph->bitmap.pitch,
+                4,
+                Graphics::Format::R8G8B8A8Unorm
+            );
+            return glypth;
         }
 
         // Iterate through all layers
-        while (FT_Get_Color_Glyph_Layer(m_face, character, &layerGlyphIndex, &layerColorIndex, &iterator)) {
+        while (FT_Get_Color_Glyph_Layer(face, character, &layerGlyphIndex, &layerColorIndex, &iterator)) {
             // Load and render layer
-            FT_Load_Glyph(m_face, layerGlyphIndex, FT_LOAD_DEFAULT);
-            FT_Render_Glyph(m_face->glyph, FT_RENDER_MODE_NORMAL);
+            FT_Load_Glyph(face, layerGlyphIndex, FT_LOAD_DEFAULT);
+            FT_Render_Glyph(face->glyph, FT_RENDER_MODE_NORMAL);
 
-            FT_Bitmap* bitmap = &m_face->glyph->bitmap;
+            FT_Bitmap* bitmap = &face->glyph->bitmap;
             FT_Color color = palette[layerColorIndex];
 
             // Calculate offsets for proper positioning
-            int startX = m_face->glyph->bitmap_left - originalLeft;
-            int startY = originalTop - m_face->glyph->bitmap_top;
+            int startX = face->glyph->bitmap_left - originalLeft;
+            int startY = originalTop - face->glyph->bitmap_top;
 
             // Blend layer
             for (unsigned int y = 0; y < bitmap->rows; y++) {
@@ -277,282 +287,51 @@ namespace GUI
         }
 
         // Step 5: Create texture from bitmap
-        Texture charTexture;
-        charTexture.setFromBitmapFlipped(
+        glypth.create(instance, instanceFunctions, functions, device, physicalDevice, {
+                glm::ivec2(width, height),
+                glm::ivec2(originalLeft, originalTop),
+                glm::ivec2(face->glyph->advance.x, face->glyph->advance.y)
+            }, character,
             bitmapVector.data(),
             width,
             height,
-            Texture::Format::BGRA
+            width * 4, 
+            4,
+            Graphics::Format::R8G8B8A8Unorm
         );
-        
-        // Step 6: Create and return the Char object
-        return Char(character, std::move(charTexture),
-            glm::ivec2(width, height),
-            glm::ivec2(originalLeft, originalTop),
-            glm::ivec2(m_face->glyph->advance.x, m_face->glyph->advance.y), true);
+        return glypth;
     }
 
-    const Font::Char& Font::getChar(CharId character) const {
-        auto it = m_characters.find(character);
-        if (it != m_characters.end() && it->second.getHasTexture()) {
-            return it->second;
-        }
-        return m_characters.emplace(character,
-            (this->*m_getCharTable[static_cast<size_t>(m_type)])(character)).first->second;
-    }
+    const Glypth& Font::Size::getGlypth(GUI::Instance& instance, const Graphics::InstanceFunctionTable& instanceFunctions, 
+        const Graphics::DeviceFunctionTable& functions, Graphics::DeviceRef device, 
+        Graphics::PhysicalDevice physicalDevice, CharId character) const {
+            
+        auto it = m_glypthMap.find(character);
+        if (it != m_glypthMap.end()) return it->second;
 
-    const Font::Char::Metrics& Font::getCharMetrics(CharId character) const
-    {
-        auto it = m_characters.find(character);
-        if (it != m_characters.end()) {
-            return it->second.getMetrics();
-        }
+        FT_Activate_Size(m_size);
 
-        if (FT_Load_Glyph(m_face, character, FT_LOAD_COMPUTE_METRICS))
-            throw std::runtime_error("ERROR::FREETYPE: Failed to load a character");
+        Glypth glypth;
 
-        return m_characters.emplace(character, Char(character,
-            glm::ivec2(m_face->glyph->bitmap.width, m_face->glyph->bitmap.rows),
-            glm::ivec2(m_face->glyph->bitmap_left, m_face->glyph->bitmap_top),
-            glm::ivec2(m_face->glyph->advance.x, m_face->glyph->advance.y))        
-        ).first->second.getMetrics();
-    }
-
-    hb_script_t Font::detectScript(const std::string& text)
-    {
-        UErrorCode error = U_ZERO_ERROR;
-
-        icu::UnicodeString utext = icu::UnicodeString::fromUTF8(
-            icu::StringPiece(text.data(), text.length())
-        );
-
-        if (U_FAILURE(error)) {
-            return HB_SCRIPT_COMMON;
+        switch(m_font->m_type) {
+        case FontType::Normal:
+            glypth = getGlypthGrayscale(instance, instanceFunctions, functions, device, physicalDevice, character);
+            break;
+        case FontType::Colored:
+            glypth = getGlypthGrayscale(instance, instanceFunctions, functions, device, physicalDevice, character);
+            break;
+        case FontType::ColoredColrCpal:
+            glypth = getGlypthColrCpal(instance, instanceFunctions, functions, device, physicalDevice, character);
+            break;
+        case FontType::ColoredCbdtCblc:
+            glypth = getGlypthCbdtCblc(instance, instanceFunctions, functions, device, physicalDevice, character);
+            break;
+        case FontType::ColoredSbix:
+            glypth = getGlypthSibix(instance, instanceFunctions, functions, device, physicalDevice, character);
+            break;
+        default: throw std::runtime_error("Unimplemented FontType");
         }
 
-
-        // Get the script of the first character that isn't common/inherited
-        for (int32_t i = 0; i < utext.length(); i++) {
-            UChar32 c = utext.char32At(i);
-            UScriptCode script = uscript_getScript(c, &error);
-
-            if (U_SUCCESS(error) &&
-                script != USCRIPT_COMMON &&
-                script != USCRIPT_INHERITED) {
-                // Convert ICU script code to HarfBuzz script tag
-                const char* scriptName = uscript_getName(script);
-                return hb_script_from_string(scriptName, -1);
-            }
-
-            if (utext.char32At(i) > 0xFFFF) {
-                i++; // Skip the low surrogate for surrogate pairs
-            }
-        }
-
-        return HB_SCRIPT_COMMON;
-    }
-
-    hb_direction_t Font::detectDirection(const std::string& text)
-    {
-        UErrorCode error = U_ZERO_ERROR;
-        icu::UnicodeString utext = icu::UnicodeString::fromUTF8(
-            icu::StringPiece(text.data(), text.length())
-        );
-
-        if (U_FAILURE(error)) {
-            return HB_DIRECTION_LTR;
-        }
-
-        // Create BiDi object
-        UBiDi* bidi = ubidi_open();
-        ubidi_setPara(bidi, utext.getBuffer(), utext.length(),
-            UBIDI_DEFAULT_LTR, nullptr, &error);
-
-        if (U_SUCCESS(error)) {
-            UBiDiDirection dir = ubidi_getBaseDirection(utext.getBuffer(), utext.length());
-            ubidi_close(bidi);
-
-            switch (dir) {
-            case UBIDI_RTL:
-                return HB_DIRECTION_RTL;
-            case UBIDI_LTR:
-                return HB_DIRECTION_LTR;
-            default:
-                // Check for vertical scripts
-                UScriptCode script = uscript_getScript(utext.char32At(0), &error);                
-                if (U_SUCCESS(error)) {
-                    if (script == USCRIPT_HAN ||
-                        script == USCRIPT_HIRAGANA ||
-                        script == USCRIPT_KATAKANA) {
-                        return HB_DIRECTION_TTB;
-                    }
-                }
-                return HB_DIRECTION_LTR;
-            }
-        }
-
-        return HB_DIRECTION_LTR; // fallback
-    }
-
-    Font::ShapedText Font::shapeText(const std::string& text) const
-    {
-        // Create/reset buffer
-        hb_buffer_t* buffer = hb_buffer_create();
-
-        //these will have to be deduced automatically somehow
-        hb_script_t script = detectScript(text);
-        hb_direction_t dir = detectDirection(text);
-
-        hb_buffer_set_direction(buffer, dir);
-        hb_buffer_set_script(buffer, script);
-        hb_buffer_set_language(buffer, hb_language_from_string("en", -1));
-
-        // Add text to buffer
-        hb_buffer_add_utf8(buffer, text.c_str(), -1, 0, -1);
-        hb_font_t* hb_font = hb_ft_font_create_referenced(m_face);
-
-        // Shape the text
-        hb_shape(hb_font, buffer, nullptr, 0);
-
-        // Get glyph information
-        unsigned int glyph_count;
-        hb_glyph_info_t* glyph_info = hb_buffer_get_glyph_infos(buffer, &glyph_count);
-
-        // Convert to vector of CharIds
-        ShapedText textShaped;
-        std::vector<CharId> currentLine;
-
-        for (unsigned int i = 0; i < glyph_count; i++) {
-            size_t cluster = glyph_info[i].cluster;
-            if (cluster < text.length() && text[cluster] == '\n') {
-                if (!currentLine.empty()) {
-                    textShaped.push_back(std::move(currentLine));
-                    currentLine = std::vector<CharId>();
-                }
-            }
-            else {
-                currentLine.push_back(glyph_info[i].codepoint);
-            }
-        }
-
-        // Don't forget the last line if it exists
-        if (!currentLine.empty()) {
-            textShaped.push_back(std::move(currentLine));
-        }
-
-        hb_buffer_destroy(buffer);
-        hb_font_destroy(hb_font);
-
-        return textShaped;
-    }
-
-    Font::Text::Metrics Font::getTextMetrics(const Text& text, float scale) const
-    {
-        Text::Metrics metrics;
-
-        if (text.getShapedText().empty()) {
-            metrics.height = 0;
-            metrics.width = 0;
-            metrics.lineCount = 0;
-            metrics.lineHeight = ((m_face->size->metrics.height) >> 6) * scale;
-            return metrics;
-        }
-        
-        metrics.lineHeight = ((m_face->size->metrics.height) >> 6) * scale;
-        metrics.height = metrics.lineHeight * text.getShapedText().size();
-        metrics.lineCount = text.getShapedText().size();
-        metrics.width = 0;
-
-        for (size_t i = 0; i < text.getShapedText().size(); i++)
-        {
-            float lineWidth = 0;
-            for (size_t j = 0; j < text.getShapedText()[i].size(); j++)
-            {
-                const auto& charMetrics = getCharMetrics(text.getShapedText()[i][j]);
-                lineWidth += (charMetrics.advance.x >> 6) * scale;
-            }
-            if (lineWidth > metrics.width)
-                metrics.width = lineWidth;
-        }
-
-        return metrics;
-    }
-
-    static inline void renderChar(const Font::Char& character, const Shader& shader, float x, float y)
-    {
-        if (character.getTexture().getId() != 0)
-        {
-            character.getTexture().bind();
-
-            const auto& metrics = character.getMetrics();
-            shader.setUniform2f("uPosition", x, y);
-            shader.setUniform2f("uSize", metrics.size.x, metrics.size.y);
-            shader.setUniform2f("uBearing", metrics.bearing.x, metrics.bearing.y);
-            shader.setUniform1i("uIsColor", character.getIsColor());
-
-            glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-        }
-    }
-
-    void Font::alignedLeftLoop(const GUI::Font::ShapedText& shapedText, const Extent2D& windowCoords, size_t i,
-        const Shader& shader, float y, float scale) const
-    {
-        int x = windowCoords.width;
-        for (int j = 0; j < shapedText[i].size(); j++)
-        {
-            const Char& character = getChar(shapedText[i][j]);
-
-            // render glyph texture over quad
-            renderChar(character, shader, x, y);
-
-            // now advance cursors for next glyph (note that advance is number of 1/64 pixels)
-            x += (character.getMetrics().advance.x >> 6) * scale; // bitshift by 6 to get value in pixels (2^6 = 64)
-        }
-    }
-
-
-    void Font::alignedCenterLoop(const GUI::Font::ShapedText& shapedText, const Extent2D& windowCoords, size_t i,
-        const Shader& shader, float y, float scale) const
-    {
-        float lineWidth = 0;
-        for (int j = 0; j < shapedText[i].size(); j++) {
-            const Char& character = getChar(shapedText[i][j]);
-            lineWidth += (character.getMetrics().advance.x >> 6) * scale;
-        }
-
-        float x = windowCoords.width - (lineWidth / 2.0f);
-
-        for (int j = 0; j < shapedText[i].size(); j++)
-        {
-            const Char& character = getChar(shapedText[i][j]);
-
-            // render glyph texture over quad
-            renderChar(character, shader, x, y);
-
-            // now advance cursors for next glyph (note that advance is number of 1/64 pixels)
-            x += (character.getMetrics().advance.x >> 6) * scale; // bitshift by 6 to get value in pixels (2^6 = 64)
-        }
-    }
-    
-    void Font::alignedRightLoop(const GUI::Font::ShapedText& shapedText, const Extent2D& windowCoords, size_t i,
-        const Shader& shader, float y, float scale) const
-    {
-        const Char& characterLast = getChar(shapedText[i].back());
-        int x = windowCoords.width - characterLast.getMetrics().size.x;
-        for (int j = shapedText[i].size() - 1; j > 0; j--)
-        {
-            const Char& character = getChar(shapedText[i][j]);
-            const Char& characterPrev = getChar(shapedText[i][j - 1]);
-
-            // render glyph texture over quad
-            renderChar(character, shader, x, y);
-
-            // now advance cursors for next glyph (note that advance is number of 1/64 pixels)
-            x -= (characterPrev.getMetrics().advance.x >> 6) * scale; // bitshift by 6 to get value in pixels (2^6 = 64)
-        }
-        const Char& character = getChar(shapedText[i][0]);
-
-        // render glyph texture over quad
-        renderChar(character, shader, x, y);
+        return m_glypthMap.emplace(character, std::move(glypth)).first->second;
     }
 }

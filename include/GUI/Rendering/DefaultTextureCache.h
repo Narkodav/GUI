@@ -9,19 +9,20 @@
 
 namespace GUI
 {
+    enum class DefaultTextureType : TextureId
+    {
+        WhiteTexture                = 0,
+        BlackTexture                = 1,
+        TransparentTexture          = 2,
+        CheckerTexture              = 3,
+        DefaultBorderEdgeTexture    = 4,
+        DefaultBorderCenterTexture  = 5,
+        Count                       = 6,
+        FirstUserTexture            = Count
+    };
+
     class DefaultTextureCache
     {
-    public:
-        enum class TextureType : TextureId
-        {
-            WhiteTexture        = 0,
-            BlackTexture        = 1,
-            TransparentTexture  = 2,
-            CheckerTexture      = 3,
-            Count               = 4,
-            FirstUserTexture    = Count
-        };
-
     private:
         struct TextureEntry
         {
@@ -30,7 +31,7 @@ namespace GUI
             Graphics::Memory memory = nullptr;
         };
 
-        std::array<TextureEntry, static_cast<size_t>(TextureType::Count)> m_textures;
+        std::array<TextureEntry, static_cast<size_t>(DefaultTextureType::Count)> m_textures;
         Graphics::Sampler m_defaultSampler;
 
     public:
@@ -39,8 +40,7 @@ namespace GUI
         void create(
             const Graphics::InstanceFunctionTable& instanceFunctions,
             const Graphics::DeviceFunctionTable& functions, 
-            Graphics::DeviceRef device,
-            Graphics::PhysicalDevice physicalDevice)
+            Graphics::DeviceRef device, Graphics::PhysicalDevice physicalDevice)
         {
             createDefaultTextures(
                 instanceFunctions,
@@ -61,7 +61,7 @@ namespace GUI
             m_defaultSampler.destroy(functions, device);
         }
 
-        Graphics::ImageViewRef getImage(TextureType type) {
+        Graphics::ImageViewRef getImage(DefaultTextureType type) {
             return m_textures[static_cast<size_t>(type)].view;
         }
 
@@ -76,47 +76,54 @@ namespace GUI
         void createDefaultTextures(
             const Graphics::InstanceFunctionTable& instanceFunctions,
             const Graphics::DeviceFunctionTable& functions, 
-            Graphics::DeviceRef device,
-            Graphics::PhysicalDevice physicalDevice)
-        {
-            m_textures[0] = createSolidTexture(
+            Graphics::DeviceRef device, Graphics::PhysicalDevice physicalDevice) {
+            m_textures[static_cast<size_t>(DefaultTextureType::WhiteTexture)] = createSolidTexture(
                 instanceFunctions,
                 functions,
                 device,
                 physicalDevice,
                 255, 255, 255, 255);
 
-            m_textures[1] = createSolidTexture(
+            m_textures[static_cast<size_t>(DefaultTextureType::BlackTexture)] = createSolidTexture(
                 instanceFunctions,
                 functions,
                 device,
                 physicalDevice,
                 0, 0, 0, 255);
 
-            m_textures[2] = createSolidTexture(
+            m_textures[static_cast<size_t>(DefaultTextureType::TransparentTexture)] = createSolidTexture(
                 instanceFunctions,
                 functions,
                 device,
                 physicalDevice,
                 0, 0, 0, 0);
 
-            m_textures[3] = createCheckerTexture(
+            m_textures[static_cast<size_t>(DefaultTextureType::CheckerTexture)] = createCheckerTexture(
                 instanceFunctions,
                 functions,
                 device,
                 physicalDevice);
+
+            m_textures[static_cast<size_t>(DefaultTextureType::DefaultBorderEdgeTexture)] = createSolidTexture(
+                instanceFunctions,
+                functions,
+                device,
+                physicalDevice,
+                70, 110, 180, 255);
+
+            m_textures[static_cast<size_t>(DefaultTextureType::DefaultBorderCenterTexture)] = createSolidTexture(
+                instanceFunctions,
+                functions,
+                device,
+                physicalDevice,
+                220, 230, 245, 255);
         }
 
-        TextureEntry createSolidTexture(
+        static TextureEntry createSolidTexture(
             const Graphics::InstanceFunctionTable& instanceFunctions,
             const Graphics::DeviceFunctionTable& functions, 
-            Graphics::DeviceRef device,
-            Graphics::PhysicalDevice physicalDevice,
-            uint8_t r,
-            uint8_t g,
-            uint8_t b,
-            uint8_t a)
-        {
+            Graphics::DeviceRef device, Graphics::PhysicalDevice physicalDevice,
+            uint8_t r, uint8_t g, uint8_t b, uint8_t a) {
             std::array<uint8_t, 4> pixels{
                 r, g, b, a
             };
@@ -131,28 +138,19 @@ namespace GUI
                 pixels.data());
         }
 
-        TextureEntry createCheckerTexture(
+        static TextureEntry createCheckerTexture(
             const Graphics::InstanceFunctionTable& instanceFunctions,
             const Graphics::DeviceFunctionTable& functions, 
-            Graphics::DeviceRef device,
-            Graphics::PhysicalDevice physicalDevice)
-        {
+            Graphics::DeviceRef device, Graphics::PhysicalDevice physicalDevice) {
             constexpr uint32_t size = 4;
 
             std::array<uint8_t, size * size * 4> pixels{};
 
-            for (uint32_t y = 0; y < size; ++y)
-            {
-                for (uint32_t x = 0; x < size; ++x)
-                {
-                    const bool white =
-                        ((x + y) & 1) == 0;
-
-                    const uint8_t value =
-                        white ? 255 : 80;
-
-                    const uint32_t i =
-                        (y * size + x) * 4;
+            for (uint32_t y = 0; y < size; ++y) {
+                for (uint32_t x = 0; x < size; ++x) {
+                    const bool white = ((x + y) & 1) == 0;
+                    const uint8_t value = white ? 255 : 80;
+                    const uint32_t i = (y * size + x) * 4;
 
                     pixels[i + 0] = value;
                     pixels[i + 1] = value;
@@ -171,15 +169,11 @@ namespace GUI
                 pixels.data());
         }
 
-        TextureEntry createTexture(
+        static TextureEntry createTexture(
             const Graphics::InstanceFunctionTable& instanceFunctions,
             const Graphics::DeviceFunctionTable& functions, 
-            Graphics::DeviceRef device,
-            Graphics::PhysicalDevice physicalDevice,
-            uint32_t width,
-            uint32_t height,
-            const void* pixelData)
-        {
+            Graphics::DeviceRef device, Graphics::PhysicalDevice physicalDevice,
+            uint32_t width, uint32_t height, const void* pixelData) {
             TextureEntry texture;
 
             Graphics::ImageCreateInfo imageInfo;

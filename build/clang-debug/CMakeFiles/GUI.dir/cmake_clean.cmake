@@ -3,10 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/GUI.dir/src/GUI/Interface.cpp.obj.d"
   "CMakeFiles/GUI.dir/src/GUI/Rendering/Font.cpp.obj"
   "CMakeFiles/GUI.dir/src/GUI/Rendering/Font.cpp.obj.d"
-  "CMakeFiles/GUI.dir/src/GUI/TextRendering/Font.cpp.obj"
-  "CMakeFiles/GUI.dir/src/GUI/TextRendering/Font.cpp.obj.d"
-  "CMakeFiles/GUI.dir/src/GUI/TextRendering/Text.cpp.obj"
-  "CMakeFiles/GUI.dir/src/GUI/TextRendering/Text.cpp.obj.d"
+  "CMakeFiles/GUI.dir/src/GUI/Rendering/Glypth.cpp.obj"
+  "CMakeFiles/GUI.dir/src/GUI/Rendering/Glypth.cpp.obj.d"
   "libGUI.a"
   "libGUI.pdb"
 )

@@ -96,8 +96,8 @@ test/fast: test
 
 # Special rule for the target edit_cache
 edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running CMake cache editor..."
-	"E:\Program Files (x86)\CMake\cmake-3.30.2-windows-x86_64\bin\cmake-gui.exe" -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "No interactive CMake dialog available..."
+	"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available."
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -369,53 +369,29 @@ src/GUI/Rendering/Font.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\GUI.dir\build.make CMakeFiles/GUI.dir/src/GUI/Rendering/Font.cpp.s
 .PHONY : src/GUI/Rendering/Font.cpp.s
 
-src/GUI/TextRendering/Font.obj: src/GUI/TextRendering/Font.cpp.obj
-.PHONY : src/GUI/TextRendering/Font.obj
+src/GUI/Rendering/Glypth.obj: src/GUI/Rendering/Glypth.cpp.obj
+.PHONY : src/GUI/Rendering/Glypth.obj
 
 # target to build an object file
-src/GUI/TextRendering/Font.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\GUI.dir\build.make CMakeFiles/GUI.dir/src/GUI/TextRendering/Font.cpp.obj
-.PHONY : src/GUI/TextRendering/Font.cpp.obj
+src/GUI/Rendering/Glypth.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\GUI.dir\build.make CMakeFiles/GUI.dir/src/GUI/Rendering/Glypth.cpp.obj
+.PHONY : src/GUI/Rendering/Glypth.cpp.obj
 
-src/GUI/TextRendering/Font.i: src/GUI/TextRendering/Font.cpp.i
-.PHONY : src/GUI/TextRendering/Font.i
-
-# target to preprocess a source file
-src/GUI/TextRendering/Font.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\GUI.dir\build.make CMakeFiles/GUI.dir/src/GUI/TextRendering/Font.cpp.i
-.PHONY : src/GUI/TextRendering/Font.cpp.i
-
-src/GUI/TextRendering/Font.s: src/GUI/TextRendering/Font.cpp.s
-.PHONY : src/GUI/TextRendering/Font.s
-
-# target to generate assembly for a file
-src/GUI/TextRendering/Font.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\GUI.dir\build.make CMakeFiles/GUI.dir/src/GUI/TextRendering/Font.cpp.s
-.PHONY : src/GUI/TextRendering/Font.cpp.s
-
-src/GUI/TextRendering/Text.obj: src/GUI/TextRendering/Text.cpp.obj
-.PHONY : src/GUI/TextRendering/Text.obj
-
-# target to build an object file
-src/GUI/TextRendering/Text.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\GUI.dir\build.make CMakeFiles/GUI.dir/src/GUI/TextRendering/Text.cpp.obj
-.PHONY : src/GUI/TextRendering/Text.cpp.obj
-
-src/GUI/TextRendering/Text.i: src/GUI/TextRendering/Text.cpp.i
-.PHONY : src/GUI/TextRendering/Text.i
+src/GUI/Rendering/Glypth.i: src/GUI/Rendering/Glypth.cpp.i
+.PHONY : src/GUI/Rendering/Glypth.i
 
 # target to preprocess a source file
-src/GUI/TextRendering/Text.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\GUI.dir\build.make CMakeFiles/GUI.dir/src/GUI/TextRendering/Text.cpp.i
-.PHONY : src/GUI/TextRendering/Text.cpp.i
+src/GUI/Rendering/Glypth.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\GUI.dir\build.make CMakeFiles/GUI.dir/src/GUI/Rendering/Glypth.cpp.i
+.PHONY : src/GUI/Rendering/Glypth.cpp.i
 
-src/GUI/TextRendering/Text.s: src/GUI/TextRendering/Text.cpp.s
-.PHONY : src/GUI/TextRendering/Text.s
+src/GUI/Rendering/Glypth.s: src/GUI/Rendering/Glypth.cpp.s
+.PHONY : src/GUI/Rendering/Glypth.s
 
 # target to generate assembly for a file
-src/GUI/TextRendering/Text.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\GUI.dir\build.make CMakeFiles/GUI.dir/src/GUI/TextRendering/Text.cpp.s
-.PHONY : src/GUI/TextRendering/Text.cpp.s
+src/GUI/Rendering/Glypth.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\GUI.dir\build.make CMakeFiles/GUI.dir/src/GUI/Rendering/Glypth.cpp.s
+.PHONY : src/GUI/Rendering/Glypth.cpp.s
 
 tests/main.obj: tests/main.cpp.obj
 .PHONY : tests/main.obj
@@ -472,12 +448,9 @@ help:
 	@echo ... src/GUI/Rendering/Font.obj
 	@echo ... src/GUI/Rendering/Font.i
 	@echo ... src/GUI/Rendering/Font.s
-	@echo ... src/GUI/TextRendering/Font.obj
-	@echo ... src/GUI/TextRendering/Font.i
-	@echo ... src/GUI/TextRendering/Font.s
-	@echo ... src/GUI/TextRendering/Text.obj
-	@echo ... src/GUI/TextRendering/Text.i
-	@echo ... src/GUI/TextRendering/Text.s
+	@echo ... src/GUI/Rendering/Glypth.obj
+	@echo ... src/GUI/Rendering/Glypth.i
+	@echo ... src/GUI/Rendering/Glypth.s
 	@echo ... tests/main.obj
 	@echo ... tests/main.i
 	@echo ... tests/main.s

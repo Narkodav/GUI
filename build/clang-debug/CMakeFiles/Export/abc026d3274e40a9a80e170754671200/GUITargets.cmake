@@ -61,7 +61,7 @@ add_library(GUI::GUI STATIC IMPORTED)
 set_target_properties(GUI::GUI PROPERTIES
   INTERFACE_COMPILE_FEATURES "cxx_std_20"
   INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;${_IMPORT_PREFIX}/include"
-  INTERFACE_LINK_LIBRARIES "Vulkan::Vulkan;freetype;ICU::uc;ICU::i18n;harfbuzz::harfbuzz;CommonApi::CommonApi;Containers::Containers;PlatformKit::PlatformKit;GraphicsWrapper::GraphicsWrapper"
+  INTERFACE_LINK_LIBRARIES "Vulkan::Vulkan;freetype;harfbuzz::harfbuzz;CommonApi::CommonApi;Containers::Containers;PlatformKit::PlatformKit;GraphicsWrapper::GraphicsWrapper"
 )
 
 # Load information for each installed configuration.

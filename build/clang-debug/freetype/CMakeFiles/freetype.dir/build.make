@@ -719,7 +719,7 @@ freetype/CMakeFiles/freetype.dir/builds/windows/ftdebug.c.s: cmake_force
 freetype/CMakeFiles/freetype.dir/src/base/ftver.rc.obj: freetype/CMakeFiles/freetype.dir/flags.make
 freetype/CMakeFiles/freetype.dir/src/base/ftver.rc.obj: E:/API/freetype-master/src/base/ftver.rc
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=E:\Code\C_code\libraries\GUI\build\clang-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building RC object freetype/CMakeFiles/freetype.dir/src/base/ftver.rc.obj"
-	cd /d E:\Code\C_code\libraries\GUI\build\clang-debug\freetype && A:\compilers\mingw64\bin\windres.exe -O coff $(RC_DEFINES) $(RC_INCLUDES) $(RC_FLAGS) E:\API\freetype-master\src\base\ftver.rc CMakeFiles\freetype.dir\src\base\ftver.rc.obj
+	cd /d E:\Code\C_code\libraries\GUI\build\clang-debug\freetype && C:\Users\user\.utils\llvm-mingw\bin\windres.exe -O coff $(RC_DEFINES) $(RC_INCLUDES) $(RC_FLAGS) E:\API\freetype-master\src\base\ftver.rc CMakeFiles\freetype.dir\src\base\ftver.rc.obj
 
 # Object files for target freetype
 freetype_OBJECTS = \

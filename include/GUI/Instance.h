@@ -1,17 +1,60 @@
 #pragma once
+#include <ft2build.h>
+#include <freetype/freetype.h>
+#include <freetype/ftcolor.h>
+#include <freetype/tttables.h>
+
 #include "Graphics/Graphics.h"
 
 #include "GUI/Rendering/Quad.h"
 #include "GUI/Rendering/DefaultTextureCache.h"
 #include "GUI/Rendering/TextureDescriptor.h"
 #include "GUI/Elements/Element.h"
+#include "GUI/Rendering/Font.h"
 
 #include <glm/glm.hpp>
 #include <vector>
 #include <cstdint>
 
-namespace GUI
-{
+namespace GUI {
+    class FTInstance {
+    private:
+        FT_Library ft;
+
+    public:
+        FTInstance() = default;
+
+        FTInstance(const FTInstance&) = delete;
+        FTInstance& operator=(const FTInstance&) = delete;
+
+        FTInstance(FTInstance&&) = delete;
+        FTInstance& operator=(FTInstance&&) = delete;
+
+        ~FTInstance() noexcept {
+            FT_Done_FreeType(ft); //might log error
+        }
+
+        void create() {
+            if (FT_Init_FreeType(&ft))
+                throw std::runtime_error("ERROR::FREETYPE: Could not init FreeType Library");
+
+            int major;
+            int minor;
+            int patch;
+
+            FT_Library_Version(ft, &major, &minor, &patch);
+
+            std::cout << "FreeType version: " << major << "." << minor << "." << patch << std::endl;
+        }
+
+        void destroy() {
+            FT_Done_FreeType(ft);
+        }
+
+        operator FT_Library() const {
+            return ft;
+        }
+    };
 
     class Instance;
 
@@ -33,12 +76,15 @@ namespace GUI
         InstanceInterface& operator=(InstanceInterface&&) = default;
 
         void addQuad(const Quad& quad);
+        FTInstance& getFTInstance();
+
+        Instance& getInstance() { return *m_instance; }
     };
 
-    class Instance
-    {
+    class Instance {
         friend class InstanceInterface;
     private:
+        FTInstance m_ftInstance;
 
         // Shared layout
         Graphics::PipelineLayoutCreateInfo m_genericLayoutInfo;
@@ -78,6 +124,8 @@ namespace GUI
         void create(const Graphics::InstanceFunctionTable& instanceFunctions, const Graphics::DeviceFunctionTable& functions, 
             Graphics::DeviceRef device, Graphics::PhysicalDevice physicalDevice, Graphics::DescriptorPoolRef descriptorPool,
             Graphics::RenderPassRef renderPass) {
+
+            m_ftInstance.create();
 
             m_shaders.create(functions, device, "Shaders");
             m_shaderStages = Graphics::Utility::createShaderStageInfos(m_shaders.getShaderModuleData());
@@ -120,6 +168,7 @@ namespace GUI
             m_genericLayout.destroy(functions, device);
             for(auto& layout : m_setLayouts) layout.destroy(functions, device);
             m_shaders.destroy(functions, device);
+            m_ftInstance.destroy();
         }
 
         void record(const Graphics::DeviceFunctionTable& functions, Graphics::DeviceRef device, Graphics::CommandBuffer cmd, 
@@ -136,6 +185,68 @@ namespace GUI
             cmd.bindDescriptorSets(functions, Graphics::PipelineBindPoint::Graphics, m_genericLayout, 0, m_sets);
             cmd.pushConstants(functions, m_genericLayout, Graphics::Flags::ShaderStage::Bits::Vertex, 0, sizeof(uint32_t) * 2, dimensions.data());
             m_quadRenderer.record(functions, cmd);
+        }
+
+        template<typename Container>
+        void record(const Graphics::DeviceFunctionTable& functions, Graphics::DeviceRef device, Graphics::CommandBuffer cmd, 
+            Container& roots, const Graphics::Extent2D& frameBufferExtent) requires (std::convertible_to<typename Container::value_type, Element*>) {
+            m_quads.clear();
+            InstanceInterface interface = this;
+            for(auto* root : roots) root->record(interface);
+            
+            m_quadRenderer.updateQuads(functions, device, m_quads);
+
+            // Viewport and scissor are bound by user
+            std::array<uint32_t, 2> dimensions = { frameBufferExtent.getWidth(), frameBufferExtent.getHeight() };
+
+            cmd.bindDescriptorSets(functions, Graphics::PipelineBindPoint::Graphics, m_genericLayout, 0, m_sets);
+            cmd.pushConstants(functions, m_genericLayout, Graphics::Flags::ShaderStage::Bits::Vertex, 0, sizeof(uint32_t) * 2, dimensions.data());
+            m_quadRenderer.record(functions, cmd);
+        }
+        
+        void record(const Graphics::DeviceFunctionTable& functions, Graphics::DeviceRef device, Graphics::CommandBuffer cmd, 
+            std::initializer_list<GUI::Element*> roots, const Graphics::Extent2D& frameBufferExtent) {
+            m_quads.clear();
+            InstanceInterface interface = this;
+            for(auto* root : roots) root->record(interface);
+            
+            m_quadRenderer.updateQuads(functions, device, m_quads);
+
+            // Viewport and scissor are bound by user
+            std::array<uint32_t, 2> dimensions = { frameBufferExtent.getWidth(), frameBufferExtent.getHeight() };
+
+            cmd.bindDescriptorSets(functions, Graphics::PipelineBindPoint::Graphics, m_genericLayout, 0, m_sets);
+            cmd.pushConstants(functions, m_genericLayout, Graphics::Flags::ShaderStage::Bits::Vertex, 0, sizeof(uint32_t) * 2, dimensions.data());
+            m_quadRenderer.record(functions, cmd);
+        }
+        // template<typename Container>
+        // void record(const Graphics::DeviceFunctionTable& functions, Graphics::DeviceRef device, Graphics::CommandBuffer cmd, 
+        //     const Container& roots, const Graphics::Extent2D& frameBufferExtent) requires (std::convertible_to<typename Container::value_type, Element*>) {
+        //     m_quads.clear();
+        //     InstanceInterface interface = this;
+        //     for(auto* root : roots) root->record(interface);
+            
+        //     m_quadRenderer.updateQuads(functions, device, m_quads);
+
+        //     // Viewport and scissor are bound by user
+        //     std::array<uint32_t, 2> dimensions = { frameBufferExtent.getWidth(), frameBufferExtent.getHeight() };
+
+        //     cmd.bindDescriptorSets(functions, Graphics::PipelineBindPoint::Graphics, m_genericLayout, 0, m_sets);
+        //     cmd.pushConstants(functions, m_genericLayout, Graphics::Flags::ShaderStage::Bits::Vertex, 0, sizeof(uint32_t) * 2, dimensions.data());
+        //     m_quadRenderer.record(functions, cmd);
+        // }
+
+        TextureId registerTexture(const Graphics::DeviceFunctionTable& functions,
+            Graphics::DeviceRef device, Graphics::ImageViewRef view,
+            Graphics::ImageLayout layout = Graphics::ImageLayout::ShaderReadOnlyOptimal) {
+            return m_textureDescriptor.registerTexture(functions, device, view, m_defaultTextureCache.getSampler(), layout);
+        };
+
+        Font createFont(std::string_view path) {
+            Font font;
+            InstanceInterface interface = this;
+            font.create(interface, path);
+            return font;
         }
     };
 }

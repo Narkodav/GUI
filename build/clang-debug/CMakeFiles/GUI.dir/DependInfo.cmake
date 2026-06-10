@@ -10,8 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "E:/Code/C_code/libraries/GUI/src/GUI/Interface.cpp" "CMakeFiles/GUI.dir/src/GUI/Interface.cpp.obj" "gcc" "CMakeFiles/GUI.dir/src/GUI/Interface.cpp.obj.d"
   "E:/Code/C_code/libraries/GUI/src/GUI/Rendering/Font.cpp" "CMakeFiles/GUI.dir/src/GUI/Rendering/Font.cpp.obj" "gcc" "CMakeFiles/GUI.dir/src/GUI/Rendering/Font.cpp.obj.d"
-  "E:/Code/C_code/libraries/GUI/src/GUI/TextRendering/Font.cpp" "CMakeFiles/GUI.dir/src/GUI/TextRendering/Font.cpp.obj" "gcc" "CMakeFiles/GUI.dir/src/GUI/TextRendering/Font.cpp.obj.d"
-  "E:/Code/C_code/libraries/GUI/src/GUI/TextRendering/Text.cpp" "CMakeFiles/GUI.dir/src/GUI/TextRendering/Text.cpp.obj" "gcc" "CMakeFiles/GUI.dir/src/GUI/TextRendering/Text.cpp.obj.d"
+  "E:/Code/C_code/libraries/GUI/src/GUI/Rendering/Glypth.cpp" "CMakeFiles/GUI.dir/src/GUI/Rendering/Glypth.cpp.obj" "gcc" "CMakeFiles/GUI.dir/src/GUI/Rendering/Glypth.cpp.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

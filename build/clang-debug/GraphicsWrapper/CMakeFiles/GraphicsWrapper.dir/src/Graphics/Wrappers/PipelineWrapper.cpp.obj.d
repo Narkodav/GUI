@@ -725,23 +725,23 @@ GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/Wrappers/PipelineWra
   C:/Users/user/.utils/llvm-mingw/include/c++/v1/__system_error/system_error.h \
   E:/Code/C_code/libraries/GraphicsWrapper/include/Graphics/HandleTypes/Pipeline.h \
   E:/Code/C_code/libraries/GraphicsWrapper/include/Graphics/HandleTypes/../Common.h \
-  E:/API/Vulkan/Include/vulkan/vulkan_core.h \
-  E:/API/Vulkan/Include/vulkan/vk_platform.h \
-  E:/API/Vulkan/Include/vk_video/vulkan_video_codec_h264std.h \
-  E:/API/Vulkan/Include/vk_video/vulkan_video_codecs_common.h \
-  E:/API/Vulkan/Include/vk_video/vulkan_video_codec_h264std_encode.h \
-  E:/API/Vulkan/Include/vk_video/vulkan_video_codec_h265std.h \
-  E:/API/Vulkan/Include/vk_video/vulkan_video_codec_h265std_encode.h \
-  E:/API/Vulkan/Include/vk_video/vulkan_video_codec_h264std_decode.h \
-  E:/API/Vulkan/Include/vk_video/vulkan_video_codec_h265std_decode.h \
-  E:/API/Vulkan/Include/vk_video/vulkan_video_codec_av1std.h \
-  E:/API/Vulkan/Include/vk_video/vulkan_video_codec_av1std_decode.h \
-  E:/API/Vulkan/Include/vk_video/vulkan_video_codec_av1std_encode.h \
-  E:/API/Vulkan/Include/vk_video/vulkan_video_codec_vp9std.h \
-  E:/API/Vulkan/Include/vk_video/vulkan_video_codec_vp9std_decode.h \
-  E:/API/Vulkan/Include/vulkan/vulkan.h \
-  E:/API/Vulkan/Include/vulkan/vulkan.hpp \
-  E:/API/Vulkan/Include/vulkan/vulkan_hpp_macros.hpp \
+  E:/API/Vulkan/include/vulkan/vulkan_core.h \
+  E:/API/Vulkan/include/vulkan/vk_platform.h \
+  E:/API/Vulkan/include/vk_video/vulkan_video_codec_h264std.h \
+  E:/API/Vulkan/include/vk_video/vulkan_video_codecs_common.h \
+  E:/API/Vulkan/include/vk_video/vulkan_video_codec_h264std_encode.h \
+  E:/API/Vulkan/include/vk_video/vulkan_video_codec_h265std.h \
+  E:/API/Vulkan/include/vk_video/vulkan_video_codec_h265std_encode.h \
+  E:/API/Vulkan/include/vk_video/vulkan_video_codec_h264std_decode.h \
+  E:/API/Vulkan/include/vk_video/vulkan_video_codec_h265std_decode.h \
+  E:/API/Vulkan/include/vk_video/vulkan_video_codec_av1std.h \
+  E:/API/Vulkan/include/vk_video/vulkan_video_codec_av1std_decode.h \
+  E:/API/Vulkan/include/vk_video/vulkan_video_codec_av1std_encode.h \
+  E:/API/Vulkan/include/vk_video/vulkan_video_codec_vp9std.h \
+  E:/API/Vulkan/include/vk_video/vulkan_video_codec_vp9std_decode.h \
+  E:/API/Vulkan/include/vulkan/vulkan.h \
+  E:/API/Vulkan/include/vulkan/vulkan.hpp \
+  E:/API/Vulkan/include/vulkan/vulkan_hpp_macros.hpp \
   C:/Users/user/.utils/llvm-mingw/include/c++/v1/array \
   C:/Users/user/.utils/llvm-mingw/include/c++/v1/__iterator/static_bounded_iter.h \
   C:/Users/user/.utils/llvm-mingw/include/c++/v1/cassert \
@@ -826,8 +826,8 @@ GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/Wrappers/PipelineWra
   C:/Users/user/.utils/llvm-mingw/include/c++/v1/__functional/not_fn.h \
   C:/Users/user/.utils/llvm-mingw/include/c++/v1/__functional/bind_back.h \
   C:/Users/user/.utils/llvm-mingw/include/c++/v1/__functional/bind_front.h \
-  E:/API/Vulkan/Include/vulkan/vulkan_enums.hpp \
-  E:/API/Vulkan/Include/vulkan/vulkan_to_string.hpp \
+  E:/API/Vulkan/include/vulkan/vulkan_enums.hpp \
+  E:/API/Vulkan/include/vulkan/vulkan_to_string.hpp \
   C:/Users/user/.utils/llvm-mingw/include/c++/v1/format \
   C:/Users/user/.utils/llvm-mingw/include/c++/v1/__format/buffer.h \
   C:/Users/user/.utils/llvm-mingw/include/c++/v1/__format/concepts.h \
@@ -871,9 +871,9 @@ GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/src/Graphics/Wrappers/PipelineWra
   C:/Users/user/.utils/llvm-mingw/include/c++/v1/queue \
   C:/Users/user/.utils/llvm-mingw/include/c++/v1/deque \
   C:/Users/user/.utils/llvm-mingw/include/c++/v1/stack \
-  E:/API/Vulkan/Include/vulkan/vulkan_handles.hpp \
-  E:/API/Vulkan/Include/vulkan/vulkan_structs.hpp \
-  E:/API/Vulkan/Include/vulkan/vulkan_funcs.hpp \
+  E:/API/Vulkan/include/vulkan/vulkan_handles.hpp \
+  E:/API/Vulkan/include/vulkan/vulkan_structs.hpp \
+  E:/API/Vulkan/include/vulkan/vulkan_funcs.hpp \
   E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/glm/vec4.hpp \
   E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/glm/./ext/vector_bool4.hpp \
   E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/glm/./ext/../detail/type_vec4.hpp \

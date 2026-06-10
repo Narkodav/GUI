@@ -1,6 +1,8 @@
 #pragma once
 #include "GUI/Instance.h"
 #include "GUI/Elements/QuadElement.h"
+#include "GUI/Elements/LetterElement.h"
+#include "GUI/Elements/MonospacedTextElement.h"
 
 #include "PlatformKit/Window.h"
 #include "Graphics/Graphics.h"
@@ -39,6 +41,13 @@ private:
     GUI::Instance m_guiInstance;
 
     std::unique_ptr<GUI::QuadElement> m_button;
+
+    GUI::Font m_font;
+
+    GUI::Text m_text;
+
+    std::unique_ptr<GUI::MonospacedTextElement> m_textElement;
+    std::unique_ptr<GUI::LetterElement> m_letter;
 
 
 public:
@@ -172,6 +181,7 @@ public:
         m_button = std::make_unique<GUI::QuadElement>();
         m_button->getQuad().setPosition(glm::ivec2(100, 100));
         m_button->getQuad().setSize(glm::ivec2(100, 100));
+        m_button->getQuad().setTexture(static_cast<GUI::TextureId>(GUI::DefaultTextureType::WhiteTexture));
 
         m_window.registerCallback<PlatformKit::IOEvents::MouseMovedScreen>([this](PlatformKit::Position mousePosition){
             GUI::PointerEvent event = {
@@ -181,24 +191,36 @@ public:
                     glm::vec2(0, 0)
                 }
             };
-            std::cout << event.pointer.position.x << " " << event.pointer.position.y << std::endl;
+            // std::cout << event.pointer.position.x << " " << event.pointer.position.y << std::endl;
             m_button->pointerEvent(event);
         });
 
         m_button->setCallback<GUI::QuadElementEvent::MovedIn>(
             [](const GUI::Pointer& pointer, GUI::QuadElement& button){
-                button.getQuad().setTexture(static_cast<GUI::TextureId>(GUI::DefaultTextureCache::TextureType::BlackTexture));
+                button.getQuad().setTexture(static_cast<GUI::TextureId>(GUI::DefaultTextureType::BlackTexture));
             }
         );
         m_button->setCallback<GUI::QuadElementEvent::MovedOut>(
             [](const GUI::Pointer& pointer, GUI::QuadElement& button){
-                button.getQuad().setTexture(static_cast<GUI::TextureId>(GUI::DefaultTextureCache::TextureType::WhiteTexture));
+                button.getQuad().setTexture(static_cast<GUI::TextureId>(GUI::DefaultTextureType::WhiteTexture));
             }
         );
+
+        m_font = m_guiInstance.createFont("../../Fonts/spleen.otf");
+
+        const auto& size = m_font.getSize(16);
+
+        m_text.setText(m_guiInstance, m_instance.getFunctionTable(), 
+            m_device.getFunctionTable(), m_device, m_physicalDevice, size, 
+            "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz\n1234567890\n!@#$%^&*()./?");
+
+        m_textElement = std::make_unique<GUI::MonospacedTextElement>();
+
+        m_textElement->setText(m_text).setCellSize(glm::ivec2(8, 16)).setPosition(glm::ivec2(10, 10)).setSize(glm::ivec2(200, 10))
+            .setBackgroundTexture(static_cast<GUI::TextureId>(GUI::DefaultTextureType::WhiteTexture));
     }
 
-    void destroy()
-    {
+    void destroy() {
         m_device.waitIdle();
         m_guiInstance.destroy(m_device.getFunctionTable(), m_device);
         
@@ -244,6 +266,7 @@ public:
     void start() {
         while(!m_window.shouldClose()) {
             m_window.pollEvents();
+            if(m_window.isMinimised()) continue;
             drawFrame(m_window.getFrameBufferExtent());
         }
     }
@@ -281,13 +304,17 @@ public:
         m_graphicsCommandBuffer.setViewport(m_device.getFunctionTable(), m_canvas.getViewport());
         m_graphicsCommandBuffer.setScissor(m_device.getFunctionTable(), m_canvas.getScissor());
 
-        m_guiInstance.record(m_device.getFunctionTable(), m_device, m_graphicsCommandBuffer, m_button.get(), extent);
+        m_guiInstance.record(m_device.getFunctionTable(), m_device, m_graphicsCommandBuffer, m_textElement.get(), extent);
+        
+
+        // for(auto& letter : m_letters)
+        //     m_guiInstance.record(m_device.getFunctionTable(), m_device, m_graphicsCommandBuffer, letter.get(), extent);
+        // m_guiInstance.record(m_device.getFunctionTable(), m_device, m_graphicsCommandBuffer, m_button.get(), extent);
 
         m_graphicsCommandBuffer.endRenderPass(m_device.getFunctionTable());
         m_graphicsCommandBuffer.stopRecord(m_device.getFunctionTable());
 
-        try
-        {
+        try {
             std::array<Graphics::Flags::PipelineStage, 1> pipelineStage = { Graphics::Flags::PipelineStage::Bits::ColorAttachmentOutput };
 
             Graphics::QueueSubmitInfo submitInfo(
@@ -299,8 +326,7 @@ public:
             m_graphicsQueue.submit(m_device.getFunctionTable(), submitInfo,
                 m_inFlightFence);
         }
-        catch (const std::exception& e)
-        {
+        catch (const std::exception& e) {
             std::cerr << "Failed to submit graphics queue: " << e.what() << std::endl;
         }
 

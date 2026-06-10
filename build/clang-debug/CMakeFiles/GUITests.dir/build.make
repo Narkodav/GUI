@@ -96,8 +96,6 @@ GUITests_EXTERNAL_OBJECTS =
 GUITests.exe: CMakeFiles/GUITests.dir/tests/main.cpp.obj
 GUITests.exe: CMakeFiles/GUITests.dir/build.make
 GUITests.exe: libGUI.a
-GUITests.exe: E:/API/icu/lib64/icuuc.lib
-GUITests.exe: E:/API/icu/lib64/icuin.lib
 GUITests.exe: harfbuzz/libharfbuzz.a
 GUITests.exe: freetype/libfreetyped.a
 GUITests.exe: GraphicsWrapper/libGraphicsWrapper.a

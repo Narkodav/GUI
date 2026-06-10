@@ -101,53 +101,36 @@ CMakeFiles/GUI.dir/src/GUI/Rendering/Font.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/GUI.dir/src/GUI/Rendering/Font.cpp.s"
 	C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S E:\Code\C_code\libraries\GUI\src\GUI\Rendering\Font.cpp -o CMakeFiles\GUI.dir\src\GUI\Rendering\Font.cpp.s
 
-CMakeFiles/GUI.dir/src/GUI/TextRendering/Font.cpp.obj: CMakeFiles/GUI.dir/flags.make
-CMakeFiles/GUI.dir/src/GUI/TextRendering/Font.cpp.obj: CMakeFiles/GUI.dir/includes_CXX.rsp
-CMakeFiles/GUI.dir/src/GUI/TextRendering/Font.cpp.obj: E:/Code/C_code/libraries/GUI/src/GUI/TextRendering/Font.cpp
-CMakeFiles/GUI.dir/src/GUI/TextRendering/Font.cpp.obj: CMakeFiles/GUI.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=E:\Code\C_code\libraries\GUI\build\clang-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/GUI.dir/src/GUI/TextRendering/Font.cpp.obj"
-	C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/GUI.dir/src/GUI/TextRendering/Font.cpp.obj -MF CMakeFiles\GUI.dir\src\GUI\TextRendering\Font.cpp.obj.d -o CMakeFiles\GUI.dir\src\GUI\TextRendering\Font.cpp.obj -c E:\Code\C_code\libraries\GUI\src\GUI\TextRendering\Font.cpp
+CMakeFiles/GUI.dir/src/GUI/Rendering/Glypth.cpp.obj: CMakeFiles/GUI.dir/flags.make
+CMakeFiles/GUI.dir/src/GUI/Rendering/Glypth.cpp.obj: CMakeFiles/GUI.dir/includes_CXX.rsp
+CMakeFiles/GUI.dir/src/GUI/Rendering/Glypth.cpp.obj: E:/Code/C_code/libraries/GUI/src/GUI/Rendering/Glypth.cpp
+CMakeFiles/GUI.dir/src/GUI/Rendering/Glypth.cpp.obj: CMakeFiles/GUI.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=E:\Code\C_code\libraries\GUI\build\clang-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/GUI.dir/src/GUI/Rendering/Glypth.cpp.obj"
+	C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/GUI.dir/src/GUI/Rendering/Glypth.cpp.obj -MF CMakeFiles\GUI.dir\src\GUI\Rendering\Glypth.cpp.obj.d -o CMakeFiles\GUI.dir\src\GUI\Rendering\Glypth.cpp.obj -c E:\Code\C_code\libraries\GUI\src\GUI\Rendering\Glypth.cpp
 
-CMakeFiles/GUI.dir/src/GUI/TextRendering/Font.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/GUI.dir/src/GUI/TextRendering/Font.cpp.i"
-	C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E E:\Code\C_code\libraries\GUI\src\GUI\TextRendering\Font.cpp > CMakeFiles\GUI.dir\src\GUI\TextRendering\Font.cpp.i
+CMakeFiles/GUI.dir/src/GUI/Rendering/Glypth.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/GUI.dir/src/GUI/Rendering/Glypth.cpp.i"
+	C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E E:\Code\C_code\libraries\GUI\src\GUI\Rendering\Glypth.cpp > CMakeFiles\GUI.dir\src\GUI\Rendering\Glypth.cpp.i
 
-CMakeFiles/GUI.dir/src/GUI/TextRendering/Font.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/GUI.dir/src/GUI/TextRendering/Font.cpp.s"
-	C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S E:\Code\C_code\libraries\GUI\src\GUI\TextRendering\Font.cpp -o CMakeFiles\GUI.dir\src\GUI\TextRendering\Font.cpp.s
-
-CMakeFiles/GUI.dir/src/GUI/TextRendering/Text.cpp.obj: CMakeFiles/GUI.dir/flags.make
-CMakeFiles/GUI.dir/src/GUI/TextRendering/Text.cpp.obj: CMakeFiles/GUI.dir/includes_CXX.rsp
-CMakeFiles/GUI.dir/src/GUI/TextRendering/Text.cpp.obj: E:/Code/C_code/libraries/GUI/src/GUI/TextRendering/Text.cpp
-CMakeFiles/GUI.dir/src/GUI/TextRendering/Text.cpp.obj: CMakeFiles/GUI.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=E:\Code\C_code\libraries\GUI\build\clang-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/GUI.dir/src/GUI/TextRendering/Text.cpp.obj"
-	C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/GUI.dir/src/GUI/TextRendering/Text.cpp.obj -MF CMakeFiles\GUI.dir\src\GUI\TextRendering\Text.cpp.obj.d -o CMakeFiles\GUI.dir\src\GUI\TextRendering\Text.cpp.obj -c E:\Code\C_code\libraries\GUI\src\GUI\TextRendering\Text.cpp
-
-CMakeFiles/GUI.dir/src/GUI/TextRendering/Text.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/GUI.dir/src/GUI/TextRendering/Text.cpp.i"
-	C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E E:\Code\C_code\libraries\GUI\src\GUI\TextRendering\Text.cpp > CMakeFiles\GUI.dir\src\GUI\TextRendering\Text.cpp.i
-
-CMakeFiles/GUI.dir/src/GUI/TextRendering/Text.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/GUI.dir/src/GUI/TextRendering/Text.cpp.s"
-	C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S E:\Code\C_code\libraries\GUI\src\GUI\TextRendering\Text.cpp -o CMakeFiles\GUI.dir\src\GUI\TextRendering\Text.cpp.s
+CMakeFiles/GUI.dir/src/GUI/Rendering/Glypth.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/GUI.dir/src/GUI/Rendering/Glypth.cpp.s"
+	C:\Users\user\.utils\llvm-mingw\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S E:\Code\C_code\libraries\GUI\src\GUI\Rendering\Glypth.cpp -o CMakeFiles\GUI.dir\src\GUI\Rendering\Glypth.cpp.s
 
 # Object files for target GUI
 GUI_OBJECTS = \
 "CMakeFiles/GUI.dir/src/GUI/Interface.cpp.obj" \
 "CMakeFiles/GUI.dir/src/GUI/Rendering/Font.cpp.obj" \
-"CMakeFiles/GUI.dir/src/GUI/TextRendering/Font.cpp.obj" \
-"CMakeFiles/GUI.dir/src/GUI/TextRendering/Text.cpp.obj"
+"CMakeFiles/GUI.dir/src/GUI/Rendering/Glypth.cpp.obj"
 
 # External object files for target GUI
 GUI_EXTERNAL_OBJECTS =
 
 libGUI.a: CMakeFiles/GUI.dir/src/GUI/Interface.cpp.obj
 libGUI.a: CMakeFiles/GUI.dir/src/GUI/Rendering/Font.cpp.obj
-libGUI.a: CMakeFiles/GUI.dir/src/GUI/TextRendering/Font.cpp.obj
-libGUI.a: CMakeFiles/GUI.dir/src/GUI/TextRendering/Text.cpp.obj
+libGUI.a: CMakeFiles/GUI.dir/src/GUI/Rendering/Glypth.cpp.obj
 libGUI.a: CMakeFiles/GUI.dir/build.make
 libGUI.a: CMakeFiles/GUI.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=E:\Code\C_code\libraries\GUI\build\clang-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX static library libGUI.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=E:\Code\C_code\libraries\GUI\build\clang-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX static library libGUI.a"
 	$(CMAKE_COMMAND) -P CMakeFiles\GUI.dir\cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\GUI.dir\link.txt --verbose=$(VERBOSE)
 

@@ -46,7 +46,6 @@ target_link_libraries(GUI PUBLIC Vulkan::Vulkan)
 
 
 if(PROJECT_IS_TOP_LEVEL)
-    find_package(ICU REQUIRED COMPONENTS uc i18n)
     add_subdirectory(
         ${Freetype_DIR} ${CMAKE_CURRENT_BINARY_DIR}/freetype
     )
@@ -67,8 +66,6 @@ endif()
 target_link_libraries(${PROJECT_NAME}
     PUBLIC
         freetype::freetype
-        ICU::uc
-        ICU::i18n
         harfbuzz::harfbuzz
 )
 

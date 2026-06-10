@@ -13,10 +13,11 @@
 namespace GUI {
 
     // size and position in pixel coordinates
-    struct Quad
-    {
+    struct Quad {
         glm::ivec2 position;
         glm::ivec2 size;
+        glm::vec2 uvMin;
+        glm::vec2 uvMax;
         TextureId textureId;
     };
 
@@ -49,41 +50,46 @@ namespace GUI {
         //Quad buffer        
         Graphics::MemoryAllocateInfo m_quadAllocInfo;
         Graphics::MemoryAllocateInfo m_vertexAllocInfo;
+        Graphics::MemoryAllocateInfo m_indexAllocInfo;
         Graphics::BufferCreateInfo m_quadBufferCreateInfo;
         Graphics::BufferCreateInfo m_vertexBufferCreateInfo;
+        Graphics::BufferCreateInfo m_indexBufferCreateInfo;
 
         Graphics::MemoryRequirements m_quadMemoryRequirements;
         Graphics::MemoryRequirements m_vertexMemoryRequirements;
+        Graphics::MemoryRequirements m_indexMemoryRequirements;
 
         Graphics::Memory m_quadMemory;
         Graphics::Memory m_vertexMemory;
+        Graphics::Memory m_indexMemory;
 
         Graphics::MemoryMapping m_quadMapping;
         Graphics::MemoryMapping m_vertexMapping;
+        Graphics::MemoryMapping m_indexMapping;
 
         std::array<Graphics::Buffer, 2> m_buffers;
+        Graphics::Buffer m_indexBuffer;
 
         static const size_t s_quadBufferStartSize = 128;
         size_t m_quadCount;
 
-        //vertex attributes
-        struct Vertex {
-            glm::vec2 position;
-            glm::vec2 uv;
+        // //vertex attributes
+        // struct Vertex {
+        //     glm::vec2 position;
+        //     glm::vec2 uv;
+        // };
+
+        static inline const std::array<uint32_t, 6> s_quadIndices = {
+            0, 1, 2,  0, 2, 3
         };
 
-        static inline const std::array<Vertex, 6> s_quadVertices = {
-            Vertex{glm::vec2(0.0f, 0.0f), glm::vec2(0.0f, 0.0f)},
-            Vertex{glm::vec2(1.0f, 0.0f), glm::vec2(1.0f, 0.0f)},
-            Vertex{glm::vec2(1.0f, 1.0f), glm::vec2(1.0f, 1.0f)},
-
-            Vertex{glm::vec2(0.0f, 0.0f), glm::vec2(0.0f, 0.0f)},
-            Vertex{glm::vec2(1.0f, 1.0f), glm::vec2(1.0f, 1.0f)},
-            Vertex{glm::vec2(0.0f, 1.0f), glm::vec2(0.0f, 1.0f)},
+        static inline const std::array<glm::vec2, 4> s_quadVertices = {
+            glm::vec2(0.0f, 0.0f), glm::vec2(1.0f, 0.0f),
+            glm::vec2(1.0f, 1.0f), glm::vec2(0.0f, 1.0f)
         };
 
         std::array<Graphics::VertexInputBindingDescription, 2> m_bindings;
-        std::array<Graphics::VertexInputAttributeDescription, 5> m_attributes;
+        std::array<Graphics::VertexInputAttributeDescription, 6> m_attributes;
 
     public:
 
@@ -102,18 +108,19 @@ namespace GUI {
             // Vertex Input
             // ------------------------------------------------------------
 
-            m_bindings[0].setBinding(0).setStride(sizeof(Vertex)).setInputRate(Graphics::VertexInputRate::Vertex);
+            m_bindings[0].setBinding(0).setStride(sizeof(glm::vec2)).setInputRate(Graphics::VertexInputRate::Vertex);
             m_bindings[1].setBinding(1).setStride(sizeof(Quad)).setInputRate(Graphics::VertexInputRate::Instance);
 
             m_attributes[0].setLocation(0).setBinding(0).setFormat(Graphics::Format::R32G32Sfloat).setOffset(0);
-            m_attributes[1].setLocation(1).setBinding(0).setFormat(Graphics::Format::R32G32Sfloat).setOffset(sizeof(glm::vec2));
 
-            m_attributes[2].setLocation(2).setBinding(1).setFormat(Graphics::Format::R32G32Sint).setOffset(0);
-            m_attributes[3].setLocation(3).setBinding(1).setFormat(Graphics::Format::R32G32Sint).setOffset(sizeof(glm::ivec2));
-            m_attributes[4].setLocation(4).setBinding(1).setFormat(Graphics::Format::R32Uint).setOffset(sizeof(glm::ivec2) * 2);
+            m_attributes[1].setLocation(1).setBinding(1).setFormat(Graphics::Format::R32G32Sint).setOffset(0);
+            m_attributes[2].setLocation(2).setBinding(1).setFormat(Graphics::Format::R32G32Sint).setOffset(sizeof(glm::ivec2));
+            m_attributes[3].setLocation(3).setBinding(1).setFormat(Graphics::Format::R32G32Sfloat).setOffset(sizeof(glm::ivec2) * 2);
+            m_attributes[4].setLocation(4).setBinding(1).setFormat(Graphics::Format::R32G32Sfloat).setOffset(sizeof(glm::ivec2) * 2 + sizeof(glm::vec2));
+            m_attributes[5].setLocation(5).setBinding(1).setFormat(Graphics::Format::R32Uint).setOffset(sizeof(glm::ivec2) * 2 + sizeof(glm::vec2) * 2);
 
             m_vertexInputState.setVertexBindingDescriptions(m_bindings);
-            m_vertexInputState.setVertexAttributeDescriptions(m_attributes);            
+            m_vertexInputState.setVertexAttributeDescriptions(m_attributes);
 
             // ------------------------------------------------------------
             // Input Assembly
@@ -231,18 +238,21 @@ namespace GUI {
         void record(const Graphics::DeviceFunctionTable& functions, Graphics::CommandBuffer cmd) {
             cmd.bindPipeline(functions, m_pipeline, Graphics::PipelineBindPoint::Graphics);
             std::array<Graphics::DeviceSize, 2> offsets = { 0, 0 };
-            cmd.bindVertexBuffers(functions, 0, m_buffers, offsets);            
-            cmd.draw(functions, 6, m_quadCount, 0, 0);
+            cmd.bindVertexBuffers(functions, 0, m_buffers, offsets);
+            cmd.bindIndexBuffer(functions, m_indexBuffer, 0, Graphics::IndexType::Uint32);
+            cmd.drawIndexed(functions, 6, m_quadCount, 0, 0, 0);
         }
 
     private:
 
         void createBuffers(const Graphics::DeviceFunctionTable& functions, Graphics::DeviceRef device, 
             const Graphics::PhysicalDeviceMemoryProperties& deviceMemoryProps) {
-            m_vertexBufferCreateInfo = { s_quadVertices.size() * sizeof(Vertex), 
+            m_vertexBufferCreateInfo = { s_quadVertices.size() * sizeof(glm::vec2), 
                 Graphics::Flags::BufferUsage::Bits::VertexBuffer, Graphics::SharingMode::Exclusive };
             m_quadBufferCreateInfo = { s_quadBufferStartSize * sizeof(Quad), 
                 Graphics::Flags::BufferUsage::Bits::VertexBuffer, Graphics::SharingMode::Exclusive };
+            m_indexBufferCreateInfo = { s_quadIndices.size() * sizeof(uint32_t), 
+                Graphics::Flags::BufferUsage::Bits::IndexBuffer, Graphics::SharingMode::Exclusive };
 
             auto& vertexBuffer = m_buffers[static_cast<size_t>(BufferSpecialization::Vertex)];
             auto& quadBuffer = m_buffers[static_cast<size_t>(BufferSpecialization::Quad)];
@@ -251,6 +261,9 @@ namespace GUI {
             m_vertexMemoryRequirements = vertexBuffer.getMemoryRequirements(functions, device);
             quadBuffer.create(functions, device, m_quadBufferCreateInfo);
             m_quadMemoryRequirements = quadBuffer.getMemoryRequirements(functions, device);
+            m_indexBuffer.create(functions, device, m_indexBufferCreateInfo);
+            m_indexMemoryRequirements = m_indexBuffer.getMemoryRequirements(functions, device);
+            
 
             m_vertexAllocInfo = { m_vertexMemoryRequirements.getSize(),
                 Graphics::Utility::findMemoryTypeFirstFit(deviceMemoryProps, m_vertexMemoryRequirements.getMemoryTypeBits(), 
@@ -258,17 +271,26 @@ namespace GUI {
             m_quadAllocInfo = { m_quadMemoryRequirements.getSize(),
                 Graphics::Utility::findMemoryTypeFirstFit(deviceMemoryProps, m_quadMemoryRequirements.getMemoryTypeBits(), 
                 Graphics::Flags::MemoryProperty::Bits::HostVisibleCoherent) };
+            m_indexAllocInfo = { m_indexMemoryRequirements.getSize(),
+                Graphics::Utility::findMemoryTypeFirstFit(deviceMemoryProps, m_indexMemoryRequirements.getMemoryTypeBits(), 
+                Graphics::Flags::MemoryProperty::Bits::HostVisibleCoherent) };
 
             m_vertexMemory.create(functions, device, m_vertexAllocInfo);
             m_quadMemory.create(functions, device, m_quadAllocInfo);
+            m_indexMemory.create(functions, device, m_indexAllocInfo);
             m_vertexMemory.bindBuffer(functions, device, vertexBuffer);
             m_quadMemory.bindBuffer(functions, device, quadBuffer);
+            m_indexMemory.bindBuffer(functions, device, m_indexBuffer);
 
             m_vertexMapping = m_vertexMemory.map(functions, device);
             m_quadMapping = m_quadMemory.map(functions, device);
+            m_indexMapping = m_indexMemory.map(functions, device);
 
-            Vertex* vertices = m_vertexMapping.get<Vertex>();
-            for(size_t i = 0; i < s_quadVertices.size(); ++i) vertices[i] = s_quadVertices[i];
+            glm::vec2* vertices = m_vertexMapping.get<glm::vec2>();
+            std::copy(s_quadVertices.begin(), s_quadVertices.end(), vertices);
+
+            uint32_t* indices = m_indexMapping.get<uint32_t>();
+            std::copy(s_quadIndices.begin(), s_quadIndices.end(), indices);
         }
 
         void growMemory(const Graphics::DeviceFunctionTable& functions, Graphics::DeviceRef device, size_t newSize) {

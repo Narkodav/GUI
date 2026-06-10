@@ -26,8 +26,7 @@ namespace GUI
             Graphics::DescriptorSet set,
             uint32_t descriptorBinding,
             uint32_t maxTextures,
-            uint32_t startIndex = 0)
-        {
+            uint32_t startIndex = 0) {
             m_set = set;
             m_descriptorBinding = descriptorBinding;
             m_nextIndex = 0;
@@ -43,8 +42,7 @@ namespace GUI
             Graphics::DeviceRef device,
             Graphics::ImageViewRef view,
             Graphics::SamplerRef sampler,
-            Graphics::ImageLayout layout = Graphics::ImageLayout::ShaderReadOnlyOptimal)
-        {
+            Graphics::ImageLayout layout = Graphics::ImageLayout::ShaderReadOnlyOptimal) {
             uint32_t index = m_nextIndex++;
 
             if (index >= m_slots.size())
@@ -68,8 +66,7 @@ namespace GUI
             const Graphics::DeviceFunctionTable& functions,
             Graphics::DeviceRef device,
             Graphics::DescriptorSet newSet,
-            uint32_t newBinding) 
-        {
+            uint32_t newBinding) {
             m_set = newSet;
             m_descriptorBinding = newBinding;
             Graphics::WriteDescriptorSet write;
@@ -91,8 +88,7 @@ namespace GUI
             const Graphics::DeviceFunctionTable& functions,
             Graphics::DeviceRef device,
             uint32_t index,
-            const Graphics::DescriptorImageInfo& slot)
-        {
+            const Graphics::DescriptorImageInfo& slot) {
             Graphics::WriteDescriptorSet write;
 
             write.setDstSet(m_set)

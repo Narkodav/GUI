@@ -6,8 +6,7 @@ file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "E:/Code/C_code/libraries/GUI/
 set(OLD_GLOB
   "E:/Code/C_code/libraries/GUI/src/GUI/Interface.cpp"
   "E:/Code/C_code/libraries/GUI/src/GUI/Rendering/Font.cpp"
-  "E:/Code/C_code/libraries/GUI/src/GUI/TextRendering/Font.cpp"
-  "E:/Code/C_code/libraries/GUI/src/GUI/TextRendering/Text.cpp"
+  "E:/Code/C_code/libraries/GUI/src/GUI/Rendering/Glypth.cpp"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")

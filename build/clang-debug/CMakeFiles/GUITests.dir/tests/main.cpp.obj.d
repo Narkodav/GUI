@@ -888,35 +888,53 @@ CMakeFiles/GUITests.dir/tests/main.cpp.obj: \
   C:/Users/user/.utils/llvm-mingw/include/c++/v1/__charconv/to_chars.h \
   E:/Code/C_code/libraries/GUI/tests/Test.h \
   E:/Code/C_code/libraries/GUI/include/GUI/Instance.h \
+  E:/API/freetype-master/include/ft2build.h \
+  E:/API/freetype-master/include/freetype/config/ftheader.h \
+  E:/API/freetype-master/include/freetype/freetype.h \
+  E:/Code/C_code/libraries/GUI/build/clang-debug/freetype/include/freetype/config/ftconfig.h \
+  E:/Code/C_code/libraries/GUI/build/clang-debug/freetype/include/freetype/config/ftoption.h \
+  E:/API/freetype-master/include/freetype/config/ftstdlib.h \
+  C:/Users/user/.utils/llvm-mingw/include/setjmp.h \
+  E:/API/freetype-master/include/freetype/config/integer-types.h \
+  E:/API/freetype-master/include/freetype/config/public-macros.h \
+  E:/API/freetype-master/include/freetype/config/mac-support.h \
+  E:/API/freetype-master/include/freetype/fttypes.h \
+  E:/API/freetype-master/include/freetype/ftsystem.h \
+  E:/API/freetype-master/include/freetype/ftimage.h \
+  E:/API/freetype-master/include/freetype/fterrors.h \
+  E:/API/freetype-master/include/freetype/ftmoderr.h \
+  E:/API/freetype-master/include/freetype/fterrdef.h \
+  E:/API/freetype-master/include/freetype/ftcolor.h \
+  E:/API/freetype-master/include/freetype/tttables.h \
   E:/Code/C_code/libraries/GraphicsWrapper/include/Graphics/Graphics.h \
   E:/Code/C_code/libraries/GraphicsWrapper/include/Graphics/HandleTypes/Buffer.h \
   E:/Code/C_code/libraries/GraphicsWrapper/include/Graphics/HandleTypes/../Common.h \
-  E:/API/Vulkan/Include/vulkan/vulkan_core.h \
-  E:/API/Vulkan/Include/vulkan/vk_platform.h \
-  E:/API/Vulkan/Include/vk_video/vulkan_video_codec_h264std.h \
-  E:/API/Vulkan/Include/vk_video/vulkan_video_codecs_common.h \
-  E:/API/Vulkan/Include/vk_video/vulkan_video_codec_h264std_encode.h \
-  E:/API/Vulkan/Include/vk_video/vulkan_video_codec_h265std.h \
-  E:/API/Vulkan/Include/vk_video/vulkan_video_codec_h265std_encode.h \
-  E:/API/Vulkan/Include/vk_video/vulkan_video_codec_h264std_decode.h \
-  E:/API/Vulkan/Include/vk_video/vulkan_video_codec_h265std_decode.h \
-  E:/API/Vulkan/Include/vk_video/vulkan_video_codec_av1std.h \
-  E:/API/Vulkan/Include/vk_video/vulkan_video_codec_av1std_decode.h \
-  E:/API/Vulkan/Include/vk_video/vulkan_video_codec_av1std_encode.h \
-  E:/API/Vulkan/Include/vk_video/vulkan_video_codec_vp9std.h \
-  E:/API/Vulkan/Include/vk_video/vulkan_video_codec_vp9std_decode.h \
-  E:/API/Vulkan/Include/vulkan/vulkan.h \
-  E:/API/Vulkan/Include/vulkan/vulkan.hpp \
-  E:/API/Vulkan/Include/vulkan/vulkan_hpp_macros.hpp \
+  E:/API/Vulkan/include/vulkan/vulkan_core.h \
+  E:/API/Vulkan/include/vulkan/vk_platform.h \
+  E:/API/Vulkan/include/vk_video/vulkan_video_codec_h264std.h \
+  E:/API/Vulkan/include/vk_video/vulkan_video_codecs_common.h \
+  E:/API/Vulkan/include/vk_video/vulkan_video_codec_h264std_encode.h \
+  E:/API/Vulkan/include/vk_video/vulkan_video_codec_h265std.h \
+  E:/API/Vulkan/include/vk_video/vulkan_video_codec_h265std_encode.h \
+  E:/API/Vulkan/include/vk_video/vulkan_video_codec_h264std_decode.h \
+  E:/API/Vulkan/include/vk_video/vulkan_video_codec_h265std_decode.h \
+  E:/API/Vulkan/include/vk_video/vulkan_video_codec_av1std.h \
+  E:/API/Vulkan/include/vk_video/vulkan_video_codec_av1std_decode.h \
+  E:/API/Vulkan/include/vk_video/vulkan_video_codec_av1std_encode.h \
+  E:/API/Vulkan/include/vk_video/vulkan_video_codec_vp9std.h \
+  E:/API/Vulkan/include/vk_video/vulkan_video_codec_vp9std_decode.h \
+  E:/API/Vulkan/include/vulkan/vulkan.h \
+  E:/API/Vulkan/include/vulkan/vulkan.hpp \
+  E:/API/Vulkan/include/vulkan/vulkan_hpp_macros.hpp \
   C:/Users/user/.utils/llvm-mingw/include/c++/v1/cassert \
   C:/Users/user/.utils/llvm-mingw/include/assert.h \
   C:/Users/user/.utils/llvm-mingw/include/c++/v1/span \
   C:/Users/user/.utils/llvm-mingw/include/c++/v1/__fwd/span.h \
-  E:/API/Vulkan/Include/vulkan/vulkan_enums.hpp \
-  E:/API/Vulkan/Include/vulkan/vulkan_to_string.hpp \
-  E:/API/Vulkan/Include/vulkan/vulkan_handles.hpp \
-  E:/API/Vulkan/Include/vulkan/vulkan_structs.hpp \
-  E:/API/Vulkan/Include/vulkan/vulkan_funcs.hpp \
+  E:/API/Vulkan/include/vulkan/vulkan_enums.hpp \
+  E:/API/Vulkan/include/vulkan/vulkan_to_string.hpp \
+  E:/API/Vulkan/include/vulkan/vulkan_handles.hpp \
+  E:/API/Vulkan/include/vulkan/vulkan_structs.hpp \
+  E:/API/Vulkan/include/vulkan/vulkan_funcs.hpp \
   E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/glm/vec4.hpp \
   E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/glm/./ext/vector_bool4.hpp \
   E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/glm/./ext/../detail/type_vec4.hpp \
@@ -1357,5 +1375,88 @@ CMakeFiles/GUITests.dir/tests/main.cpp.obj: \
   E:/Code/C_code/libraries/GUI/include/GUI/Rendering/TextureDescriptor.h \
   E:/Code/C_code/libraries/GUI/include/GUI/Rendering/DefaultTextureCache.h \
   E:/Code/C_code/libraries/GUI/include/GUI/Elements/Element.h \
+  E:/Code/C_code/libraries/GUI/include/GUI/Rendering/Font.h \
+  E:/Code/C_code/libraries/GUI/include/GUI/Rendering/Glypth.h \
+  E:/API/freetype-master/include/freetype/ftsizes.h \
+  E:/API/harfbuzz-main/src/hb.h E:/API/harfbuzz-main/src/hb-blob.h \
+  E:/API/harfbuzz-main/src/hb-common.h \
+  C:/Users/user/.utils/llvm-mingw/include/c++/v1/inttypes.h \
+  C:/Users/user/.utils/llvm-mingw/lib/clang/22/include/inttypes.h \
+  C:/Users/user/.utils/llvm-mingw/include/inttypes.h \
+  E:/API/harfbuzz-main/src/hb-script-list.h \
+  E:/API/harfbuzz-main/src/hb-buffer.h \
+  E:/API/harfbuzz-main/src/hb-unicode.h \
+  E:/API/harfbuzz-main/src/hb-font.h E:/API/harfbuzz-main/src/hb-face.h \
+  E:/API/harfbuzz-main/src/hb-map.h E:/API/harfbuzz-main/src/hb-set.h \
+  E:/API/harfbuzz-main/src/hb-draw.h E:/API/harfbuzz-main/src/hb-paint.h \
+  E:/API/harfbuzz-main/src/hb-deprecated.h \
+  E:/API/harfbuzz-main/src/hb-shape.h \
+  E:/API/harfbuzz-main/src/hb-shape-plan.h \
+  E:/API/harfbuzz-main/src/hb-style.h \
+  E:/API/harfbuzz-main/src/hb-version.h E:/API/harfbuzz-main/src/hb-ft.h \
+  E:/API/harfbuzz-main/src/hb-ot.h \
+  E:/API/harfbuzz-main/src/hb-ot-color.h \
+  E:/API/harfbuzz-main/src/hb-ot-name.h \
+  E:/API/harfbuzz-main/src/hb-ot-deprecated.h \
+  E:/API/harfbuzz-main/src/hb-ot-font.h \
+  E:/API/harfbuzz-main/src/hb-ot-layout.h \
+  E:/API/harfbuzz-main/src/hb-ot-math.h \
+  E:/API/harfbuzz-main/src/hb-ot-meta.h \
+  E:/API/harfbuzz-main/src/hb-ot-metrics.h \
+  E:/API/harfbuzz-main/src/hb-ot-shape.h \
+  E:/API/harfbuzz-main/src/hb-ot-var.h \
+  E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/glm/gtx/hash.hpp \
+  E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/glm/gtx/../vec2.hpp \
+  E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/glm/gtx/../vec3.hpp \
+  E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/glm/gtx/../vec4.hpp \
+  E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/glm/gtx/../gtc/vec1.hpp \
+  E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/glm/gtx/../gtc/../ext/vector_bool1.hpp \
+  E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/glm/gtx/../gtc/../ext/../detail/type_vec1.hpp \
+  E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/glm/gtx/../gtc/../ext/vector_bool1_precision.hpp \
+  E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/glm/gtx/../gtc/../ext/vector_float1.hpp \
+  E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/glm/gtx/../gtc/../ext/vector_float1_precision.hpp \
+  E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/glm/gtx/../gtc/../ext/vector_double1.hpp \
+  E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/glm/gtx/../gtc/../ext/vector_double1_precision.hpp \
+  E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/glm/gtx/../gtc/../ext/vector_int1.hpp \
+  E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/glm/gtx/../gtc/../ext/vector_int1_sized.hpp \
+  E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/glm/gtx/../gtc/../ext/../ext/vector_int1.hpp \
+  E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/glm/gtx/../gtc/../ext/../ext/scalar_int_sized.hpp \
+  E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/glm/gtx/../gtc/../ext/vector_uint1.hpp \
+  E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/glm/gtx/../gtc/../ext/vector_uint1_sized.hpp \
+  E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/glm/gtx/../gtc/../ext/../ext/vector_uint1.hpp \
+  E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/glm/gtx/../gtc/../ext/../ext/scalar_uint_sized.hpp \
+  E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/glm/gtx/../gtx/dual_quaternion.hpp \
+  E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/glm/gtx/../gtx/../glm.hpp \
+  E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/glm/gtx/../gtx/../gtc/constants.hpp \
+  E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/glm/gtx/../gtx/../gtc/quaternion.hpp \
+  E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/glm/gtx/../gtx/dual_quaternion.inl \
+  E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/glm/gtx/../gtx/../geometric.hpp \
+  E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/glm/gtx/../mat2x2.hpp \
+  E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/glm/gtx/../mat2x3.hpp \
+  E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/glm/gtx/../mat2x4.hpp \
+  E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/glm/gtx/../mat3x2.hpp \
+  E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/glm/gtx/../mat3x3.hpp \
+  E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/glm/gtx/../mat3x4.hpp \
+  E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/glm/gtx/../mat4x2.hpp \
+  E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/glm/gtx/../mat4x3.hpp \
+  E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/glm/gtx/../mat4x4.hpp \
+  E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/glm/gtx/hash.inl \
+  E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/glm/gtc/type_ptr.hpp \
+  E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/glm/gtc/../gtc/quaternion.hpp \
+  E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/glm/gtc/../gtc/vec1.hpp \
+  E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/glm/gtc/../mat2x2.hpp \
+  E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/glm/gtc/../mat2x3.hpp \
+  E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/glm/gtc/../mat2x4.hpp \
+  E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/glm/gtc/../mat3x2.hpp \
+  E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/glm/gtc/../mat3x3.hpp \
+  E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/glm/gtc/../mat3x4.hpp \
+  E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/glm/gtc/../mat4x2.hpp \
+  E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/glm/gtc/../mat4x3.hpp \
+  E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/glm/gtc/type_ptr.inl \
   E:/Code/C_code/libraries/GUI/include/GUI/Elements/QuadElement.h \
-  E:/Code/C_code/libraries/GUI/include/GUI/Elements/Primitives/QuadPrimitive.h
+  E:/Code/C_code/libraries/GUI/include/GUI/Elements/Primitives/QuadPrimitive.h \
+  E:/Code/C_code/libraries/GUI/include/GUI/Elements/LetterElement.h \
+  E:/Code/C_code/libraries/GUI/include/GUI/Elements/Primitives/LetterPrimitive.h \
+  E:/Code/C_code/libraries/GUI/include/GUI/Elements/MonospacedTextElement.h \
+  E:/Code/C_code/libraries/GUI/include/GUI/Elements/Primitives/MonospacedTextPrimitive.h \
+  E:/Code/C_code/libraries/GUI/include/GUI/Rendering/Text.h

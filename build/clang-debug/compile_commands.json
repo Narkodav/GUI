@@ -13,15 +13,9 @@
 },
 {
   "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug",
-  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGUI_EXPORTS @CMakeFiles/GUI.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -pthread -o CMakeFiles\\GUI.dir\\src\\GUI\\TextRendering\\Font.cpp.obj -c E:\\Code\\C_code\\libraries\\GUI\\src\\GUI\\TextRendering\\Font.cpp",
-  "file": "E:/Code/C_code/libraries/GUI/src/GUI/TextRendering/Font.cpp",
-  "output": "CMakeFiles/GUI.dir/src/GUI/TextRendering/Font.cpp.obj"
-},
-{
-  "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug",
-  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGUI_EXPORTS @CMakeFiles/GUI.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -pthread -o CMakeFiles\\GUI.dir\\src\\GUI\\TextRendering\\Text.cpp.obj -c E:\\Code\\C_code\\libraries\\GUI\\src\\GUI\\TextRendering\\Text.cpp",
-  "file": "E:/Code/C_code/libraries/GUI/src/GUI/TextRendering/Text.cpp",
-  "output": "CMakeFiles/GUI.dir/src/GUI/TextRendering/Text.cpp.obj"
+  "command": "C:\\Users\\user\\.utils\\llvm-mingw\\bin\\clang++.exe -DGUI_EXPORTS @CMakeFiles/GUI.dir/includes_CXX.rsp -g -std=gnu++20 -Wall -Wextra -Wpedantic -pthread -o CMakeFiles\\GUI.dir\\src\\GUI\\Rendering\\Glypth.cpp.obj -c E:\\Code\\C_code\\libraries\\GUI\\src\\GUI\\Rendering\\Glypth.cpp",
+  "file": "E:/Code/C_code/libraries/GUI/src/GUI/Rendering/Glypth.cpp",
+  "output": "CMakeFiles/GUI.dir/src/GUI/Rendering/Glypth.cpp.obj"
 },
 {
   "directory": "E:/Code/C_code/libraries/GUI/build/clang-debug",
