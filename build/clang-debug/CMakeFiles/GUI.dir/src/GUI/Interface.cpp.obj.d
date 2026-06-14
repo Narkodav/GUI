@@ -1374,8 +1374,9 @@ CMakeFiles/GUI.dir/src/GUI/Interface.cpp.obj: \
   E:/Code/C_code/libraries/GUI/include/GUI/Rendering/TextureDescriptor.h \
   E:/Code/C_code/libraries/GUI/include/GUI/Rendering/DefaultTextureCache.h \
   E:/Code/C_code/libraries/GUI/include/GUI/Elements/Element.h \
+  E:/Code/C_code/libraries/GUI/include/GUI/Capabilities/Capability.h \
   E:/Code/C_code/libraries/GUI/include/GUI/Rendering/Font.h \
-  E:/Code/C_code/libraries/GUI/include/GUI/Rendering/Glypth.h \
+  E:/Code/C_code/libraries/GUI/include/GUI/Rendering/Glyph.h \
   E:/API/freetype-master/include/freetype/ftsizes.h \
   E:/API/harfbuzz-main/src/hb.h E:/API/harfbuzz-main/src/hb-blob.h \
   E:/API/harfbuzz-main/src/hb-common.h \

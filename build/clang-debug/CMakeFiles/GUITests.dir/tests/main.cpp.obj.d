@@ -1375,8 +1375,9 @@ CMakeFiles/GUITests.dir/tests/main.cpp.obj: \
   E:/Code/C_code/libraries/GUI/include/GUI/Rendering/TextureDescriptor.h \
   E:/Code/C_code/libraries/GUI/include/GUI/Rendering/DefaultTextureCache.h \
   E:/Code/C_code/libraries/GUI/include/GUI/Elements/Element.h \
+  E:/Code/C_code/libraries/GUI/include/GUI/Capabilities/Capability.h \
   E:/Code/C_code/libraries/GUI/include/GUI/Rendering/Font.h \
-  E:/Code/C_code/libraries/GUI/include/GUI/Rendering/Glypth.h \
+  E:/Code/C_code/libraries/GUI/include/GUI/Rendering/Glyph.h \
   E:/API/freetype-master/include/freetype/ftsizes.h \
   E:/API/harfbuzz-main/src/hb.h E:/API/harfbuzz-main/src/hb-blob.h \
   E:/API/harfbuzz-main/src/hb-common.h \
@@ -1453,10 +1454,12 @@ CMakeFiles/GUITests.dir/tests/main.cpp.obj: \
   E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/glm/gtc/../mat4x2.hpp \
   E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/glm/gtc/../mat4x3.hpp \
   E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/glm/gtc/type_ptr.inl \
-  E:/Code/C_code/libraries/GUI/include/GUI/Elements/QuadElement.h \
-  E:/Code/C_code/libraries/GUI/include/GUI/Elements/Primitives/QuadPrimitive.h \
-  E:/Code/C_code/libraries/GUI/include/GUI/Elements/LetterElement.h \
-  E:/Code/C_code/libraries/GUI/include/GUI/Elements/Primitives/LetterPrimitive.h \
-  E:/Code/C_code/libraries/GUI/include/GUI/Elements/MonospacedTextElement.h \
-  E:/Code/C_code/libraries/GUI/include/GUI/Elements/Primitives/MonospacedTextPrimitive.h \
-  E:/Code/C_code/libraries/GUI/include/GUI/Rendering/Text.h
+  E:/Code/C_code/libraries/GUI/include/GUI/Elements/Rectangle.h \
+  E:/Code/C_code/libraries/GUI/include/GUI/Elements/Box.h \
+  E:/Code/C_code/libraries/GUI/include/GUI/Elements/MonospacedText.h \
+  E:/Code/C_code/libraries/GUI/include/GUI/Rendering/Text.h \
+  E:/Code/C_code/libraries/GUI/include/GUI/Elements/Label.h \
+  E:/Code/C_code/libraries/GUI/include/GUI/Elements/Border.h \
+  E:/Code/C_code/libraries/GUI/include/GUI/Elements/Button.h \
+  E:/Code/C_code/libraries/GUI/include/GUI/Capabilities/PointerTarget.h \
+  E:/Code/C_code/libraries/CommonApi/install/clang-debug/include/CommonApi/Utilities/EventSystems/EventSystem.h

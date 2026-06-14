@@ -1,7 +1,7 @@
 CMakeFiles/GUI.dir/src/GUI/Rendering/Font.cpp.obj: \
   E:/Code/C_code/libraries/GUI/src/GUI/Rendering/Font.cpp \
   E:/Code/C_code/libraries/GUI/include/GUI/Rendering/Font.h \
-  E:/Code/C_code/libraries/GUI/include/GUI/Rendering/Glypth.h \
+  E:/Code/C_code/libraries/GUI/include/GUI/Rendering/Glyph.h \
   E:/API/freetype-master/include/ft2build.h \
   E:/API/freetype-master/include/freetype/config/ftheader.h \
   E:/API/freetype-master/include/freetype/freetype.h \
@@ -1463,4 +1463,5 @@ CMakeFiles/GUI.dir/src/GUI/Rendering/Font.cpp.obj: \
   E:/Code/C_code/libraries/GUI/include/GUI/Rendering/Quad.h \
   E:/Code/C_code/libraries/GUI/include/GUI/Rendering/ShaderCache.h \
   E:/Code/C_code/libraries/GUI/include/GUI/Rendering/DefaultTextureCache.h \
-  E:/Code/C_code/libraries/GUI/include/GUI/Elements/Element.h
+  E:/Code/C_code/libraries/GUI/include/GUI/Elements/Element.h \
+  E:/Code/C_code/libraries/GUI/include/GUI/Capabilities/Capability.h

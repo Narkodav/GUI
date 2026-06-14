@@ -15,10 +15,10 @@ namespace GUI {
     }
 
     void Font::destroy(const Graphics::DeviceFunctionTable& functions, Graphics::DeviceRef device) {
-        FT_Done_Face(m_face);
         for(auto& size : m_sizes) {
             size.second.destroy(functions, device);
         }
+        FT_Done_Face(m_face);
         m_sizes.clear();
     }
 
@@ -62,87 +62,87 @@ namespace GUI {
         return FT_Get_Color_Glyph_Layer(m_font->m_face, character, &layerGlyphIndex, &layerColorIndex, &iterator);
     }
 
-    Glypth Font::Size::getGlypthGrayscale(GUI::Instance& instance, const Graphics::InstanceFunctionTable& instanceFunctions, 
+    Glyph Font::Size::getGlyphGrayscale(GUI::Instance& instance, const Graphics::InstanceFunctionTable& instanceFunctions, 
         const Graphics::DeviceFunctionTable& functions, Graphics::DeviceRef device, 
         Graphics::PhysicalDevice physicalDevice, CharId character) const {
-        Glypth glypth;
+        Glyph glyph;
         if (FT_Load_Glyph(m_font->m_face, character, FT_LOAD_RENDER))
             throw std::runtime_error("ERROR::FREETYPE: Failed to load a character");
 
-        auto& glypthSlot = m_font->m_face->glyph;
+        auto& glyphSlot = m_font->m_face->glyph;
 
-        glypth.create(instance, instanceFunctions, functions, device, physicalDevice, {
-                glm::ivec2(glypthSlot->bitmap.width, glypthSlot->bitmap.rows),
-                glm::ivec2(glypthSlot->bitmap_left, glypthSlot->bitmap_top),
-                glm::ivec2(glypthSlot->advance.x, glypthSlot->advance.y)
+        glyph.create(instance, instanceFunctions, functions, device, physicalDevice, {
+                glm::ivec2(glyphSlot->bitmap.width, glyphSlot->bitmap.rows),
+                glm::ivec2(glyphSlot->bitmap_left, glyphSlot->bitmap_top),
+                glm::ivec2(glyphSlot->advance.x, glyphSlot->advance.y)
             }, character,
-            glypthSlot->bitmap.buffer,
-            glypthSlot->bitmap.width,
-            glypthSlot->bitmap.rows,
-            glypthSlot->bitmap.pitch,
+            glyphSlot->bitmap.buffer,
+            glyphSlot->bitmap.width,
+            glyphSlot->bitmap.rows,
+            glyphSlot->bitmap.pitch,
             1,
             Graphics::Format::R8Unorm
         );
-        return glypth;
+        return glyph;
     }
 
-    Glypth Font::Size::getGlypthSibix(GUI::Instance& instance, const Graphics::InstanceFunctionTable& instanceFunctions, 
+    Glyph Font::Size::getGlyphSibix(GUI::Instance& instance, const Graphics::InstanceFunctionTable& instanceFunctions, 
         const Graphics::DeviceFunctionTable& functions, Graphics::DeviceRef device, 
         Graphics::PhysicalDevice physicalDevice, CharId character) const {
-        Glypth glypth;
+        Glyph glyph;
         if (FT_Load_Glyph(m_font->m_face, character, FT_LOAD_COLOR | FT_LOAD_RENDER))
             throw std::runtime_error("ERROR::FREETYPE: Failed to load a character");
 
-        auto& glypthSlot = m_font->m_face->glyph;
+        auto& glyphSlot = m_font->m_face->glyph;
 
-        glypth.create(instance, instanceFunctions, functions, device, physicalDevice, {
-                glm::ivec2(glypthSlot->bitmap.width, glypthSlot->bitmap.rows),
-                glm::ivec2(glypthSlot->bitmap_left, glypthSlot->bitmap_top),
-                glm::ivec2(glypthSlot->advance.x, glypthSlot->advance.y)
+        glyph.create(instance, instanceFunctions, functions, device, physicalDevice, {
+                glm::ivec2(glyphSlot->bitmap.width, glyphSlot->bitmap.rows),
+                glm::ivec2(glyphSlot->bitmap_left, glyphSlot->bitmap_top),
+                glm::ivec2(glyphSlot->advance.x, glyphSlot->advance.y)
             }, character,
-            glypthSlot->bitmap.buffer,
-            glypthSlot->bitmap.width,
-            glypthSlot->bitmap.rows,
-            glypthSlot->bitmap.pitch,
+            glyphSlot->bitmap.buffer,
+            glyphSlot->bitmap.width,
+            glyphSlot->bitmap.rows,
+            glyphSlot->bitmap.pitch,
             4,
             Graphics::Format::R8G8B8A8Unorm
         );
-        return glypth;
+        return glyph;
     }
 
-    Glypth Font::Size::getGlypthCbdtCblc(GUI::Instance& instance, const Graphics::InstanceFunctionTable& instanceFunctions, 
+    Glyph Font::Size::getGlyphCbdtCblc(GUI::Instance& instance, const Graphics::InstanceFunctionTable& instanceFunctions, 
         const Graphics::DeviceFunctionTable& functions, Graphics::DeviceRef device, 
         Graphics::PhysicalDevice physicalDevice, CharId character) const {
-        Glypth glypth;
+        Glyph glyph;
         if (FT_Load_Glyph(m_font->m_face, character, FT_LOAD_COLOR | FT_LOAD_RENDER))
             throw std::runtime_error("ERROR::FREETYPE: Failed to load a character");
 
-        auto& glypthSlot = m_font->m_face->glyph;
+        auto& glyphSlot = m_font->m_face->glyph;
 
-        glypth.create(instance, instanceFunctions, functions, device, physicalDevice, {
-                glm::ivec2(glypthSlot->bitmap.width, glypthSlot->bitmap.rows),
-                glm::ivec2(glypthSlot->bitmap_left, glypthSlot->bitmap_top),
-                glm::ivec2(glypthSlot->advance.x, glypthSlot->advance.y)
+        glyph.create(instance, instanceFunctions, functions, device, physicalDevice, {
+                glm::ivec2(glyphSlot->bitmap.width, glyphSlot->bitmap.rows),
+                glm::ivec2(glyphSlot->bitmap_left, glyphSlot->bitmap_top),
+                glm::ivec2(glyphSlot->advance.x, glyphSlot->advance.y)
             }, character,
-            glypthSlot->bitmap.buffer,
-            glypthSlot->bitmap.width,
-            glypthSlot->bitmap.rows,
-            glypthSlot->bitmap.pitch,
+            glyphSlot->bitmap.buffer,
+            glyphSlot->bitmap.width,
+            glyphSlot->bitmap.rows,
+            glyphSlot->bitmap.pitch,
             4,
             Graphics::Format::R8G8B8A8Unorm
         );
-        return glypth;
+        return glyph;
     }
 
-    Glypth Font::Size::getGlypthColrCpal(GUI::Instance& instance, const Graphics::InstanceFunctionTable& instanceFunctions, 
+    Glyph Font::Size::getGlyphColrCpal(GUI::Instance& instance, const Graphics::InstanceFunctionTable& instanceFunctions, 
         const Graphics::DeviceFunctionTable& functions, Graphics::DeviceRef device, 
         Graphics::PhysicalDevice physicalDevice, CharId character) const {
 
         auto& face = m_font->m_face;
 
-        Glypth glypth;
+        Glyph glyph;
         if (!glyphHasColor(character))
-            return getGlypthGrayscale(instance, instanceFunctions, functions, device, physicalDevice, character);
+            return getGlyphGrayscale(instance, instanceFunctions, functions, device, physicalDevice, character);
 
         // First pass: calculate total bounding box
         //FT_BBox bbox;
@@ -190,7 +190,7 @@ namespace GUI {
         int height = face->glyph->bitmap.rows;
 
         if (width == 0 || height == 0) {
-            glypth.create(instance, instanceFunctions, functions, device, physicalDevice, {
+            glyph.create(instance, instanceFunctions, functions, device, physicalDevice, {
                     glm::ivec2(face->glyph->bitmap.width, face->glyph->bitmap.rows),
                     glm::ivec2(face->glyph->bitmap_left, face->glyph->bitmap_top),
                     glm::ivec2(face->glyph->advance.x, face->glyph->advance.y)
@@ -202,7 +202,7 @@ namespace GUI {
                 4,
                 Graphics::Format::R8G8B8A8Unorm
             );
-            return glypth;
+            return glyph;
         }
 
         // Create bitmap buffer for BGRA
@@ -216,7 +216,7 @@ namespace GUI {
         FT_Error error = FT_Palette_Select(face, 0, &palette);
         if (error || !palette) {
             // Handle error or no palette case
-            glypth.create(instance, instanceFunctions, functions, device, physicalDevice, {
+            glyph.create(instance, instanceFunctions, functions, device, physicalDevice, {
                     glm::ivec2(face->glyph->bitmap.width, face->glyph->bitmap.rows),
                     glm::ivec2(face->glyph->bitmap_left, face->glyph->bitmap_top),
                     glm::ivec2(face->glyph->advance.x, face->glyph->advance.y)
@@ -228,7 +228,7 @@ namespace GUI {
                 4,
                 Graphics::Format::R8G8B8A8Unorm
             );
-            return glypth;
+            return glyph;
         }
 
         // Iterate through all layers
@@ -287,7 +287,7 @@ namespace GUI {
         }
 
         // Step 5: Create texture from bitmap
-        glypth.create(instance, instanceFunctions, functions, device, physicalDevice, {
+        glyph.create(instance, instanceFunctions, functions, device, physicalDevice, {
                 glm::ivec2(width, height),
                 glm::ivec2(originalLeft, originalTop),
                 glm::ivec2(face->glyph->advance.x, face->glyph->advance.y)
@@ -299,39 +299,39 @@ namespace GUI {
             4,
             Graphics::Format::R8G8B8A8Unorm
         );
-        return glypth;
+        return glyph;
     }
 
-    const Glypth& Font::Size::getGlypth(GUI::Instance& instance, const Graphics::InstanceFunctionTable& instanceFunctions, 
+    const Glyph& Font::Size::getGlyph(GUI::Instance& instance, const Graphics::InstanceFunctionTable& instanceFunctions, 
         const Graphics::DeviceFunctionTable& functions, Graphics::DeviceRef device, 
         Graphics::PhysicalDevice physicalDevice, CharId character) const {
             
-        auto it = m_glypthMap.find(character);
-        if (it != m_glypthMap.end()) return it->second;
+        auto it = m_glyphMap.find(character);
+        if (it != m_glyphMap.end()) return it->second;
 
         FT_Activate_Size(m_size);
 
-        Glypth glypth;
+        Glyph glyph;
 
         switch(m_font->m_type) {
         case FontType::Normal:
-            glypth = getGlypthGrayscale(instance, instanceFunctions, functions, device, physicalDevice, character);
+            glyph = getGlyphGrayscale(instance, instanceFunctions, functions, device, physicalDevice, character);
             break;
         case FontType::Colored:
-            glypth = getGlypthGrayscale(instance, instanceFunctions, functions, device, physicalDevice, character);
+            glyph = getGlyphGrayscale(instance, instanceFunctions, functions, device, physicalDevice, character);
             break;
         case FontType::ColoredColrCpal:
-            glypth = getGlypthColrCpal(instance, instanceFunctions, functions, device, physicalDevice, character);
+            glyph = getGlyphColrCpal(instance, instanceFunctions, functions, device, physicalDevice, character);
             break;
         case FontType::ColoredCbdtCblc:
-            glypth = getGlypthCbdtCblc(instance, instanceFunctions, functions, device, physicalDevice, character);
+            glyph = getGlyphCbdtCblc(instance, instanceFunctions, functions, device, physicalDevice, character);
             break;
         case FontType::ColoredSbix:
-            glypth = getGlypthSibix(instance, instanceFunctions, functions, device, physicalDevice, character);
+            glyph = getGlyphSibix(instance, instanceFunctions, functions, device, physicalDevice, character);
             break;
         default: throw std::runtime_error("Unimplemented FontType");
         }
 
-        return m_glypthMap.emplace(character, std::move(glypth)).first->second;
+        return m_glyphMap.emplace(character, std::move(glyph)).first->second;
     }
 }

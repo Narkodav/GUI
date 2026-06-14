@@ -1,9 +1,9 @@
-#include "GUI/Rendering/Glypth.h"
+#include "GUI/Rendering/Glyph.h"
 #include "GUI/Instance.h"
 
 namespace GUI {
 
-    void Glypth::create(GUI::Instance& instance, const Graphics::InstanceFunctionTable& instanceFunctions, 
+    void Glyph::create(GUI::Instance& instance, const Graphics::InstanceFunctionTable& instanceFunctions, 
         const Graphics::DeviceFunctionTable& functions, Graphics::DeviceRef device, Graphics::PhysicalDevice physicalDevice,
         Metrics metrics, CharId charId, unsigned char* buffer, uint32_t width, uint32_t height, uint32_t pitch, uint32_t bpp, Graphics::Format format) {
 
@@ -94,7 +94,7 @@ namespace GUI {
         m_texture = instance.registerTexture(functions, device, m_textureView);
     }
 
-    void Glypth::destroy(const Graphics::DeviceFunctionTable& functions, Graphics::DeviceRef device) {
+    void Glyph::destroy(const Graphics::DeviceFunctionTable& functions, Graphics::DeviceRef device) {
         m_textureView.destroy(functions, device);
         m_textureImage.destroy(functions, device);
         m_textureMemory.destroy(functions, device);

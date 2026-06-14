@@ -1,14 +1,15 @@
 #pragma once
 #include "GUI/Instance.h"
-#include "GUI/Elements/QuadElement.h"
-#include "GUI/Elements/LetterElement.h"
-#include "GUI/Elements/MonospacedTextElement.h"
+#include "GUI/Elements/Rectangle.h"
+#include "GUI/Elements/MonospacedText.h"
+#include "GUI/Elements/Label.h"
+#include "GUI/Elements/Border.h"
+#include "GUI/Elements/Button.h"
 
 #include "PlatformKit/Window.h"
 #include "Graphics/Graphics.h"
 
 class Test {
-
 private:
     Graphics::Wrappers::Instance m_instance;
     Graphics::Wrappers::Device m_device;
@@ -40,20 +41,21 @@ private:
 
     GUI::Instance m_guiInstance;
 
-    std::unique_ptr<GUI::QuadElement> m_button;
+    GUI::Font m_fontMono;
+    GUI::Font m_fontProp;
 
-    GUI::Font m_font;
+    std::unique_ptr<GUI::Elements::MonospacedText> m_textMonoElement;
+    std::unique_ptr<GUI::Elements::Label> m_textLabelElement;
+    std::unique_ptr<GUI::Elements::Border> m_borderMono;
+    std::unique_ptr<GUI::Elements::Border> m_borderProp;
+    std::unique_ptr<GUI::Elements::Button> m_button;
 
-    GUI::Text m_text;
-
-    std::unique_ptr<GUI::MonospacedTextElement> m_textElement;
-    std::unique_ptr<GUI::LetterElement> m_letter;
-
+    GUI::Pointer mouse;
 
 public:
 
     void create() {
-        m_window.create({800, 800}, "test");
+        m_window.create({1600, 800}, "test");
         m_instance.create({"test", "test", {1, 0, 0}, {1, 0, 0}});
         m_instance.cachePhysicalDevices();
         m_surface.create(m_instance.getFunctionTable(), m_instance, m_window);
@@ -178,52 +180,69 @@ public:
         m_guiInstance.create(m_instance.getFunctionTable(), m_device.getFunctionTable(), m_device, 
             m_physicalDevice, m_descriptorPool, m_renderPassData.renderPass);
 
-        m_button = std::make_unique<GUI::QuadElement>();
-        m_button->getQuad().setPosition(glm::ivec2(100, 100));
-        m_button->getQuad().setSize(glm::ivec2(100, 100));
-        m_button->getQuad().setTexture(static_cast<GUI::TextureId>(GUI::DefaultTextureType::WhiteTexture));
-
         m_window.registerCallback<PlatformKit::IOEvents::MouseMovedScreen>([this](PlatformKit::Position mousePosition){
-            GUI::PointerEvent event = {
-                GUI::PointerEvent::Type::Move,
-                {
-                    glm::ivec2(mousePosition.x, mousePosition.y),
-                    glm::vec2(0, 0)
-                }
-            };
-            // std::cout << event.pointer.position.x << " " << event.pointer.position.y << std::endl;
-            m_button->pointerEvent(event);
+            mouse.position = glm::ivec2(mousePosition.x, mousePosition.y);
         });
 
-        m_button->setCallback<GUI::QuadElementEvent::MovedIn>(
-            [](const GUI::Pointer& pointer, GUI::QuadElement& button){
-                button.getQuad().setTexture(static_cast<GUI::TextureId>(GUI::DefaultTextureType::BlackTexture));
-            }
-        );
-        m_button->setCallback<GUI::QuadElementEvent::MovedOut>(
-            [](const GUI::Pointer& pointer, GUI::QuadElement& button){
-                button.getQuad().setTexture(static_cast<GUI::TextureId>(GUI::DefaultTextureType::WhiteTexture));
-            }
-        );
+        m_window.registerCallback<PlatformKit::IOEvents::MouseLeftButtonPressed>([this](PlatformKit::Position mousePosition){
+            mouse.pressed = true;
+        });
 
-        m_font = m_guiInstance.createFont("../../Fonts/spleen.otf");
+        m_window.registerCallback<PlatformKit::IOEvents::MouseLeftButtonReleased>([this](PlatformKit::Position mousePosition){
+            mouse.pressed = false;
+        });
 
-        const auto& size = m_font.getSize(16);
+        m_fontMono = m_guiInstance.createFont("../../Fonts/spleen.otf");
+        m_fontProp = m_guiInstance.createFont("../../Fonts/arial.ttf");
 
-        m_text.setText(m_guiInstance, m_instance.getFunctionTable(), 
-            m_device.getFunctionTable(), m_device, m_physicalDevice, size, 
-            "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz\n1234567890\n!@#$%^&*()./?");
+        const auto& sizeMono = m_fontMono.getSize(32);
+        const auto& sizeProp = m_fontProp.getSize(32);
 
-        m_textElement = std::make_unique<GUI::MonospacedTextElement>();
+        // m_textMono.setText(m_guiInstance, m_instance.getFunctionTable(), 
+        //     m_device.getFunctionTable(), m_device, m_physicalDevice, sizeMono, 
+        //     "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz\r\n1234567890\r\n!@#$%^&*()./?");
+        // m_textProp.setText(m_guiInstance, m_instance.getFunctionTable(), 
+        //     m_device.getFunctionTable(), m_device, m_physicalDevice, sizeProp, 
+        //     "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz\r\n1234567890\r\n!@#$%^&*()./?");
 
-        m_textElement->setText(m_text).setCellSize(glm::ivec2(8, 16)).setPosition(glm::ivec2(10, 10)).setSize(glm::ivec2(200, 10))
-            .setBackgroundTexture(static_cast<GUI::TextureId>(GUI::DefaultTextureType::WhiteTexture));
+        m_textMonoElement = std::make_unique<GUI::Elements::MonospacedText>();
+        m_textMonoElement->setText(m_guiInstance, m_instance.getFunctionTable(), 
+            m_device.getFunctionTable(), m_device, m_physicalDevice, sizeMono, 
+            "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz\r\n1234567890\r\n!@#$%^&*()./?")
+            .setDrawInvisibleLetters(true).setPosition(glm::ivec2(20, 20))
+            .setSize(glm::ivec2(200, 600)).setTexture(static_cast<GUI::TextureId>(GUI::DefaultTextureType::WhiteTexture));
+
+        m_textLabelElement = std::make_unique<GUI::Elements::Label>();
+        m_textLabelElement->setText(m_guiInstance, m_instance.getFunctionTable(), 
+            m_device.getFunctionTable(), m_device, m_physicalDevice, sizeProp, 
+            "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz\r\n1234567890\r\n!@#$%^&*()./?")
+            .setPosition(glm::ivec2(310, 20))
+            .setSize(glm::ivec2(1000, 215)).setTexture(static_cast<GUI::TextureId>(GUI::DefaultTextureType::WhiteTexture));
+        m_textLabelElement->setHorizontalAlignment(GUI::HorizontalAlignment::Left)
+        .setVerticalAlignment(GUI::VerticalAlignment::Center);
+
+        m_borderMono = std::make_unique<GUI::Elements::Border>();
+        m_borderMono->setParameters(m_textMonoElement->getPosition() - glm::ivec2(10, 10), m_textMonoElement->getSize(), 10, 10, 10, 10);
+        m_borderMono->setRegion(GUI::Elements::Border::Region::Center, std::move(m_textMonoElement));
+
+        m_borderProp = std::make_unique<GUI::Elements::Border>();
+        m_borderProp->setParameters(m_textLabelElement->getPosition() - glm::ivec2(10, 10), m_textLabelElement->getSize(), 10, 10, 10, 10);
+        m_borderProp->setRegion(GUI::Elements::Border::Region::Center, std::move(m_textLabelElement));
+
+        m_button = std::make_unique<GUI::Elements::Button>();
+        m_button->setPosition(glm::ivec2(500, 500)).setSize(glm::ivec2(300, 120));
+        m_button->getLabel()->setText(m_guiInstance, m_instance.getFunctionTable(), 
+            m_device.getFunctionTable(), m_device, m_physicalDevice, sizeProp, 
+            "Button").setVerticalAlignment(GUI::VerticalAlignment::Center);
     }
 
     void destroy() {
         m_device.waitIdle();
+        m_fontMono.destroy(m_device.getFunctionTable(), m_device);
+        m_fontProp.destroy(m_device.getFunctionTable(), m_device);
         m_guiInstance.destroy(m_device.getFunctionTable(), m_device);
         
+        m_temporaryBufferPool.reset(m_device.getFunctionTable(), m_device);
         m_temporaryBufferPool.destroy(m_device.getFunctionTable(), m_device);
 
         m_imageAvailableSemaphore.destroy(m_device.getFunctionTable(), m_device);
@@ -242,6 +261,7 @@ public:
         m_surface.destroy(m_instance.getFunctionTable(), m_instance);
         m_device.destroy();
         m_instance.destroy();
+        m_window.destroy();
     }
 
     void handleResize() {
@@ -266,6 +286,7 @@ public:
     void start() {
         while(!m_window.shouldClose()) {
             m_window.pollEvents();
+            m_button->getPointerTarget()->pointerEvent(mouse);
             if(m_window.isMinimised()) continue;
             drawFrame(m_window.getFrameBufferExtent());
         }
@@ -276,11 +297,11 @@ public:
         m_inFlightFence.reset(m_device.getFunctionTable(), m_device);
 
         uint32_t imageIndex;
-        auto imageAquireResult = m_swapChainData.swapChain.acquireNextImage(m_device.getFunctionTable(), 
+        auto imageAcquireResult = m_swapChainData.swapChain.acquireNextImage(m_device.getFunctionTable(), 
             m_device, m_imageAvailableSemaphore, imageIndex);
 
-        if (imageAquireResult == Graphics::Result::ErrorOutOfDateKHR ||
-            imageAquireResult == Graphics::Result::SuboptimalKHR) {
+        if (imageAcquireResult == Graphics::Result::ErrorOutOfDateKHR ||
+            imageAcquireResult == Graphics::Result::SuboptimalKHR) {
                 handleResize();
                 return;
         }
@@ -304,12 +325,12 @@ public:
         m_graphicsCommandBuffer.setViewport(m_device.getFunctionTable(), m_canvas.getViewport());
         m_graphicsCommandBuffer.setScissor(m_device.getFunctionTable(), m_canvas.getScissor());
 
-        m_guiInstance.record(m_device.getFunctionTable(), m_device, m_graphicsCommandBuffer, m_textElement.get(), extent);
-        
-
-        // for(auto& letter : m_letters)
-        //     m_guiInstance.record(m_device.getFunctionTable(), m_device, m_graphicsCommandBuffer, letter.get(), extent);
-        // m_guiInstance.record(m_device.getFunctionTable(), m_device, m_graphicsCommandBuffer, m_button.get(), extent);
+        m_guiInstance.reset();
+        m_guiInstance.record(m_borderMono.get());
+        m_guiInstance.record(m_borderProp.get());
+        m_guiInstance.record(m_button.get());
+        m_guiInstance.upload(m_device.getFunctionTable(), m_device);
+        m_guiInstance.render(m_device.getFunctionTable(), m_device, m_graphicsCommandBuffer, extent);
 
         m_graphicsCommandBuffer.endRenderPass(m_device.getFunctionTable());
         m_graphicsCommandBuffer.stopRecord(m_device.getFunctionTable());

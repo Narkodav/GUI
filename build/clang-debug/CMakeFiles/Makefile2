@@ -201,8 +201,8 @@ CMakeFiles/GUI.dir/clean:
 # Target rules for target CMakeFiles/GUITests.dir
 
 # All Build rule for target.
-CMakeFiles/GUITests.dir/all: CMakeFiles/GUI.dir/all
 CMakeFiles/GUITests.dir/all: freetype/CMakeFiles/freetype.dir/all
+CMakeFiles/GUITests.dir/all: CMakeFiles/GUI.dir/all
 CMakeFiles/GUITests.dir/all: harfbuzz/CMakeFiles/harfbuzz.dir/all
 CMakeFiles/GUITests.dir/all: GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\GUITests.dir\build.make CMakeFiles/GUITests.dir/depend

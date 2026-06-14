@@ -1,5 +1,4 @@
 #version 450
-//!#extension GL_KHR_vulkan_glsl : require
 #extension GL_EXT_nonuniform_qualifier : require
 
 layout(location = 0) in vec2 inUV;
@@ -13,6 +12,5 @@ void main()
 {
     outColor = texture(textures[inTextureId], inUV);
 
-    if (outColor.a < 0.01)
-        discard;
+    if (outColor.a < 0.01) discard;
 }
