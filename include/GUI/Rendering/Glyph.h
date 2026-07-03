@@ -59,11 +59,10 @@ namespace GUI
     public:
         Glyph() = default;
 
-        void create(GUI::Instance& instance, const Graphics::InstanceFunctionTable& instanceFunctions, 
-            const Graphics::DeviceFunctionTable& functions, Graphics::DeviceRef device, Graphics::PhysicalDevice physicalDevice,
-            Metrics m_metrics, CharId charId, unsigned char* buffer, uint32_t width, uint32_t height, uint32_t pitch, uint32_t bpp, Graphics::Format format);
+        void create(GUI::Instance& instance, Metrics metrics, CharId charId, unsigned char* buffer, 
+            uint32_t width, uint32_t height, uint32_t pitch, uint32_t bpp, Graphics::Format format);
 
-        void destroy(const Graphics::DeviceFunctionTable& functions, Graphics::DeviceRef device);
+        void destroy(GUI::Instance& instance);
 
         const Metrics& getMetrics() const { return m_metrics; }
         const TextureId& getTexture() const { return m_texture; }

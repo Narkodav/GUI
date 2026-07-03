@@ -3,12 +3,17 @@
 
 namespace GUI {
 
-    void Glyph::create(GUI::Instance& instance, const Graphics::InstanceFunctionTable& instanceFunctions, 
-        const Graphics::DeviceFunctionTable& functions, Graphics::DeviceRef device, Graphics::PhysicalDevice physicalDevice,
-        Metrics metrics, CharId charId, unsigned char* buffer, uint32_t width, uint32_t height, uint32_t pitch, uint32_t bpp, Graphics::Format format) {
-
+    void Glyph::create(GUI::Instance& instance, Metrics metrics, CharId charId, unsigned char* buffer, 
+            uint32_t width, uint32_t height, uint32_t pitch, uint32_t bpp, Graphics::Format format) {
+        const auto& ctx = instance.getRenderingContext();
         m_metrics = metrics;
         m_char = charId;
+
+        if(width == 0 || height == 0) {
+            m_texture = static_cast<TextureId>(DefaultTextureType::TransparentTexture);
+            m_textureImage = nullptr;
+            return;
+        }
 
         Graphics::ImageCreateInfo imageInfo;
 
@@ -22,8 +27,8 @@ namespace GUI {
             .setUsage(Graphics::Flags::ImageUsage::Bits::Sampled)
             .setInitialLayout(Graphics::ImageLayout::Preinitialized);
 
-        m_textureImage.create(functions, device, imageInfo);
-        Graphics::MemoryRequirements memReq = m_textureImage.getMemoryRequirements(functions, device);
+        m_textureImage.create(*ctx.deviceFunctions, ctx.deviceRef, imageInfo);
+        Graphics::MemoryRequirements memReq = m_textureImage.getMemoryRequirements(*ctx.deviceFunctions, ctx.deviceRef);
 
         // ImageSubresource& setAspectMask(Flags::ImageAspect aspectMask) { 
         //     this->aspectMask = aspectMask;
@@ -38,21 +43,21 @@ namespace GUI {
         subresource.setAspectMask(Graphics::Flags::ImageAspect::Bits::Color)
             .setArrayLayer(0).setMipLevel(0);
 
-        auto subresourceLayout = m_textureImage.getSubresourceLayout(functions, device, subresource);
+        auto subresourceLayout = m_textureImage.getSubresourceLayout(*ctx.deviceFunctions, ctx.deviceRef, subresource);
 
         Graphics::MemoryAllocateInfo alloc;
 
-        auto memoryProps = physicalDevice.getMemoryProperties(instanceFunctions);
+        auto memoryProps = ctx.physicalDevice.getMemoryProperties(*ctx.instanceFunctions);
 
         alloc.setAllocationSize(memReq.getSize())
             .setMemoryTypeIndex(Graphics::Utility::findMemoryTypeFirstFit(
                 memoryProps, memReq.getMemoryTypeBits(), 
                 Graphics::Flags::MemoryProperty::Bits::HostVisibleCoherent));
 
-        m_textureMemory.create(functions, device, alloc);
-        m_textureMemory.bindImage(functions, device, m_textureImage);
+        m_textureMemory.create(*ctx.deviceFunctions, ctx.deviceRef, alloc);
+        m_textureMemory.bindImage(*ctx.deviceFunctions, ctx.deviceRef, m_textureImage);
 
-        auto mapping = m_textureMemory.map(functions, device);
+        auto mapping = m_textureMemory.map(*ctx.deviceFunctions, ctx.deviceRef);
         auto* data = mapping.get<uint8_t>();
 
         for(uint32_t y = 0; y < height; y++) {
@@ -63,7 +68,7 @@ namespace GUI {
             );
         }
 
-        m_textureMemory.unmap(functions, device, mapping);
+        m_textureMemory.unmap(*ctx.deviceFunctions, ctx.deviceRef, mapping);
 
         Graphics::ImageViewCreateInfo viewInfo;
 
@@ -89,15 +94,17 @@ namespace GUI {
             .setA(Graphics::ComponentSwizzle::A);
         }
 
-        m_textureView.create(functions, device, viewInfo);
+        m_textureView.create(*ctx.deviceFunctions, ctx.deviceRef, viewInfo);
 
-        m_texture = instance.registerTexture(functions, device, m_textureView);
+        m_texture = instance.registerTexture(m_textureView);
     }
 
-    void Glyph::destroy(const Graphics::DeviceFunctionTable& functions, Graphics::DeviceRef device) {
-        m_textureView.destroy(functions, device);
-        m_textureImage.destroy(functions, device);
-        m_textureMemory.destroy(functions, device);
+    void Glyph::destroy(GUI::Instance& instance) {
+        const auto& ctx = instance.getRenderingContext();
+        if(m_textureImage == nullptr) return;
+        m_textureView.destroy(*ctx.deviceFunctions, ctx.deviceRef);
+        m_textureImage.destroy(*ctx.deviceFunctions, ctx.deviceRef);
+        m_textureMemory.destroy(*ctx.deviceFunctions, ctx.deviceRef);
     }
 
 }

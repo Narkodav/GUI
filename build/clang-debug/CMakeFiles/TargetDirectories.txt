@@ -33,14 +33,3 @@ E:/Code/C_code/libraries/GUI/build/clang-debug/harfbuzz/CMakeFiles/list_install_
 E:/Code/C_code/libraries/GUI/build/clang-debug/harfbuzz/CMakeFiles/install.dir
 E:/Code/C_code/libraries/GUI/build/clang-debug/harfbuzz/CMakeFiles/install/local.dir
 E:/Code/C_code/libraries/GUI/build/clang-debug/harfbuzz/CMakeFiles/install/strip.dir
-E:/Code/C_code/libraries/GUI/build/clang-debug/GraphicsWrapper/CMakeFiles/GraphicsWrapper.dir
-E:/Code/C_code/libraries/GUI/build/clang-debug/GraphicsWrapper/CMakeFiles/GraphicsWrapperTests.dir
-E:/Code/C_code/libraries/GUI/build/clang-debug/GraphicsWrapper/CMakeFiles/package.dir
-E:/Code/C_code/libraries/GUI/build/clang-debug/GraphicsWrapper/CMakeFiles/package_source.dir
-E:/Code/C_code/libraries/GUI/build/clang-debug/GraphicsWrapper/CMakeFiles/test.dir
-E:/Code/C_code/libraries/GUI/build/clang-debug/GraphicsWrapper/CMakeFiles/edit_cache.dir
-E:/Code/C_code/libraries/GUI/build/clang-debug/GraphicsWrapper/CMakeFiles/rebuild_cache.dir
-E:/Code/C_code/libraries/GUI/build/clang-debug/GraphicsWrapper/CMakeFiles/list_install_components.dir
-E:/Code/C_code/libraries/GUI/build/clang-debug/GraphicsWrapper/CMakeFiles/install.dir
-E:/Code/C_code/libraries/GUI/build/clang-debug/GraphicsWrapper/CMakeFiles/install/local.dir
-E:/Code/C_code/libraries/GUI/build/clang-debug/GraphicsWrapper/CMakeFiles/install/strip.dir

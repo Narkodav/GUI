@@ -17,10 +17,11 @@ namespace GUI {
     };
 }
 
-namespace GUI::Elements
+namespace GUI
 {
     // All the positions and dimensions are represented in Surface pixel coordinates
     class Label : public Rectangle {
+        GUI_DECLARE_OBJECT(Label, Rectangle)
     protected:
         Text m_text;
         bool m_drawInvisibleLetters = false;
@@ -29,14 +30,11 @@ namespace GUI::Elements
         const Font::Size* m_size;
 
     public:
-        Label() = default;
         ~Label() = default;
 
-        Label& setText(GUI::Instance& instance, const Graphics::InstanceFunctionTable& instanceFunctions, 
-            const Graphics::DeviceFunctionTable& functions, Graphics::DeviceRef device, Graphics::PhysicalDevice physicalDevice,
-            const Font::Size& fontSize, std::string_view str) {
+        Label& setText(GUI::Instance& instance, const Font::Size& fontSize, std::string_view str) {
                 m_size = &fontSize;
-                m_text.setText(instance, instanceFunctions, functions, device, physicalDevice, fontSize, str); 
+                m_text.setText(instance, fontSize, str); 
                 return *this; 
         }
         Label& setDrawInvisibleLetters(bool val) { m_drawInvisibleLetters = val; return *this; }
@@ -62,15 +60,17 @@ namespace GUI::Elements
         Quad makeQuad(const Glyph* glyph, const glm::ivec2& cursor) const {
                 Quad quad;
                 quad.textureId = glyph->getTexture();
-                quad.position = getPosition();
-                quad.position += cursor;
+                quad.position = cursor;
                 quad.size = glyph->getMetrics().size;
                 quad.position.x += glyph->getMetrics().bearing.x;
-                quad.position.y += m_size->getMetrics().ascender - quad.size.y;     // Align to lower bound
+                quad.position.y -= quad.size.y;                                     // Align to lower bound
                 quad.position.y -= glyph->getMetrics().bearing.y - quad.size.y;     // Add vertical bearing
 
                 quad.uvMin = glm::vec2(0, 0);
                 quad.uvMax = glm::vec2(1, 1);
+
+                quad.offset = getOffset() + getPosition();
+                quad.bounds = getSize();
 
                 return quad;
         }
@@ -78,7 +78,8 @@ namespace GUI::Elements
         void drawText(InstanceInterface& instance) const {
             glm::ivec2 cursor(0, 0);
             size_t height = getSizeY();
-            size_t textHeight = m_size->getMetrics().height * m_text.lineCount();
+            size_t textHeight = m_size->getMetrics().height * (m_text.lineCount() - 1) 
+                + m_size->getMetrics().ascender + m_size->getMetrics().descender;
             size_t lineCount = height / m_size->getMetrics().height;
             
             switch(m_alignmentV) {
@@ -86,30 +87,28 @@ namespace GUI::Elements
                     cursor.y = 0;
                     break;
                 case VerticalAlignment::Center:
-                    cursor.y = height > textHeight ? (height - textHeight) / 2 : 0;
+                    cursor.y = height > textHeight ? (height - textHeight) / 2 + m_size->getMetrics().ascender : m_size->getMetrics().ascender;
                     break;
                 case VerticalAlignment::Bottom:
-                    cursor.y = height > textHeight ? height - textHeight : 0;
+                    cursor.y = height > textHeight ? height - textHeight + m_size->getMetrics().ascender : m_size->getMetrics().ascender;
                     break;
                 default: break;
             }
 
             if(lineCount >= m_text.lineCount()) {
                 for(size_t lineIndex = 0; lineIndex < m_text.lineCount(); ++lineIndex) {
-                    drawLine<false>(instance, cursor, lineIndex);
+                    drawLine(instance, cursor, lineIndex);
                     cursor.y += m_size->getMetrics().height;
                 }
             }
             else {
-                for(size_t lineIndex = 0; lineIndex < lineCount; ++lineIndex) {
-                    drawLine<false>(instance, cursor, lineIndex);
+                for(size_t lineIndex = 0; lineIndex < lineCount + 1; ++lineIndex) {
+                    drawLine(instance, cursor, lineIndex);
                     cursor.y += m_size->getMetrics().height;
                 }
-                drawLine<true>(instance, cursor, lineCount);
             }
         }
 
-        template<bool isClipped>
         void drawLine(InstanceInterface& instance, glm::ivec2& cursor, size_t lineIndex) const {
             auto line = m_text[lineIndex];
             const auto& lineData = m_text.getLineData(lineIndex);
@@ -132,10 +131,10 @@ namespace GUI::Elements
                 if(cursor.x + (line[i].glyph->getMetrics().advance.x >> 6) > width) {
                     if(!m_drawInvisibleLetters && Text::letterIsInvisible(static_cast<uint8_t>(line[i].utfCode))) return;
                     Quad quad = makeQuad(line[i].glyph, cursor);
-                    if(quad.position.x >= width + getPositionX()) return;
-                    size_t sizeNew = width + getPositionX() - quad.position.x;
-                    quad.uvMax.x = sizeNew / static_cast<float>(quad.size.x);
-                    quad.size.x = sizeNew;
+                    if(quad.position.x >= width) return;
+                    // size_t sizeNew = width + getPositionX() - quad.position.x;
+                    // quad.uvMax.x = sizeNew / static_cast<float>(quad.size.x);
+                    // quad.size.x = sizeNew;
                     instance.addQuad(quad);
                     return;
                 }
@@ -144,12 +143,12 @@ namespace GUI::Elements
                 
                 Quad quad = makeQuad(line[i].glyph, cursor);
 
-                if constexpr (isClipped) {
-                    if(quad.position.y >= getSizeY() + getPositionY()) continue;
-                    size_t sizeNew = getSizeY() + getPositionY() - quad.position.y;
-                    quad.uvMax.y = sizeNew / static_cast<float>(quad.size.y);
-                    quad.size.y = sizeNew;
-                }
+                // if constexpr (isClipped) {
+                //     if(quad.position.y >= getSizeY() + getPositionY()) continue;
+                //     size_t sizeNew = getSizeY() + getPositionY() - quad.position.y;
+                //     quad.uvMax.y = sizeNew / static_cast<float>(quad.size.y);
+                //     quad.size.y = sizeNew;
+                // }
 
                 instance.addQuad(quad);
                 cursor.x += line[i].glyph->getMetrics().advance.x >> 6;

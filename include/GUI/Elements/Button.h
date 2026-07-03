@@ -2,32 +2,44 @@
 #include "Graphics/Graphics.h"
 
 #include "GUI/Instance.h"
-#include "GUI/Capabilities/PointerTarget.h"
+#include "GUI/Properties/PointerTarget.h"
 #include "GUI/Elements/Label.h"
+#include "GUI/PropertyDispatch.h"
 
 #include <glm/glm.hpp>
 #include <vector>
 #include <cstdint>
 
-namespace GUI::Elements {
+namespace GUI {
 
 	class Button : public Rectangle {
+        GUI_DECLARE_OBJECT(Button, Rectangle)
     private:
         TextureId m_idleTexture     = static_cast<size_t>(DefaultTextureType::DefaultButtonIdleTexture);
         TextureId m_hoveredTexture  = static_cast<size_t>(DefaultTextureType::DefaultButtonHoveredTexture);
         TextureId m_pressedTexture  = static_cast<size_t>(DefaultTextureType::DefaultButtonPressedTexture);
-        std::array<GUI::Capabilities::PointerTarget::Subscription, static_cast<size_t>(PointerTargetEvent::Count)> m_subs;
+        std::array<GUI::PointerTarget::Subscription, static_cast<size_t>(PointerTargetEvent::Count)> m_subs;
 
 	public:
         Button() {
             setTexture(static_cast<size_t>(DefaultTextureType::DefaultButtonIdleTexture));
-            auto* ptr = addCapability(std::make_unique<GUI::Capabilities::PointerTarget>());
+            auto* ptr = addProperty(std::make_unique<GUI::PointerTarget>());
             m_subs[static_cast<size_t>(PointerTargetEvent::Pressed)] = ptr->subscribe<PointerTargetEvent::Pressed>(&Button::onPressed, *this);
             m_subs[static_cast<size_t>(PointerTargetEvent::Released)] = ptr->subscribe<PointerTargetEvent::Released>(&Button::onReleased, *this);
             m_subs[static_cast<size_t>(PointerTargetEvent::MovedIn)] = ptr->subscribe<PointerTargetEvent::MovedIn>(&Button::onEntered, *this);
             m_subs[static_cast<size_t>(PointerTargetEvent::MovedOut)] = ptr->subscribe<PointerTargetEvent::MovedOut>(&Button::onLeft, *this);
-
             addChild(std::make_unique<Label>())->setTexture(static_cast<size_t>(DefaultTextureType::TransparentTexture));
+		}
+
+        Button(Utility::PropertyDispatch<GUI::PointerTarget>& dispatch) {
+            setTexture(static_cast<size_t>(DefaultTextureType::DefaultButtonIdleTexture));
+            auto* ptr = addProperty(std::make_unique<GUI::PointerTarget>());
+            m_subs[static_cast<size_t>(PointerTargetEvent::Pressed)] = ptr->subscribe<PointerTargetEvent::Pressed>(&Button::onPressed, *this);
+            m_subs[static_cast<size_t>(PointerTargetEvent::Released)] = ptr->subscribe<PointerTargetEvent::Released>(&Button::onReleased, *this);
+            m_subs[static_cast<size_t>(PointerTargetEvent::MovedIn)] = ptr->subscribe<PointerTargetEvent::MovedIn>(&Button::onEntered, *this);
+            m_subs[static_cast<size_t>(PointerTargetEvent::MovedOut)] = ptr->subscribe<PointerTargetEvent::MovedOut>(&Button::onLeft, *this);
+            addChild(std::make_unique<Label>())->setTexture(static_cast<size_t>(DefaultTextureType::TransparentTexture));
+            dispatch.registerTarget(ptr);
 		}
 
         virtual ~Button() {
@@ -37,8 +49,8 @@ namespace GUI::Elements {
                 .unsubscribe<PointerTargetEvent::MovedOut>(m_subs[static_cast<size_t>(PointerTargetEvent::MovedOut)]);
         }
 
-        Capabilities::PointerTarget* getPointerTarget() { return getCapability<Capabilities::PointerTarget>(0); }
-        const Capabilities::PointerTarget* getPointerTarget() const { return getCapability<Capabilities::PointerTarget>(0); }
+        PointerTarget* getPointerTarget() { return getProperty<PointerTarget>(); }
+        const PointerTarget* getPointerTarget() const { return getProperty<PointerTarget>(); }
         Label* getLabel() { return getChild<Label>(0); }
         const Label* getLabel() const { return getChild<Label>(0); }
 
@@ -46,49 +58,40 @@ namespace GUI::Elements {
         Button& setHoveredTexture(TextureId id) { m_hoveredTexture = id; return *this; };
         Button& setPressedTexture(TextureId id) { m_pressedTexture = id; return *this; };
 
-        virtual Rectangle& setPosition(const glm::ivec2& position) override {
-            Rectangle::setPosition(position);
-            getLabel()->setPosition(position); 
-            return *this; 
-        }
-        virtual Rectangle& setSize(const glm::ivec2& dimensions) override { 
-            Rectangle::setSize(dimensions);
-            getLabel()->setSize(dimensions); 
-            return *this; 
-        }
-
-        virtual Rectangle& setPositionX(int positionX) override { 
-            Rectangle::setPositionX(positionX);
-            getLabel()->setPositionX(positionX); 
-            return *this; 
-        }
-        virtual Rectangle& setPositionY(int positionY) override { 
-            Rectangle::setPositionY(positionY);
-            getLabel()->setPositionY(positionY); 
-            return *this; 
-        }
-        virtual Rectangle& setSizeX(int sizeX) override { 
-            Rectangle::setSizeX(sizeX);
-            getLabel()->setSizeX(sizeX); 
-            return *this; 
-        }
-        virtual Rectangle& setSizeY(int sizeY) override { 
-            Rectangle::setSizeY(sizeY);
-            getLabel()->setSizeY(sizeY); 
-            return *this; 
-        }
-
 	protected:
-        void onEntered(const GUI::Pointer& pointer, GUI::Capabilities::PointerTarget& target) {
+        virtual void onSetPosition(const glm::ivec2& position) override {
+            Rectangle::onSetPosition(position);
+        }
+        virtual void onSetSize(const glm::ivec2& dimensions) override { 
+            Rectangle::onSetSize(dimensions);
+            getLabel()->setSize(dimensions);
+        }
+
+        virtual void onSetPositionX(int positionX) override { 
+            Rectangle::onSetPositionX(positionX);
+        }
+        virtual void onSetPositionY(int positionY) override { 
+            Rectangle::onSetPositionY(positionY);
+        }
+        virtual void onSetSizeX(int sizeX) override { 
+            Rectangle::onSetSizeX(sizeX);
+            getLabel()->setSizeX(sizeX);
+        }
+        virtual void onSetSizeY(int sizeY) override { 
+            Rectangle::onSetSizeY(sizeY);
+            getLabel()->setSizeY(sizeY);
+        }
+
+        void onEntered(const GUI::Pointer& pointer, GUI::PointerTarget& target) {
             if(!target.pointerIsPressed()) setTexture(m_hoveredTexture);
         }
-        void onLeft(const GUI::Pointer& pointer, GUI::Capabilities::PointerTarget& target) {
+        void onLeft(const GUI::Pointer& pointer, GUI::PointerTarget& target) {
             if(!target.pointerIsPressed()) setTexture(m_idleTexture);
         }
-        void onPressed(const GUI::Pointer& pointer, GUI::Capabilities::PointerTarget& target) {
+        void onPressed(const GUI::Pointer& pointer, GUI::PointerTarget& target) {
             setTexture(m_pressedTexture);
         }
-        void onReleased(const GUI::Pointer& pointer, GUI::Capabilities::PointerTarget& target) {
+        void onReleased(const GUI::Pointer& pointer, GUI::PointerTarget& target) {
             if(!target.pointerIsInside()) setTexture(m_idleTexture);
             else setTexture(m_hoveredTexture);
         }

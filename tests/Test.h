@@ -5,6 +5,10 @@
 #include "GUI/Elements/Label.h"
 #include "GUI/Elements/Border.h"
 #include "GUI/Elements/Button.h"
+#include "GUI/Properties/LayoutVertical.h"
+#include "GUI/Properties/LayoutHorizontal.h"
+
+#include "GUI/PropertyDispatch.h"
 
 #include "PlatformKit/Window.h"
 #include "Graphics/Graphics.h"
@@ -44,13 +48,31 @@ private:
     GUI::Font m_fontMono;
     GUI::Font m_fontProp;
 
-    std::unique_ptr<GUI::Elements::MonospacedText> m_textMonoElement;
-    std::unique_ptr<GUI::Elements::Label> m_textLabelElement;
-    std::unique_ptr<GUI::Elements::Border> m_borderMono;
-    std::unique_ptr<GUI::Elements::Border> m_borderProp;
-    std::unique_ptr<GUI::Elements::Button> m_button;
+    std::unique_ptr<GUI::MonospacedText> m_textMonoElement;
+    std::unique_ptr<GUI::Label> m_textLabelElement;
+    // std::unique_ptr<GUI::Border> m_borderMono;
+    // std::unique_ptr<GUI::Border> m_borderProp;
+    std::unique_ptr<GUI::Button> m_button;
+
+    GUI::Button* m_button1;
+    GUI::Button* m_button2;
+    GUI::Button* m_button3;
+    GUI::Button* m_button4;
+    GUI::Rectangle* m_viewportChild;
+    std::unique_ptr<GUI::Rectangle> m_viewport;
+    GUI::LayoutVertical* m_layout1;
+    GUI::LayoutHorizontal* m_layout2;
 
     GUI::Pointer mouse;
+
+    GUI::Utility::PropertyDispatch<GUI::Layout> m_layoutDispatch;
+    GUI::Utility::PropertyDispatch<GUI::PointerTarget> m_pointerTargetDispatch;
+
+    std::unique_ptr<GUI::Label> m_fpsMeter;
+
+    float m_fps;
+
+    bool m_resizePending;
 
 public:
 
@@ -177,8 +199,17 @@ public:
         m_inFlightFence.create(m_device.getFunctionTable(), m_device,
             { Graphics::Flags::FenceCreate::Bits::Signaled });
 
-        m_guiInstance.create(m_instance.getFunctionTable(), m_device.getFunctionTable(), m_device, 
-            m_physicalDevice, m_descriptorPool, m_renderPassData.renderPass);
+        GUI::RenderingContext ctx = {
+            m_instance.getReference(),
+            m_device.getReference(),
+            m_physicalDevice,
+            &m_instance.getFunctionTable(),
+            &m_device.getFunctionTable(),
+            m_descriptorPool,
+            m_renderPassData.renderPass
+        };
+
+        m_guiInstance.create(ctx);
 
         m_window.registerCallback<PlatformKit::IOEvents::MouseMovedScreen>([this](PlatformKit::Position mousePosition){
             mouse.position = glm::ivec2(mousePosition.x, mousePosition.y);
@@ -192,8 +223,8 @@ public:
             mouse.pressed = false;
         });
 
-        m_fontMono = m_guiInstance.createFont("../../Fonts/spleen.otf");
-        m_fontProp = m_guiInstance.createFont("../../Fonts/arial.ttf");
+        m_fontMono.create(m_guiInstance, "../../Fonts/spleen.otf");
+        m_fontProp.create(m_guiInstance, "../../Fonts/arial.ttf");
 
         const auto& sizeMono = m_fontMono.getSize(32);
         const auto& sizeProp = m_fontProp.getSize(32);
@@ -205,42 +236,105 @@ public:
         //     m_device.getFunctionTable(), m_device, m_physicalDevice, sizeProp, 
         //     "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz\r\n1234567890\r\n!@#$%^&*()./?");
 
-        m_textMonoElement = std::make_unique<GUI::Elements::MonospacedText>();
-        m_textMonoElement->setText(m_guiInstance, m_instance.getFunctionTable(), 
-            m_device.getFunctionTable(), m_device, m_physicalDevice, sizeMono, 
+        m_textMonoElement = std::make_unique<GUI::MonospacedText>();
+        m_textMonoElement->setText(m_guiInstance, sizeMono, 
             "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz\r\n1234567890\r\n!@#$%^&*()./?")
-            .setDrawInvisibleLetters(true).setPosition(glm::ivec2(20, 20))
-            .setSize(glm::ivec2(200, 600)).setTexture(static_cast<GUI::TextureId>(GUI::DefaultTextureType::WhiteTexture));
+            .setTexture(static_cast<GUI::TextureId>(GUI::DefaultTextureType::WhiteTexture))
+            .setPosition(glm::ivec2(20, 20)) .setSize(glm::ivec2(200, 600));
 
-        m_textLabelElement = std::make_unique<GUI::Elements::Label>();
-        m_textLabelElement->setText(m_guiInstance, m_instance.getFunctionTable(), 
-            m_device.getFunctionTable(), m_device, m_physicalDevice, sizeProp, 
-            "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz\r\n1234567890\r\n!@#$%^&*()./?")
-            .setPosition(glm::ivec2(310, 20))
-            .setSize(glm::ivec2(1000, 215)).setTexture(static_cast<GUI::TextureId>(GUI::DefaultTextureType::WhiteTexture));
-        m_textLabelElement->setHorizontalAlignment(GUI::HorizontalAlignment::Left)
-        .setVerticalAlignment(GUI::VerticalAlignment::Center);
+        // m_textLabelElement = std::make_unique<GUI::Label>();
+        // m_textLabelElement->setText(m_guiInstance, sizeProp, 
+        //     "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz\r\n1234567890\r\n!@#$%^&*()./?")
+        //     .setTexture(static_cast<GUI::TextureId>(GUI::DefaultTextureType::WhiteTexture))
+        //     .setPosition(glm::ivec2(310, 20)).setSize(glm::ivec2(1000, 215));
+        // m_textLabelElement->setHorizontalAlignment(GUI::HorizontalAlignment::Left)
+        //     .setVerticalAlignment(GUI::VerticalAlignment::Center);
 
-        m_borderMono = std::make_unique<GUI::Elements::Border>();
-        m_borderMono->setParameters(m_textMonoElement->getPosition() - glm::ivec2(10, 10), m_textMonoElement->getSize(), 10, 10, 10, 10);
-        m_borderMono->setRegion(GUI::Elements::Border::Region::Center, std::move(m_textMonoElement));
+        // m_borderMono = std::make_unique<GUI::Border>();
+        // m_borderMono->setParameters(m_textMonoElement->getPosition() - glm::ivec2(10, 10), m_textMonoElement->getSize(), 10, 10, 10, 10);
+        // m_borderMono->setRegion(GUI::Border::Region::Center, std::move(m_textMonoElement));
 
-        m_borderProp = std::make_unique<GUI::Elements::Border>();
-        m_borderProp->setParameters(m_textLabelElement->getPosition() - glm::ivec2(10, 10), m_textLabelElement->getSize(), 10, 10, 10, 10);
-        m_borderProp->setRegion(GUI::Elements::Border::Region::Center, std::move(m_textLabelElement));
+        // m_borderProp = std::make_unique<GUI::Border>();
+        // m_borderProp->setParameters(m_textLabelElement->getPosition() - glm::ivec2(10, 10), m_textLabelElement->getSize(), 10, 10, 10, 10);
+        // m_borderProp->setRegion(GUI::Border::Region::Center, std::move(m_textLabelElement));
 
-        m_button = std::make_unique<GUI::Elements::Button>();
-        m_button->setPosition(glm::ivec2(500, 500)).setSize(glm::ivec2(300, 120));
-        m_button->getLabel()->setText(m_guiInstance, m_instance.getFunctionTable(), 
-            m_device.getFunctionTable(), m_device, m_physicalDevice, sizeProp, 
-            "Button").setVerticalAlignment(GUI::VerticalAlignment::Center);
+        // m_button = std::make_unique<GUI::Button>(m_pointerTargetDispatch);
+        // m_button->setPosition(glm::ivec2(500, 500)).setSize(glm::ivec2(300, 120));
+        // m_button->getLabel()->setText(m_guiInstance, sizeProp, "Button")
+        //     .setVerticalAlignment(GUI::VerticalAlignment::Center);
+
+        m_viewport = std::make_unique<GUI::Rectangle>();
+        m_viewport->setTexture(static_cast<GUI::TextureId>(GUI::DefaultTextureType::TransparentTexture));
+
+        m_viewport->addChild(std::make_unique<GUI::Border>())->
+            setLeftEdgeWidth(10).setRightEdgeWidth(10).setTopEdgeWidth(10).setBottomEdgeWidth(10)
+            .setRegion(GUI::Border::Region::Center, std::move(m_textMonoElement));
+
+        m_button1 = m_viewport->addChild(std::make_unique<GUI::Button>(m_pointerTargetDispatch));
+        m_button1->getLabel()->setText(m_guiInstance, sizeProp, "Button1")
+            .setVerticalAlignment(GUI::VerticalAlignment::Center);
+        m_button1->addProperty(std::make_unique<GUI::SizeConstraints>(glm::ivec2(100, 100), glm::ivec2(200, 200)));
+
+        m_button2 = m_viewport->addChild(std::make_unique<GUI::Button>(m_pointerTargetDispatch));
+        m_button2->getLabel()->setText(m_guiInstance, sizeProp, "Button2")
+            .setVerticalAlignment(GUI::VerticalAlignment::Center);
+        m_button2->addProperty(std::make_unique<GUI::SizeConstraints>(glm::ivec2(200, 200), glm::ivec2(300, 300)));
+
+        m_viewportChild = m_viewport->addChild(std::make_unique<GUI::Rectangle>());
+        //m_viewportChild->addProperty(std::make_unique<GUI::SizeConstraints>(glm::ivec2(200, 200), glm::ivec2(300, 300)));
+
+        m_button3 = m_viewportChild->addChild(std::make_unique<GUI::Button>(m_pointerTargetDispatch));
+        m_button3->getLabel()->setText(m_guiInstance, sizeProp, "Button3")
+            .setVerticalAlignment(GUI::VerticalAlignment::Center);
+        m_button3->addProperty(std::make_unique<GUI::SizeConstraints>(glm::ivec2(300, 300), glm::ivec2(400, 400)));
+
+        m_button4 = m_viewportChild->addChild(std::make_unique<GUI::Button>(m_pointerTargetDispatch));
+        m_button4->getLabel()->setText(m_guiInstance, sizeProp, "Button4")
+            .setVerticalAlignment(GUI::VerticalAlignment::Center);
+        m_button4->addProperty(std::make_unique<GUI::SizeConstraints>(glm::ivec2(400, 400), glm::ivec2(500, 500)));
+
+        m_layout1 = m_viewport->addProperty(std::make_unique<GUI::LayoutVertical>());
+        m_layoutDispatch.registerTarget(m_layout1);
+        m_layout2 = m_viewportChild->addProperty(std::make_unique<GUI::LayoutHorizontal>());
+
+        m_viewport->setPosition(glm::ivec2(0, 0));
+        m_viewport->setSize(glm::ivec2(m_window.getFrameBufferExtent().width, m_window.getFrameBufferExtent().height));
+        m_layout1->arrange();
+        m_viewport->resolve();
+
+        m_fpsMeter = std::make_unique<GUI::Label>();
+        m_fpsMeter->setTexture(static_cast<GUI::TextureId>(GUI::DefaultTextureType::WhiteTexture));
+        m_fpsMeter->setPosition(glm::ivec2(0, 0)).setSize(glm::ivec2(300, 100));
+
+        m_window.registerCallback<PlatformKit::WindowEvents::WindowResized>(
+            [this](int width, int height){
+            m_resizePending = true;
+
+            m_viewport->setSize(glm::ivec2(width, height));
+            m_layoutDispatch.dispatch<&GUI::Layout::arrange>();
+            m_viewport->resolve();
+            
+            m_pointerTargetDispatch.dispatch<&GUI::PointerTarget::pointerEvent>(mouse);
+
+            m_fpsMeter->setText(m_guiInstance, m_fontMono.getSize(32), std::string("FPS: ") + std::to_string(m_fps));
+            m_fpsMeter->resolve();
+
+            std::chrono::time_point start = std::chrono::steady_clock::now();
+            drawFrame({static_cast<uint32_t>(width), static_cast<uint32_t>(height)});
+            std::chrono::time_point end = std::chrono::steady_clock::now();
+            auto diff = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+            if(diff == 0) m_fps = std::numeric_limits<float>::infinity();
+            else m_fps = (1 / static_cast<float>(diff)) * pow(10, 9);
+            
+            return 0;
+        });
     }
 
     void destroy() {
         m_device.waitIdle();
-        m_fontMono.destroy(m_device.getFunctionTable(), m_device);
-        m_fontProp.destroy(m_device.getFunctionTable(), m_device);
-        m_guiInstance.destroy(m_device.getFunctionTable(), m_device);
+        m_fontMono.destroy(m_guiInstance);
+        m_fontProp.destroy(m_guiInstance);
+        m_guiInstance.destroy();
         
         m_temporaryBufferPool.reset(m_device.getFunctionTable(), m_device);
         m_temporaryBufferPool.destroy(m_device.getFunctionTable(), m_device);
@@ -274,94 +368,119 @@ public:
             m_device, m_renderPassData.renderPass, m_physicalDevice.getMemoryProperties(m_instance.getFunctionTable()), 
             Graphics::Utility::chooseExtent(surfaceCapabilities, extent));
 
-        for(size_t i = 0; i < m_renderFinishedSemaphore.size(); ++i) 
-            m_renderFinishedSemaphore[i].destroy(m_device.getFunctionTable(), m_device);
-
-        m_renderFinishedSemaphore.resize(m_swapChainData.swapChainImages.size());
-
-        for(size_t i = 0; i < m_renderFinishedSemaphore.size(); ++i) 
-            m_renderFinishedSemaphore[i].create(m_device.getFunctionTable(), m_device);
+        if(m_renderFinishedSemaphore.size() < m_swapChainData.swapChainImages.size()) {
+            size_t prior = m_renderFinishedSemaphore.size();
+            m_renderFinishedSemaphore.resize(m_swapChainData.swapChainImages.size());
+            for(size_t i = prior; i < m_renderFinishedSemaphore.size(); ++i) 
+                m_renderFinishedSemaphore[i].create(m_device.getFunctionTable(), m_device);
+        }
     }
     
     void start() {
         while(!m_window.shouldClose()) {
             m_window.pollEvents();
-            m_button->getPointerTarget()->pointerEvent(mouse);
-            if(m_window.isMinimised()) continue;
-            drawFrame(m_window.getFrameBufferExtent());
+            
+            auto extent = m_window.getFrameBufferExtent();
+
+            if(m_resizePending) {            
+                m_viewport->setSize(glm::ivec2(extent.width, extent.height));
+                m_layoutDispatch.dispatch<&GUI::Layout::arrange>();
+                m_viewport->resolve();
+            }
+
+            m_fpsMeter->setText(m_guiInstance, m_fontMono.getSize(32), std::string("FPS: ") + std::to_string(m_fps));
+            m_fpsMeter->resolve();
+            m_pointerTargetDispatch.dispatch<&GUI::PointerTarget::pointerEvent>(mouse);
+            std::chrono::time_point start = std::chrono::steady_clock::now();
+            drawFrame(extent);
+            std::chrono::time_point end = std::chrono::steady_clock::now();
+            auto diff = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+            if(diff == 0) m_fps = std::numeric_limits<float>::infinity();
+            else m_fps = (1 / static_cast<float>(diff)) * pow(10, 9);
         }
     }
 
     void drawFrame(const Graphics::Extent2D& extent) {
-        m_inFlightFence.wait(m_device.getFunctionTable(), m_device);
-        m_inFlightFence.reset(m_device.getFunctionTable(), m_device);
-
-        uint32_t imageIndex;
-        auto imageAcquireResult = m_swapChainData.swapChain.acquireNextImage(m_device.getFunctionTable(), 
-            m_device, m_imageAvailableSemaphore, imageIndex);
-
-        if (imageAcquireResult == Graphics::Result::ErrorOutOfDateKHR ||
-            imageAcquireResult == Graphics::Result::SuboptimalKHR) {
+        if(extent.getHeight() == 0 || extent.getWidth() == 0) return;
+        do {
+            m_inFlightFence.wait(m_device.getFunctionTable(), m_device);
+            m_inFlightFence.reset(m_device.getFunctionTable(), m_device);
+            if (m_resizePending)
+            {
                 handleResize();
-                return;
-        }
+                m_resizePending = false;
+            }
+            uint32_t imageIndex;
+            while (true) {
+                auto imageAcquireResult = m_swapChainData.swapChain.acquireNextImage(m_device.getFunctionTable(), 
+                m_device, m_imageAvailableSemaphore, imageIndex);
 
-        m_graphicsCommandBuffer.reset(m_device.getFunctionTable());
-        
-        m_graphicsCommandBuffer.begin(m_device.getFunctionTable(), Graphics::CommandBufferBeginInfo());
+                if (imageAcquireResult == Graphics::Result::ErrorOutOfDateKHR ||
+                    imageAcquireResult == Graphics::Result::SuboptimalKHR) {
+                    handleResize();
+                    continue;
+                }
+                break;
+            }
 
-        std::array<Graphics::ClearValue, 2> clearValues = {
-            Graphics::ClearColorValue(Graphics::Color::green()),
-            Graphics::ClearDepthStencilValue{1.0f, 0}
-        };
+            m_graphicsCommandBuffer.reset(m_device.getFunctionTable());
+            
+            m_graphicsCommandBuffer.begin(m_device.getFunctionTable(), Graphics::CommandBufferBeginInfo());
 
-        Graphics::RenderPassBeginInfo renderPassBeginInfo = { m_renderPassData.renderPass, 
-            m_swapChainData.swapChainFrameBuffers[imageIndex], clearValues, {0, 0}, 
-            m_swapChainData.swapChainInfo.getImageExtent() };
+            std::array<Graphics::ClearValue, 2> clearValues = {
+                Graphics::ClearColorValue(Graphics::Color::green()),
+                Graphics::ClearDepthStencilValue{1.0f, 0}
+            };
 
-        m_graphicsCommandBuffer.beginRenderPass(m_device.getFunctionTable(),
-            renderPassBeginInfo, Graphics::SubpassContents::Inline);
+            Graphics::RenderPassBeginInfo renderPassBeginInfo = { m_renderPassData.renderPass, 
+                m_swapChainData.swapChainFrameBuffers[imageIndex], clearValues, {0, 0}, 
+                m_swapChainData.swapChainInfo.getImageExtent() };
 
-        m_graphicsCommandBuffer.setViewport(m_device.getFunctionTable(), m_canvas.getViewport());
-        m_graphicsCommandBuffer.setScissor(m_device.getFunctionTable(), m_canvas.getScissor());
+            m_graphicsCommandBuffer.beginRenderPass(m_device.getFunctionTable(),
+                renderPassBeginInfo, Graphics::SubpassContents::Inline);
 
-        m_guiInstance.reset();
-        m_guiInstance.record(m_borderMono.get());
-        m_guiInstance.record(m_borderProp.get());
-        m_guiInstance.record(m_button.get());
-        m_guiInstance.upload(m_device.getFunctionTable(), m_device);
-        m_guiInstance.render(m_device.getFunctionTable(), m_device, m_graphicsCommandBuffer, extent);
+            m_graphicsCommandBuffer.setViewport(m_device.getFunctionTable(), m_canvas.getViewport());
+            m_graphicsCommandBuffer.setScissor(m_device.getFunctionTable(), m_canvas.getScissor());
 
-        m_graphicsCommandBuffer.endRenderPass(m_device.getFunctionTable());
-        m_graphicsCommandBuffer.stopRecord(m_device.getFunctionTable());
+            m_guiInstance.reset();
 
-        try {
-            std::array<Graphics::Flags::PipelineStage, 1> pipelineStage = { Graphics::Flags::PipelineStage::Bits::ColorAttachmentOutput };
+            m_guiInstance.record(m_viewport.get());
+            m_guiInstance.record(m_fpsMeter.get());
 
-            Graphics::QueueSubmitInfo submitInfo(
-                std::span(&m_graphicsCommandBuffer, 1),
-                pipelineStage,
-                std::span(&m_imageAvailableSemaphore, 1),
-                std::span(&m_renderFinishedSemaphore[imageIndex], 1));
+            m_guiInstance.upload();
+            m_guiInstance.render(m_graphicsCommandBuffer, extent);
 
-            m_graphicsQueue.submit(m_device.getFunctionTable(), submitInfo,
-                m_inFlightFence);
-        }
-        catch (const std::exception& e) {
-            std::cerr << "Failed to submit graphics queue: " << e.what() << std::endl;
-        }
+            m_graphicsCommandBuffer.endRenderPass(m_device.getFunctionTable());
+            m_graphicsCommandBuffer.stopRecord(m_device.getFunctionTable());
 
-        Graphics::QueuePresentInfo presentInfo = {
-            std::span(&m_renderFinishedSemaphore[imageIndex], 1),
-            std::span(&m_swapChainData.swapChain, 1),
-            std::span(&imageIndex, 1),
-        };
-        auto presentResult = m_presentQueue.present(m_device.getFunctionTable(), presentInfo);
-        if (presentResult == Graphics::Result::ErrorOutOfDateKHR ||
-            presentResult == Graphics::Result::SuboptimalKHR) {
-                handleResize();
-                return;
-        }
+            try {
+                std::array<Graphics::Flags::PipelineStage, 1> pipelineStage = { Graphics::Flags::PipelineStage::Bits::ColorAttachmentOutput };
+
+                Graphics::QueueSubmitInfo submitInfo(
+                    std::span(&m_graphicsCommandBuffer, 1),
+                    pipelineStage,
+                    std::span(&m_imageAvailableSemaphore, 1),
+                    std::span(&m_renderFinishedSemaphore[imageIndex], 1));
+
+                m_graphicsQueue.submit(m_device.getFunctionTable(), submitInfo,
+                    m_inFlightFence);
+            }
+            catch (const std::exception& e) {
+                std::cerr << "Failed to submit graphics queue: " << e.what() << std::endl;
+            }
+
+            Graphics::QueuePresentInfo presentInfo = {
+                std::span(&m_renderFinishedSemaphore[imageIndex], 1),
+                std::span(&m_swapChainData.swapChain, 1),
+                std::span(&imageIndex, 1),
+            };
+            auto presentResult = m_presentQueue.present(m_device.getFunctionTable(), presentInfo);
+            if (presentResult == Graphics::Result::ErrorOutOfDateKHR ||
+                presentResult == Graphics::Result::SuboptimalKHR) {
+                m_resizePending = true;
+                continue;
+            }
+        } while(false);
     }
 
 };

@@ -53,6 +53,16 @@ namespace GUI {
         }
     };
 
+    struct RenderingContext {
+        Graphics::InstanceRef instanceRef;
+        Graphics::DeviceRef deviceRef;
+        Graphics::PhysicalDevice physicalDevice;
+        const Graphics::InstanceFunctionTable* instanceFunctions;
+        const Graphics::DeviceFunctionTable* deviceFunctions;
+        Graphics::DescriptorPoolRef descriptorPoolRef;
+        Graphics::RenderPassRef renderPassRef;
+    };
+
     class Instance;
 
     class InstanceInterface {
@@ -73,15 +83,21 @@ namespace GUI {
         InstanceInterface& operator=(InstanceInterface&&) = default;
 
         void addQuad(const Quad& quad);
-        FTInstance& getFTInstance();
+        const FTInstance& getFTInstance() const;
+        const RenderingContext& getRenderingContext() const;
+        TextureId registerTexture(Graphics::ImageViewRef view, 
+            Graphics::ImageLayout layout = Graphics::ImageLayout::ShaderReadOnlyOptimal);
 
         Instance& getInstance() { return *m_instance; }
+        
     };
 
     class Instance {
         friend class InstanceInterface;
     private:
         FTInstance m_ftInstance;
+
+        RenderingContext m_renderingContext;
 
         // Shared layout
         Graphics::PipelineLayoutCreateInfo m_genericLayoutInfo;
@@ -118,13 +134,12 @@ namespace GUI {
 
     public:
 
-        void create(const Graphics::InstanceFunctionTable& instanceFunctions, const Graphics::DeviceFunctionTable& functions, 
-            Graphics::DeviceRef device, Graphics::PhysicalDevice physicalDevice, Graphics::DescriptorPoolRef descriptorPool,
-            Graphics::RenderPassRef renderPass) {
+        void create(RenderingContext ctx) {
+            m_renderingContext = ctx;
 
             m_ftInstance.create();
 
-            m_shaders.create(functions, device, "Shaders");
+            m_shaders.create(*m_renderingContext.deviceFunctions, m_renderingContext.deviceRef);
             m_shaderStages = Graphics::Utility::createShaderStageInfos(m_shaders.getShaderModuleData());
 
             m_storageSetBindings[static_cast<size_t>(StorageSetBindingSpecialization::Texture)]
@@ -133,38 +148,42 @@ namespace GUI {
                 .setDescriptorCount(1024)
                 .setStageFlags(Graphics::Flags::ShaderStage::Bits::Fragment);
 
-            auto& storgeSetLayoutInfo = m_setLayoutInfos[static_cast<size_t>(DescriptorSetSpecialization::Storage)];
+            auto& storageSetLayoutInfo = m_setLayoutInfos[static_cast<size_t>(DescriptorSetSpecialization::Storage)];
             auto& storageSetLayout = m_setLayouts[static_cast<size_t>(DescriptorSetSpecialization::Storage)];
-            storgeSetLayoutInfo.setBindings(m_storageSetBindings);
-            storageSetLayout.create(functions, device, storgeSetLayoutInfo);
+            storageSetLayoutInfo.setBindings(m_storageSetBindings);
+            storageSetLayout.create(*m_renderingContext.deviceFunctions, m_renderingContext.deviceRef, storageSetLayoutInfo);
 
             Graphics::DescriptorSetAllocateInfo allocInfo;
-            allocInfo.setDescriptorSetLayouts(m_setLayouts).setDescriptorPool(descriptorPool);
+            allocInfo.setDescriptorSetLayouts(m_setLayouts).setDescriptorPool(ctx.descriptorPoolRef);
             
-            m_sets = descriptorPool.allocateSets<static_cast<size_t>(DescriptorSetSpecialization::Count)>(functions, device, allocInfo);
+            m_sets = ctx.descriptorPoolRef.allocateSets<static_cast<size_t>(DescriptorSetSpecialization::Count)>(
+                *m_renderingContext.deviceFunctions, m_renderingContext.deviceRef, allocInfo);
 
-            m_pushRange.setSize(sizeof(uint32_t) * 2).setOffset(0).setStageFlags(Graphics::Flags::ShaderStage::Bits::Vertex);
+            m_pushRange.setSize(sizeof(uint32_t) * 2).setOffset(0).setStageFlags(
+                Graphics::Flags::ShaderStage::Bits::Vertex | Graphics::Flags::ShaderStage::Bits::Fragment);
 
             m_genericLayoutInfo.setSetLayouts(storageSetLayout).setPushConstantRanges(m_pushRange);
-            m_genericLayout.create(functions, device, m_genericLayoutInfo);
+            m_genericLayout.create(*m_renderingContext.deviceFunctions, m_renderingContext.deviceRef, m_genericLayoutInfo);
 
-            m_quadRenderer.create(instanceFunctions, functions, device, physicalDevice, renderPass, m_shaderStages, m_genericLayout);
+            m_quadRenderer.create(*m_renderingContext.instanceFunctions, *m_renderingContext.deviceFunctions, m_renderingContext.deviceRef, 
+                ctx.physicalDevice, ctx.renderPassRef, m_shaderStages, m_genericLayout);
 
-            m_defaultTextureCache.create(instanceFunctions, functions, device, physicalDevice);
+            m_defaultTextureCache.create(*m_renderingContext.instanceFunctions, *m_renderingContext.deviceFunctions, m_renderingContext.deviceRef, ctx.physicalDevice);
 
             m_textureDescriptor.create(m_sets[static_cast<size_t>(DescriptorSetSpecialization::Storage)],
                 static_cast<size_t>(StorageSetBindingSpecialization::Texture), 1024, 0);
 
             for(size_t i = 0; i < static_cast<size_t>(GUI::DefaultTextureType::Count); ++i) 
-                m_textureDescriptor.registerTexture(functions, device, m_defaultTextureCache.getImage(i), m_defaultTextureCache.getSampler());
+                m_textureDescriptor.registerTexture(*m_renderingContext.deviceFunctions, m_renderingContext.deviceRef, 
+                    m_defaultTextureCache.getImage(i), m_defaultTextureCache.getSampler());
         }
 
-        void destroy(const Graphics::DeviceFunctionTable& functions, Graphics::DeviceRef device) {
-            m_defaultTextureCache.destroy(functions, device);
-            m_quadRenderer.destroy(functions, device);
-            m_genericLayout.destroy(functions, device);
-            for(auto& layout : m_setLayouts) layout.destroy(functions, device);
-            m_shaders.destroy(functions, device);
+        void destroy() {
+            m_defaultTextureCache.destroy(*m_renderingContext.deviceFunctions, m_renderingContext.deviceRef);
+            m_quadRenderer.destroy(*m_renderingContext.deviceFunctions, m_renderingContext.deviceRef);
+            m_genericLayout.destroy(*m_renderingContext.deviceFunctions, m_renderingContext.deviceRef);
+            for(auto& layout : m_setLayouts) layout.destroy(*m_renderingContext.deviceFunctions, m_renderingContext.deviceRef);
+            m_shaders.destroy(*m_renderingContext.deviceFunctions, m_renderingContext.deviceRef);
             m_ftInstance.destroy();
         }
 
@@ -172,45 +191,43 @@ namespace GUI {
             m_quads.clear();
         }
 
-        void record(Elements::Element* root) {
+        void record(Element* root) {
             auto ctx = interface();
             root->record(ctx);
         }
 
         template<typename Container>
-        void record(Container& roots) requires (std::convertible_to<typename Container::value_type, Elements::Element*>) {
+        void record(Container& roots) requires (std::convertible_to<typename Container::value_type, Element*>) {
             auto ctx = interface();
             for(auto* root : roots) root->record(ctx);
         }
         
-        void record(std::initializer_list<Elements::Element*> roots) {
+        void record(std::initializer_list<Element*> roots) {
             auto ctx = interface();
             for(auto* root : roots) root->record(ctx);
         }
 
-        void upload(const Graphics::DeviceFunctionTable& functions, Graphics::DeviceRef device) {
-            m_quadRenderer.updateQuads(functions, device, m_quads);
+        void upload() {
+            m_quadRenderer.updateQuads(*m_renderingContext.deviceFunctions, m_renderingContext.deviceRef, m_quads);
         }
 
-        void render(const Graphics::DeviceFunctionTable& functions, Graphics::DeviceRef device, Graphics::CommandBuffer cmd, const Graphics::Extent2D& frameBufferExtent) {
+        void render(Graphics::CommandBuffer cmd, const Graphics::Extent2D& frameBufferExtent) {
             std::array<uint32_t, 2> dimensions = { frameBufferExtent.getWidth(), frameBufferExtent.getHeight() };
-            cmd.bindDescriptorSets(functions, Graphics::PipelineBindPoint::Graphics, m_genericLayout, 0, m_sets);
-            cmd.pushConstants(functions, m_genericLayout, Graphics::Flags::ShaderStage::Bits::Vertex, 0, sizeof(uint32_t) * 2, dimensions.data());
-            m_quadRenderer.render(functions, cmd);
+            cmd.bindDescriptorSets(*m_renderingContext.deviceFunctions, Graphics::PipelineBindPoint::Graphics, m_genericLayout, 0, m_sets);
+            cmd.pushConstants(*m_renderingContext.deviceFunctions, m_genericLayout, 
+                Graphics::Flags::ShaderStage::Bits::Vertex | Graphics::Flags::ShaderStage::Bits::Fragment, 
+                0, sizeof(uint32_t) * 2, dimensions.data());
+            m_quadRenderer.render(*m_renderingContext.deviceFunctions, cmd);
         }
 
-        TextureId registerTexture(const Graphics::DeviceFunctionTable& functions,
-            Graphics::DeviceRef device, Graphics::ImageViewRef view,
+        TextureId registerTexture(Graphics::ImageViewRef view,
             Graphics::ImageLayout layout = Graphics::ImageLayout::ShaderReadOnlyOptimal) {
-            return m_textureDescriptor.registerTexture(functions, device, view, m_defaultTextureCache.getSampler(), layout);
+            return m_textureDescriptor.registerTexture(*m_renderingContext.deviceFunctions, m_renderingContext.deviceRef, view, m_defaultTextureCache.getSampler(), layout);
         };
 
-        Font createFont(std::string_view path) {
-            Font font;
-            auto ctx = interface();
-            font.create(ctx, path);
-            return font;
-        }
+        const FTInstance& getFTInstance() const { return m_ftInstance; };
+        const RenderingContext& getRenderingContext() const { return m_renderingContext; }
+
     private:
         InstanceInterface interface() {  return InstanceInterface(this); }
     };

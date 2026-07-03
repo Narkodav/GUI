@@ -30,6 +30,8 @@ target_compile_definitions(${PROJECT_NAME}
     PRIVATE GUI_EXPORTS
 )
 
+target_link_options(GUI PRIVATE "-Wl,-v")
+
 # ===============================
 # System dependency
 # ===============================
@@ -42,8 +44,6 @@ target_link_libraries(GUI PUBLIC Vulkan::Vulkan)
 # ===============================
 # Text rendering dependencies
 # ===============================
-
-
 
 if(PROJECT_IS_TOP_LEVEL)
     add_subdirectory(
@@ -77,15 +77,12 @@ if(PROJECT_IS_TOP_LEVEL)
     find_package(CommonApi REQUIRED CONFIG)
     find_package(Containers REQUIRED CONFIG)
     find_package(PlatformKit REQUIRED CONFIG)
-    add_subdirectory(
-        ${GraphicsWrapper_DIR}
-        ${CMAKE_CURRENT_BINARY_DIR}/GraphicsWrapper
-    )
+    find_package(GraphicsWrapper REQUIRED CONFIG)
 endif()
 target_link_libraries(${PROJECT_NAME} PUBLIC CommonApi::CommonApi)
 target_link_libraries(${PROJECT_NAME} PUBLIC Containers::Containers)
 target_link_libraries(${PROJECT_NAME} PUBLIC PlatformKit::PlatformKit)
-target_link_libraries(${PROJECT_NAME} PUBLIC GraphicsWrapper)
+target_link_libraries(${PROJECT_NAME} PUBLIC GraphicsWrapper::GraphicsWrapper)
 
 # =========================
 # Test executable
@@ -105,6 +102,8 @@ target_compile_options(GUITests PRIVATE
     $<$<CXX_COMPILER_ID:GNU,Clang>:-Wall -Wextra -Wpedantic>
     $<$<CXX_COMPILER_ID:MSVC>:/W4>
 )
+
+target_link_options(GUITests PRIVATE "-Wl,-v")
 
 target_include_directories(GUITests PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/include
@@ -139,7 +138,7 @@ install(EXPORT GUITargets
 include(CMakePackageConfigHelpers)
 
 configure_package_config_file(
-    ${CMAKE_CURRENT_SOURCE_DIR}/install/GUIConfig.cmake.in
+    ${CMAKE_CURRENT_SOURCE_DIR}/cmake/GUIConfig.cmake.in
     ${CMAKE_CURRENT_BINARY_DIR}/GUIConfig.cmake
     INSTALL_DESTINATION lib/cmake/GUI
 )

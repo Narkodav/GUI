@@ -19,6 +19,9 @@ namespace GUI {
         glm::vec2 uvMin;
         glm::vec2 uvMax;
         TextureId textureId;
+
+        glm::ivec2 offset;
+        glm::ivec2 bounds;
     };
 
     class QuadRenderer
@@ -89,7 +92,7 @@ namespace GUI {
         };
 
         std::array<Graphics::VertexInputBindingDescription, 2> m_bindings;
-        std::array<Graphics::VertexInputAttributeDescription, 6> m_attributes;
+        std::array<Graphics::VertexInputAttributeDescription, 8> m_attributes;
 
     public:
 
@@ -118,6 +121,11 @@ namespace GUI {
             m_attributes[3].setLocation(3).setBinding(1).setFormat(Graphics::Format::R32G32Sfloat).setOffset(sizeof(glm::ivec2) * 2);
             m_attributes[4].setLocation(4).setBinding(1).setFormat(Graphics::Format::R32G32Sfloat).setOffset(sizeof(glm::ivec2) * 2 + sizeof(glm::vec2));
             m_attributes[5].setLocation(5).setBinding(1).setFormat(Graphics::Format::R32Uint).setOffset(sizeof(glm::ivec2) * 2 + sizeof(glm::vec2) * 2);
+
+            m_attributes[6].setLocation(6).setBinding(1).setFormat(Graphics::Format::R32G32Sint).setOffset(
+                sizeof(glm::ivec2) * 2 + sizeof(glm::vec2) * 2 + sizeof(TextureId));
+            m_attributes[7].setLocation(7).setBinding(1).setFormat(Graphics::Format::R32G32Sint).setOffset(
+                sizeof(glm::ivec2) * 2 + sizeof(glm::vec2) * 2 + sizeof(TextureId) + sizeof(glm::ivec2));
 
             m_vertexInputState.setVertexBindingDescriptions(m_bindings);
             m_vertexInputState.setVertexAttributeDescriptions(m_attributes);

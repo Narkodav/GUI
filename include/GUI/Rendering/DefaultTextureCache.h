@@ -126,21 +126,21 @@ namespace GUI
                 functions,
                 device,
                 physicalDevice,
-                66, 66, 66, 255);
+                66, 150, 250, 255);
 
             m_textures[static_cast<size_t>(DefaultTextureType::DefaultButtonHoveredTexture)] = createSolidTexture(
                 instanceFunctions,
                 functions,
                 device,
                 physicalDevice,
-                82, 82, 82, 255);
+                92, 170, 255, 255);
 
             m_textures[static_cast<size_t>(DefaultTextureType::DefaultButtonPressedTexture)] = createSolidTexture(
                 instanceFunctions,
                 functions,
                 device,
                 physicalDevice,
-                38, 38, 38, 255);
+                45, 125, 220, 255);
         }
 
         static TextureEntry createSolidTexture(

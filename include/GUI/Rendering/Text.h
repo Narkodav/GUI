@@ -51,12 +51,10 @@ namespace GUI {
 
         Text() { clearText(); }
 
-        void setText(GUI::Instance& instance, const Graphics::InstanceFunctionTable& instanceFunctions, 
-            const Graphics::DeviceFunctionTable& functions, Graphics::DeviceRef device, Graphics::PhysicalDevice physicalDevice,
-            const Font::Size& fontSize, std::string_view str) {
+        void setText(GUI::Instance& instance, const Font::Size& fontSize, std::string_view str) {
             clearText();
             m_bytes = str;
-            shapeText(instance, instanceFunctions, functions, device, physicalDevice, fontSize, str);
+            shapeText(instance, fontSize, str);
         }
 
         void clearText() { 
@@ -182,9 +180,7 @@ namespace GUI {
             return 0;
         }
 
-        void shapeText(GUI::Instance& instance, const Graphics::InstanceFunctionTable& instanceFunctions, 
-            const Graphics::DeviceFunctionTable& functions, Graphics::DeviceRef device, Graphics::PhysicalDevice physicalDevice,
-            const Font::Size& fontSize, std::string_view text) {
+        void shapeText(GUI::Instance& instance, const Font::Size& fontSize, std::string_view text) {
             // Create/reset buffer
             hb_buffer_t* buffer = hb_buffer_create();
 
@@ -226,9 +222,7 @@ namespace GUI {
                 //     m_glyphs.push_back(glyph_info[i].codepoint);
                 // }
 
-                const auto& glyph = fontSize.getGlyph(
-                    instance, instanceFunctions, functions, device, 
-                    physicalDevice, glyph_info[i].codepoint);
+                const auto& glyph = fontSize.getGlyph(instance, glyph_info[i].codepoint);
                 m_glyphs.push_back({&glyph, decodeUtf8At(text, glyph_info[i].cluster)});
 
                 if(text[glyph_info[i].cluster] == '\n') {

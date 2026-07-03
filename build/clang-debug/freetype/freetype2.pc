@@ -1,4 +1,4 @@
-prefix=E:/Code/C_code/libraries/GUI/install/clang-debug
+prefix=E:/Code/C_code/install-root/clang-debug
 exec_prefix=${prefix}
 libdir=${prefix}/lib
 includedir=${prefix}/include
@@ -7,8 +7,8 @@ Name: FreeType 2
 URL: https://freetype.org
 Description: A free, high-quality, and portable font engine.
 Version: 26.6.20
-Requires:  
+Requires:  zlib, libpng
 Requires.private: 
-Libs: -L${libdir} -lfreetype 
+Libs: -L${libdir} -lfreetype -lbz2
 Libs.private: 
 Cflags: -I${includedir}/freetype2

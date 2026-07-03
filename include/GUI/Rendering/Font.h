@@ -40,10 +40,10 @@ namespace GUI
                 return m_metrics.height;
             }
 
-            void destroy(const Graphics::DeviceFunctionTable& functions, Graphics::DeviceRef device) {
+            void destroy(GUI::Instance& instance) {
                 FT_Done_Size(m_size);
                 for(auto& glyph : m_glyphMap) {
-                    glyph.second.destroy(functions, device);
+                    glyph.second.destroy(instance);
                 }
                 m_glyphMap.clear();
             }
@@ -59,25 +59,15 @@ namespace GUI
             Size(Size&& other) = default;
             Size& operator=(Size&& other) = default;
 
-            const Glyph& getGlyph(GUI::Instance& instance, const Graphics::InstanceFunctionTable& instanceFunctions, 
-                const Graphics::DeviceFunctionTable& functions, Graphics::DeviceRef device, 
-                Graphics::PhysicalDevice physicalDevice, CharId character) const;
+            const Glyph& getGlyph(GUI::Instance& instance, CharId character) const;
 
             const Metrics& getMetrics() const { return m_metrics; }
 
         private:
-            Glyph getGlyphGrayscale(GUI::Instance& instance, const Graphics::InstanceFunctionTable& instanceFunctions, 
-                const Graphics::DeviceFunctionTable& functions, Graphics::DeviceRef device, 
-                Graphics::PhysicalDevice physicalDevice, CharId character) const;
-            Glyph getGlyphSibix(GUI::Instance& instance, const Graphics::InstanceFunctionTable& instanceFunctions, 
-                const Graphics::DeviceFunctionTable& functions, Graphics::DeviceRef device, 
-                Graphics::PhysicalDevice physicalDevice, CharId character) const;
-            Glyph getGlyphCbdtCblc(GUI::Instance& instance, const Graphics::InstanceFunctionTable& instanceFunctions, 
-                const Graphics::DeviceFunctionTable& functions, Graphics::DeviceRef device, 
-                Graphics::PhysicalDevice physicalDevice, CharId character) const;
-            Glyph getGlyphColrCpal(GUI::Instance& instance, const Graphics::InstanceFunctionTable& instanceFunctions, 
-                const Graphics::DeviceFunctionTable& functions, Graphics::DeviceRef device, 
-                Graphics::PhysicalDevice physicalDevice, CharId character) const;
+            Glyph getGlyphGrayscale(GUI::Instance& instance, CharId character) const;
+            Glyph getGlyphSibix(GUI::Instance& instance, CharId character) const;
+            Glyph getGlyphCbdtCblc(GUI::Instance& instance, CharId character) const;
+            Glyph getGlyphColrCpal(GUI::Instance& instance, CharId character) const;
 
             bool glyphHasColor(CharId character) const;
 
@@ -101,8 +91,8 @@ namespace GUI
         Font(Font&& other) = default;
         Font& operator=(Font&& other) = default;
 
-        void create(GUI::InstanceInterface& instance, std::string_view path);
-        void destroy(const Graphics::DeviceFunctionTable& functions, Graphics::DeviceRef device);
+        void create(GUI::Instance& instance, std::string_view path);
+        void destroy(GUI::Instance& instance);
 
         const Size& getSize(size_t height) {
             auto it = m_sizes.find(height);

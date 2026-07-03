@@ -2,7 +2,7 @@
 #include "GUI/Instance.h"
 
 namespace GUI {
-    void Font::create(GUI::InstanceInterface& instance, std::string_view path) {
+    void Font::create(GUI::Instance& instance, std::string_view path) {
         if (FT_New_Face(instance.getFTInstance(), path.data(), 0, &m_face))
             throw std::runtime_error("ERROR::FREETYPE: Failed to load font");
 
@@ -14,9 +14,9 @@ namespace GUI {
         m_type = getFontType();
     }
 
-    void Font::destroy(const Graphics::DeviceFunctionTable& functions, Graphics::DeviceRef device) {
+    void Font::destroy(GUI::Instance& instance) {
         for(auto& size : m_sizes) {
-            size.second.destroy(functions, device);
+            size.second.destroy(instance);
         }
         FT_Done_Face(m_face);
         m_sizes.clear();
@@ -62,16 +62,15 @@ namespace GUI {
         return FT_Get_Color_Glyph_Layer(m_font->m_face, character, &layerGlyphIndex, &layerColorIndex, &iterator);
     }
 
-    Glyph Font::Size::getGlyphGrayscale(GUI::Instance& instance, const Graphics::InstanceFunctionTable& instanceFunctions, 
-        const Graphics::DeviceFunctionTable& functions, Graphics::DeviceRef device, 
-        Graphics::PhysicalDevice physicalDevice, CharId character) const {
+    Glyph Font::Size::getGlyphGrayscale(GUI::Instance& instance, CharId character) const {
+        const auto& ctx = instance.getRenderingContext();
         Glyph glyph;
         if (FT_Load_Glyph(m_font->m_face, character, FT_LOAD_RENDER))
             throw std::runtime_error("ERROR::FREETYPE: Failed to load a character");
 
         auto& glyphSlot = m_font->m_face->glyph;
 
-        glyph.create(instance, instanceFunctions, functions, device, physicalDevice, {
+        glyph.create(instance, {
                 glm::ivec2(glyphSlot->bitmap.width, glyphSlot->bitmap.rows),
                 glm::ivec2(glyphSlot->bitmap_left, glyphSlot->bitmap_top),
                 glm::ivec2(glyphSlot->advance.x, glyphSlot->advance.y)
@@ -86,16 +85,14 @@ namespace GUI {
         return glyph;
     }
 
-    Glyph Font::Size::getGlyphSibix(GUI::Instance& instance, const Graphics::InstanceFunctionTable& instanceFunctions, 
-        const Graphics::DeviceFunctionTable& functions, Graphics::DeviceRef device, 
-        Graphics::PhysicalDevice physicalDevice, CharId character) const {
+    Glyph Font::Size::getGlyphSibix(GUI::Instance& instance, CharId character) const {
         Glyph glyph;
         if (FT_Load_Glyph(m_font->m_face, character, FT_LOAD_COLOR | FT_LOAD_RENDER))
             throw std::runtime_error("ERROR::FREETYPE: Failed to load a character");
 
         auto& glyphSlot = m_font->m_face->glyph;
 
-        glyph.create(instance, instanceFunctions, functions, device, physicalDevice, {
+        glyph.create(instance, {
                 glm::ivec2(glyphSlot->bitmap.width, glyphSlot->bitmap.rows),
                 glm::ivec2(glyphSlot->bitmap_left, glyphSlot->bitmap_top),
                 glm::ivec2(glyphSlot->advance.x, glyphSlot->advance.y)
@@ -110,16 +107,14 @@ namespace GUI {
         return glyph;
     }
 
-    Glyph Font::Size::getGlyphCbdtCblc(GUI::Instance& instance, const Graphics::InstanceFunctionTable& instanceFunctions, 
-        const Graphics::DeviceFunctionTable& functions, Graphics::DeviceRef device, 
-        Graphics::PhysicalDevice physicalDevice, CharId character) const {
+    Glyph Font::Size::getGlyphCbdtCblc(GUI::Instance& instance, CharId character) const {
         Glyph glyph;
         if (FT_Load_Glyph(m_font->m_face, character, FT_LOAD_COLOR | FT_LOAD_RENDER))
             throw std::runtime_error("ERROR::FREETYPE: Failed to load a character");
 
         auto& glyphSlot = m_font->m_face->glyph;
 
-        glyph.create(instance, instanceFunctions, functions, device, physicalDevice, {
+        glyph.create(instance, {
                 glm::ivec2(glyphSlot->bitmap.width, glyphSlot->bitmap.rows),
                 glm::ivec2(glyphSlot->bitmap_left, glyphSlot->bitmap_top),
                 glm::ivec2(glyphSlot->advance.x, glyphSlot->advance.y)
@@ -134,15 +129,13 @@ namespace GUI {
         return glyph;
     }
 
-    Glyph Font::Size::getGlyphColrCpal(GUI::Instance& instance, const Graphics::InstanceFunctionTable& instanceFunctions, 
-        const Graphics::DeviceFunctionTable& functions, Graphics::DeviceRef device, 
-        Graphics::PhysicalDevice physicalDevice, CharId character) const {
+    Glyph Font::Size::getGlyphColrCpal(GUI::Instance& instance, CharId character) const {
 
         auto& face = m_font->m_face;
 
         Glyph glyph;
         if (!glyphHasColor(character))
-            return getGlyphGrayscale(instance, instanceFunctions, functions, device, physicalDevice, character);
+            return getGlyphGrayscale(instance, character);
 
         // First pass: calculate total bounding box
         //FT_BBox bbox;
@@ -190,7 +183,7 @@ namespace GUI {
         int height = face->glyph->bitmap.rows;
 
         if (width == 0 || height == 0) {
-            glyph.create(instance, instanceFunctions, functions, device, physicalDevice, {
+            glyph.create(instance, {
                     glm::ivec2(face->glyph->bitmap.width, face->glyph->bitmap.rows),
                     glm::ivec2(face->glyph->bitmap_left, face->glyph->bitmap_top),
                     glm::ivec2(face->glyph->advance.x, face->glyph->advance.y)
@@ -216,7 +209,7 @@ namespace GUI {
         FT_Error error = FT_Palette_Select(face, 0, &palette);
         if (error || !palette) {
             // Handle error or no palette case
-            glyph.create(instance, instanceFunctions, functions, device, physicalDevice, {
+            glyph.create(instance, {
                     glm::ivec2(face->glyph->bitmap.width, face->glyph->bitmap.rows),
                     glm::ivec2(face->glyph->bitmap_left, face->glyph->bitmap_top),
                     glm::ivec2(face->glyph->advance.x, face->glyph->advance.y)
@@ -287,7 +280,7 @@ namespace GUI {
         }
 
         // Step 5: Create texture from bitmap
-        glyph.create(instance, instanceFunctions, functions, device, physicalDevice, {
+        glyph.create(instance, {
                 glm::ivec2(width, height),
                 glm::ivec2(originalLeft, originalTop),
                 glm::ivec2(face->glyph->advance.x, face->glyph->advance.y)
@@ -302,9 +295,7 @@ namespace GUI {
         return glyph;
     }
 
-    const Glyph& Font::Size::getGlyph(GUI::Instance& instance, const Graphics::InstanceFunctionTable& instanceFunctions, 
-        const Graphics::DeviceFunctionTable& functions, Graphics::DeviceRef device, 
-        Graphics::PhysicalDevice physicalDevice, CharId character) const {
+    const Glyph& Font::Size::getGlyph(GUI::Instance& instance, CharId character) const {
             
         auto it = m_glyphMap.find(character);
         if (it != m_glyphMap.end()) return it->second;
@@ -315,19 +306,19 @@ namespace GUI {
 
         switch(m_font->m_type) {
         case FontType::Normal:
-            glyph = getGlyphGrayscale(instance, instanceFunctions, functions, device, physicalDevice, character);
+            glyph = getGlyphGrayscale(instance, character);
             break;
         case FontType::Colored:
-            glyph = getGlyphGrayscale(instance, instanceFunctions, functions, device, physicalDevice, character);
+            glyph = getGlyphGrayscale(instance, character);
             break;
         case FontType::ColoredColrCpal:
-            glyph = getGlyphColrCpal(instance, instanceFunctions, functions, device, physicalDevice, character);
+            glyph = getGlyphColrCpal(instance, character);
             break;
         case FontType::ColoredCbdtCblc:
-            glyph = getGlyphCbdtCblc(instance, instanceFunctions, functions, device, physicalDevice, character);
+            glyph = getGlyphCbdtCblc(instance, character);
             break;
         case FontType::ColoredSbix:
-            glyph = getGlyphSibix(instance, instanceFunctions, functions, device, physicalDevice, character);
+            glyph = getGlyphSibix(instance, character);
             break;
         default: throw std::runtime_error("Unimplemented FontType");
         }

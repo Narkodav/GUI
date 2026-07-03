@@ -9,24 +9,22 @@
 #include <vector>
 #include <cstdint>
 
-namespace GUI::Elements
+namespace GUI
 {
     // All the positions and dimensions are represented in Surface pixel coordinates
     class MonospacedText : public Rectangle {
+        GUI_DECLARE_OBJECT(MonospacedText, Rectangle)
     protected:
         Text m_text;
         bool m_drawInvisibleLetters = false;
         const Font::Size* m_size;
 
     public:
-        MonospacedText() = default;
         ~MonospacedText() = default;
 
-        MonospacedText& setText(GUI::Instance& instance, const Graphics::InstanceFunctionTable& instanceFunctions, 
-            const Graphics::DeviceFunctionTable& functions, Graphics::DeviceRef device, Graphics::PhysicalDevice physicalDevice,
-            const Font::Size& fontSize, std::string_view str) {
+        MonospacedText& setText(GUI::Instance& instance, const Font::Size& fontSize, std::string_view str) {
                 m_size = &fontSize;
-                m_text.setText(instance, instanceFunctions, functions, device, physicalDevice, fontSize, str); 
+                m_text.setText(instance, fontSize, str); 
                 return *this; 
         }
         MonospacedText& setDrawInvisibleLetters(bool val) { m_drawInvisibleLetters = val; return *this; }
@@ -46,15 +44,11 @@ namespace GUI::Elements
             for(size_t lineIndex = 0; lineIndex < m_text.lineCount(); ++lineIndex) {
                 cursor.x = 0;
                 auto line = m_text[lineIndex];
-                if(cursor.y + m_size->getMetrics().height > getSize().y) {
+                if(cursor.y + m_size->getMetrics().height > getSizeY()) {
                     for(size_t i = 0; i < line.size(); ++i) {
-                        if(cursor.x + m_size->getMetrics().maxAdvance > getSize().x) return true;
+                        if(cursor.x + m_size->getMetrics().maxAdvance > getSizeX()) return true;
                         if(!m_drawInvisibleLetters && Text::letterIsInvisible(static_cast<uint8_t>(line[i].utfCode))) continue;
                         Quad quad = makeQuad(line[i].glyph, cursor);
-                        if(quad.position.y >= getSize().y + getPosition().y) continue;
-                        size_t sizeNew = getSize().y + getPosition().y - quad.position.y;
-                        quad.uvMax.y = sizeNew / static_cast<float>(quad.size.y);
-                        quad.size.y = sizeNew;
                         instance.addQuad(quad);
                         cursor.x += m_size->getMetrics().maxAdvance;
                     }
@@ -69,10 +63,6 @@ namespace GUI::Elements
                                 if(cursor.x + m_size->getMetrics().maxAdvance > getSize().x) return true;
                                 if(!m_drawInvisibleLetters && Text::letterIsInvisible(static_cast<uint8_t>(line[i].utfCode))) continue;
                                 Quad quad = makeQuad(line[i].glyph, cursor);
-                                if(quad.position.y >= getSize().y + getPosition().y) continue;
-                                size_t sizeNew = getSize().y + getPosition().y - quad.position.y;
-                                quad.uvMax.y = sizeNew / static_cast<float>(quad.size.y);
-                                quad.size.y = sizeNew;
                                 instance.addQuad(quad);
                                 cursor.x += m_size->getMetrics().maxAdvance;
                             }
@@ -94,8 +84,7 @@ namespace GUI::Elements
         Quad makeQuad(const Glyph* glyph, const glm::ivec2& cursor) const {
                 Quad quad;
                 quad.textureId = glyph->getTexture();
-                quad.position = getPosition();
-                quad.position += cursor;
+                quad.position = cursor;
                 quad.size = glyph->getMetrics().size;
                 quad.position.x += glyph->getMetrics().bearing.x;
                 quad.position.y += m_size->getMetrics().ascender - quad.size.y;     // Align to lower bound
@@ -103,6 +92,9 @@ namespace GUI::Elements
 
                 quad.uvMin = glm::vec2(0, 0);
                 quad.uvMax = glm::vec2(1, 1);
+
+                quad.offset = getOffset() + getPosition();
+                quad.bounds = getSize();
 
                 return quad;
         }

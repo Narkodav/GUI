@@ -372,7 +372,7 @@ namespace GUI {
 
         ~ShaderCache() { assert(!m_initialized && "ShaderCache was not destroyed!"); };
 
-        void create(const Graphics::DeviceFunctionTable& functions, Graphics::DeviceRef device, std::filesystem::path shaderPath) {
+        void create(const Graphics::DeviceFunctionTable& functions, Graphics::DeviceRef device) {
             m_shaderModuleData.shaderCodes.resize(2);
             m_shaderModuleData.shaderModules.resize(static_cast<size_t>(ShaderSpecialization::Count));
             m_shaderModuleData.shaderModuleCreateInfos.resize(static_cast<size_t>(ShaderSpecialization::Count));
@@ -383,8 +383,8 @@ namespace GUI {
             // m_shaderModuleData.shaderCodes[1].resize(s_quadFragSpv.size());
             // std::copy(s_quadFragSpv.begin(), s_quadFragSpv.end(), m_shaderModuleData.shaderCodes[1].begin());
 
-            m_shaderModuleData.shaderCodes[0] = Graphics::ShaderModule::parseShaderCodeSPIRV("../../Shaders/Quad.vert.spv");
-            m_shaderModuleData.shaderCodes[1] = Graphics::ShaderModule::parseShaderCodeSPIRV("../../Shaders/Quad.frag.spv");
+            m_shaderModuleData.shaderCodes[0] = Graphics::ShaderModule::parseShaderCodeSPIRV("../../res/Shaders/Quad.vert.spv");
+            m_shaderModuleData.shaderCodes[1] = Graphics::ShaderModule::parseShaderCodeSPIRV("../../res/Shaders/Quad.frag.spv");
 
             for (size_t i = 0; i < static_cast<size_t>(ShaderSpecialization::Count); ++i) {
                 m_shaderModuleData.shaderModuleCreateInfos[i].setShaderCode(m_shaderModuleData.shaderCodes[i]);
